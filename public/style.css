@@ -1,0 +1,364 @@
+* {
+   box-sizing: border-box;
+   padding: 0;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Main header */
+h1 {
+   color: rgb(96, 186, 180);
+   text-align: center;
+   margin: 30px 0;
+   text-decoration: underline;
+}
+
+/* Customization Msg */
+h4 {
+   font-size: 24px;
+   color: rgb(15, 136, 126) !important;
+   text-align: center;
+   margin: 30px 0;
+   color: rgb(74, 165, 159);
+}
+
+/* Reset Yards */
+.yardsReset {
+   width: 60%;
+   margin: 3% auto 0;
+   text-align: center;
+}
+
+/* Yardage info */
+h3 {
+   color: rgb(96, 186, 180);
+}
+
+/* Contains Holes information */
+.holes-container {
+   display: none;
+}
+
+/* Swing btn */
+.swingBtn {
+   margin: 0 auto;
+   padding: 12px;
+   color: green;
+   background: yellow;
+   border: 2px solid green;
+   border-radius: 20px;
+   cursor: pointer;
+   align-items: center;
+}
+
+.progress-container {
+   display: none;
+   text-align: center;
+   /* Center the contents horizontally */
+   margin-top: -10px;
+   /* Adjust margin as needed */
+}
+
+.progress-container span {
+   display: block;
+   /* Ensure "Power" text appears on its own line */
+}
+
+.progress-container progress {
+   /* display: none; */
+   width: 180px;
+   /* Set a width for the progress bar */
+}
+
+.customization-message {
+   color: green;
+   text-align: center;
+   margin-top: 20px;
+}
+
+
+#alertMessage {
+   display: none;
+   color: red;
+   text-align: center;
+}
+
+/* Resets clubs inputs */
+.clubs-reset {
+   width: 60%;
+   margin: 0 auto;
+   text-align: center;
+}
+
+/* Club distances container */
+.club-distances {
+   width: 34%;
+   height: auto;
+   padding: 50px;
+   margin: 10px auto 40px;
+   display: grid;
+   grid-template-columns: max-content auto;
+   grid-row-gap: 10px;
+   background: rgb(182, 212, 210);
+   justify-content: center;
+   box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.2);
+   border-radius: 2px;
+}
+
+/* Club labels */
+.club-distances label {
+   color: black;
+   margin-right: 16px;
+}
+
+.club-distances input {
+   width: 100%;
+}
+
+label {
+   margin: 10px;
+   font-size: 20px;
+   color: rgb(13, 131, 123);
+}
+
+input {
+   padding-left: 12px;
+   height: 35px;
+   font-size: 1.2rem;
+   text-align: center;
+}
+
+input:focus {
+   background: greenyellow;
+}
+
+::placeholder {
+   color: gray;
+   font-size: 14px;
+}
+
+#resetYardageBtn {
+   margin: 0 auto;
+   padding: 12px;
+   color: green;
+   background: yellow;
+   border: 2px solid green;
+   border-radius: 20px;
+   cursor: pointer;
+   align-items: center;
+}
+
+#resetYardageBtn:hover {
+   color: white;
+   background: orange;
+}
+
+.result-container {
+   margin-top: 20px;
+}
+
+#result {
+   /* display: block; */
+   font-size: 1.4rem;
+   font-weight: bold;
+   color: green;
+   width: 55%;
+   text-align: center;
+}
+
+.yardsCounter {
+   /* display: block; */
+   display: none;
+   font-size: 1.4rem;
+   font-weight: bold;
+   color: green;
+   background: rgb(222, 222, 222);
+   width: 24%;
+   padding: 5px;
+   margin: 0 auto;
+   margin: 20px auto;
+   text-align: center;
+   display: none;
+   text-align: center;
+   margin: 20px auto;
+   width: 80%;
+   max-width: 600px;
+   border: 1px solid #ccc;
+   padding: 20px;
+}
+
+h3 {
+   font-size: large;
+   color: black;
+}
+
+#remainingDistance {
+   display: block;
+   font-size: 1.2rem;
+   font-weight: bold;
+   width: 100%;
+   padding: 5px;
+   margin: 0 auto;
+   margin: 20px auto;
+   text-align: center;
+}
+
+.clubs-reset button {
+   display: inline-block;
+   margin-right: 10px;
+   margin: 0 auto;
+   padding: 12px;
+   color: green;
+   background: yellow;
+   border: 2px solid green;
+   border-radius: 20px;
+   cursor: pointer;
+   align-items: center;
+}
+
+#saveBtn:hover {
+   color: white;
+   background: green;
+}
+
+.resetClubs:hover {
+   background: red;
+   color: white;
+   border: none;
+}
+
+/* Yard Distances information */
+#yardsTraveled,
+#remainingDistance {
+   color: rgb(96, 186, 180);
+}
+
+.startRoundBtn {
+   display: none;
+}
+
+/* Start round button */
+.startRoundBtn:hover {
+   color: white;
+   background: green;
+}
+
+/* Current hole info */
+.hole {
+   text-align: center;
+   margin: 20px auto;
+   width: 80%;
+   max-width: 600px;
+   border: 1px solid #ccc;
+   padding: 20px;
+}
+
+.hole-container {
+   margin-bottom: 20px;
+}
+
+.hole-info {
+   color: white;
+   background-color: rgb(96, 186, 180);
+   border: 1px solid #ccc;
+   padding: 10px;
+   margin-bottom: 10px;
+}
+
+#previousHoleResults {
+   display: none;
+   text-align: center;
+   margin: 20px auto;
+   width: 80%;
+   max-width: 600px;
+   border: 1px solid #ccc;
+   padding: 20px;
+}
+
+p {
+   color: black;
+   font-size: 18px;
+}
+
+#nextHoleBtn {
+   display: none;
+   margin-right: 10px;
+   margin: 0 auto;
+   padding: 12px;
+   color: green;
+   background: yellow;
+   border: 2px solid green;
+   border-radius: 20px;
+   cursor: pointer;
+   align-items: center;
+}
+
+.strokes-container {
+   margin: 10px;
+}
+
+.strokes {
+   display: inline-block;
+   width: 20px;
+   height: 20px;
+   color: white;
+   background: green;
+}
+
+.strokes-label {
+   color: black;
+}
+
+#nextHoleBtn:hover {
+   color: white;
+   background: green;
+}
+
+.clubSuggestion {
+   display: block;
+   font-size: 16px;
+   padding: 8px;
+   width: 60%;
+   margin: 10px auto;
+   color: white;
+   background: rgb(13, 131, 123);
+   border-radius: 2px;
+}
+
+#roundCompletionMessage {
+   display: block;
+   margin-top: 14px;
+   color: rgb(13, 131, 123);
+}
+
+#totalStrokes {
+   display: block;
+   margin: 20px auto 5px;
+}
+
+#totalScore {
+   display: block;
+   margin: 0px 0 20px 0;
+}
+
+.new-round {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 20px;
+}
+
+#new-round {
+   display: none;
+   padding: 12px;
+   color: green;
+   background: yellow;
+   border: 2px solid green;
+   border-radius: 20px;
+   cursor: pointer;
+   align-items: center;
+}
+
+#new-round:hover {
+   color: white;
+   background: red;
+}
