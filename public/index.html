@@ -100,6 +100,33 @@
       <div id="clubSuggestion"></div>
    </div>
 
-</body>
+<!-- Holes information -->
+<div class="holes-container">
+   <div class="hole" id="hole1">
+      <h2>Hole: </h2>
+      <p>Par: </p>
+      <p>Distance: </p>
+      <button id="swingBtn1" class="swingBtn" disabled>Swing</button>
+      <span id="holeCompletionMessage" style="display: none;"></span>
+      <button id="nextHoleBtn" style="display: none;">Next Hole</button>
+   </div>
+</div>
+<div class="progress-container">
+   <span>Power</span>
+   <progress id="swingProgressBar1" value="0" max="100"></progress>
+</div>
 
+<!-- Yards counter, distances, strokes and score information -->
+<div class="yardsCounter">
+   <h3 id="yardageInformation">Yardage Information:</h3>
+   <hr>
+   <span id="yardsTraveled"></span>
+   <span id="remainingDistance"></span>
+   <span id="holeCompletionMessage"></span>
+   <span id="roundCompletionMessage"></span>
+   <span id="totalStrokes"></span>
+   <span id="totalScore"></span>
+</div>
+
+</body>
 </html>
