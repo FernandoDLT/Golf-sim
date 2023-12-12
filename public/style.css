@@ -1,0 +1,106 @@
+* {
+   box-sizing: border-box;
+   padding: 0;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Header */
+h1 {
+   color: rgb(96, 186, 180);
+   text-align: center;
+   margin: 30px 0;
+   text-decoration: underline;
+}
+
+/* Reset Yards */
+.yardsReset {
+   width: 60%;
+   margin: 3% auto;
+   text-align: center;
+}
+
+/* Customization Msg */
+h4 {
+   font-size: 24px;
+   color: rgb(15, 136, 126) !important;
+   text-align: center;
+   margin: 30px 0;
+   text-align: center;
+}
+
+/* YAardage Information */
+h3 {
+   color: rgb(96, 186, 180);
+}
+
+/* To be moved down later */
+/* Holes Container */
+.holes-container {
+   /* display: none; */
+}
+
+.swingBtn {
+   margin: 0 auto;
+   padding: 12px;
+   color: green;
+   background: yellow;
+   border: 2px solid green;
+   border-radius: 20px;
+   cursor: pointer;
+   align-items: center;
+}
+
+.progress-container {
+   /* display: none; */
+}
+
+/* Ensure "Power" text appears on its own line */
+.progress-container span {
+   display: block;
+}
+
+.progress-container progress {
+   width: 180px;
+}
+
+.customization-message {
+   color: green;
+   text-align: center;
+   margin-top: 20px;
+}
+
+/* Alert message */
+#alertMessage {
+   display: none;
+   color: red;
+   text-align: center;
+}
+
+/* Reset Club Inputs */
+.clubs-reset {
+   width: 60%;
+   margin: 0 auto;
+   text-align: center;
+}
+
+/* Club Distances Container */
+.club-distances {
+   display: grid;
+   grid-template-columns: max-content auto;
+   grid-row-gap: 10px;
+   width: 34%;
+   height: auto;
+   padding: 50px;
+   margin: 10px auto 40px;
+   background: rgb(182, 212, 210);
+   justify-content: center;
+   box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.2);
+   border-radius: 4px;
+}
+
+/* Club Distances Label text */
+.club-distances label {
+   color: black;
+   margin-right: 16px;
+}
+
