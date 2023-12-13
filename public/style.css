@@ -104,3 +104,104 @@ h3 {
    margin-right: 16px;
 }
 
+/* Club Distances Input boxes*/
+.club-distances input {
+   width: 100%;
+}
+
+/* Input Labels */
+label {
+   margin: 10px;
+   font-size: 20px;
+   color: rgb(13, 131, 123);
+}
+
+/* Input Placeholders */
+input {
+   padding-left: 12px;
+   height: 35px;
+   font-size: 1.2rem;
+   text-align: center;
+}
+
+/* Input Focus (background color) */
+input:focus {
+   background: rgb(255, 255, 97);
+}
+
+/* Input Placeholders */
+::placeholder {
+   color: rgb(167, 167, 167);
+}
+
+/* Yardage Button Reset */
+#resetYardageBtn {
+   margin-left: 4px;
+   padding: 8px 20px;
+   color: green;
+   background: yellow;
+   border: 2px solid green;
+   border-radius: 20px;
+   cursor: pointer;
+   text-align: center;
+   align-items: center;
+}
+
+/* Yardage Button Reset Hover*/
+#resetYardageBtn:hover {
+   color: white;
+   background-color: orange;
+}
+
+/* Result */
+.result-container {
+   margin-top: 20px;
+}
+
+/* ?????? */
+#result {
+   display: block;
+   font-size: 1.4rem;
+   font-weight: bold;
+   color: red;
+   width: 55%;
+   text-align: center;
+}
+
+/* Yards Counter Information */
+.yardsCounter {
+   /* display: block; */
+   display: none;
+   font-size: 1.4rem;
+   font-weight: bold;
+   color: green;
+   background: rgb(222, 222, 222);
+   width: 24%;
+   padding: 5px;
+   margin: 0 auto;
+   margin: 20px auto;
+   text-align: center;
+   display: none;
+   text-align: center;
+   margin: 20px auto;
+   width: 80%;
+   max-width: 600px;
+   border: 1px solid #ccc;
+   padding: 20px;
+}
+
+h3 {
+   font-size: large;
+   color: black;
+}
+
+#remainingDistance {
+   display: block;
+   font-size: 1.2rem;
+   font-weight: bold;
+   width: 100%;
+   padding: 5px;
+   margin: 0 auto;
+   margin: 20px auto;
+   text-align: center;
+}
