@@ -196,6 +196,7 @@ h3 {
 }
 
 #remainingDistance {
+   /* Comment out */
    display: block;
    font-size: 1.2rem;
    font-weight: bold;
@@ -204,4 +205,35 @@ h3 {
    margin: 0 auto;
    margin: 20px auto;
    text-align: center;
+}
+
+/* Reset all inputs for Clubs */
+.clubs-reset button {
+   display: inline-block;
+   margin-right: 10px;
+   margin: 0 auto;
+   padding: 12px;
+   color: green;
+   background: yellow;
+   border: 2px solid green;
+   border-radius: 20px;
+   cursor: pointer;
+   align-items: center;
+}
+
+#saveBtn:hover {
+   color: white;
+   background: green;
+}
+
+.resetClubs:hover {
+   background: red;
+   color: white;
+   border: none;
+}
+
+/* Yard Distances Information */
+#yardsTraveled,
+#remainingDistance {
+   color: rgb(96, 186, 180);
 }
