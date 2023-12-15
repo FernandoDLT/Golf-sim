@@ -96,6 +96,12 @@ h3 {
    justify-content: center;
    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.2);
    border-radius: 4px;
+
+
+
+
+   /*  */
+   display: none;
 }
 
 /* Club Distances Label text */
@@ -236,4 +242,37 @@ h3 {
 #yardsTraveled,
 #remainingDistance {
    color: rgb(96, 186, 180);
+}
+
+/* Start Round Button */
+.startRoundBtn {
+   display: none;
+}
+
+/* Start Round Button Hover */
+.startRoundBtn:hover {
+   color: white;
+   background: green;
+}
+
+/* Curren Hole Information Text*/
+.hole {
+   text-align: center;
+   margin: 20px auto;
+   width: 80%;
+   max-width: 600px;
+   border: 1px solid #ccc;
+   padding: 20px;
+}
+
+.holes-container {
+   margin-bottom: 20px;
+}
+
+.hole-info {
+   color: white;
+   background: rgb(96, 186, 180);
+   border: 1px solid #ccc;
+   padding: 10px;
+   margin-bottom: 10px;
 }
