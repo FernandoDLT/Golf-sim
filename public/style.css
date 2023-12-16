@@ -276,3 +276,75 @@ h3 {
    padding: 10px;
    margin-bottom: 10px;
 }
+
+#previousHoleResults {
+   display: none;
+   text-align: center;
+   margin: 20px auto;
+   width: 80%;
+   max-width: 600px;
+   border: 1px solid #ccc;
+   padding: 20px;
+}
+
+p {
+   color: black;
+   font-size: 18px;
+}
+
+#nextHoleBtn {
+   display: none;
+   margin-right: 10px;
+   margin: 0 auto;
+   padding: 12px;
+   color: green;
+   background: yellow;
+   border: 2px solid green;
+   border-radius: 20px;
+   cursor: pointer;
+   align-items: center;
+}
+
+.strokes-container {
+   display: inline-block;
+   width: 20px;
+   height: 20px;
+   color: white;
+   background: green;   
+}
+
+.strokes-label {
+   color: black;
+}
+
+#nextHoleBtn:hover {
+   color: white;
+   background: green;
+}
+
+.clubSuggestion {
+   display: block;
+   font-size: 16px;
+   padding: 8px;
+   width: 60%;
+   margin: 10px auto;
+   color: white;
+   background: rgb(13, 131, 123);
+   border-radius: 2px;
+}
+
+#roundCompletionMessage {
+   display: block;
+   margin-top: 14px;
+   color: rgb(13, 131, 123);
+}
+
+#totalStrokes {
+   display: block;
+   margin: 20px auto 5px;
+}
+
+#totalScore {
+   display: block;
+   margin: 0px 0 20px 0;
+}
