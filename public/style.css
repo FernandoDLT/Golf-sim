@@ -4,19 +4,11 @@
    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-/* Header */
 h1 {
    color: rgb(96, 186, 180);
    text-align: center;
    margin: 30px 0;
    text-decoration: underline;
-}
-
-/* Reset Yards */
-.yardsReset {
-   width: 60%;
-   margin: 3% auto;
-   text-align: center;
 }
 
 /* Customization Msg */
@@ -25,20 +17,27 @@ h4 {
    color: rgb(15, 136, 126) !important;
    text-align: center;
    margin: 30px 0;
+   color: rgb(74, 165, 159);
+}
+
+/* Reset Yards */
+.yardsReset {
+   width: 60%;
+   margin: 3% auto 0;
    text-align: center;
 }
 
-/* YAardage Information */
+/* Yardage info */
 h3 {
    color: rgb(96, 186, 180);
 }
 
-/* To be moved down later */
-/* Holes Container */
+/* Contains Holes information */
 .holes-container {
-   /* display: none; */
+   display: none;
 }
 
+/* Swing btn */
 .swingBtn {
    margin: 0 auto;
    padding: 12px;
@@ -51,16 +50,22 @@ h3 {
 }
 
 .progress-container {
-   /* display: none; */
+   display: none;
+   text-align: center;
+   /* Center the contents horizontally */
+   margin-top: -10px;
+   /* Adjust margin as needed */
 }
 
-/* Ensure "Power" text appears on its own line */
 .progress-container span {
    display: block;
+   /* Ensure "Power" text appears on its own line */
 }
 
 .progress-container progress {
+   /* display: none; */
    width: 180px;
+   /* Set a width for the progress bar */
 }
 
 .customization-message {
@@ -69,60 +74,51 @@ h3 {
    margin-top: 20px;
 }
 
-/* Alert message */
+
 #alertMessage {
    display: none;
    color: red;
    text-align: center;
 }
 
-/* Reset Club Inputs */
+/* Resets clubs inputs */
 .clubs-reset {
    width: 60%;
    margin: 0 auto;
    text-align: center;
 }
 
-/* Club Distances Container */
+/* Club distances container */
 .club-distances {
-   display: grid;
-   grid-template-columns: max-content auto;
-   grid-row-gap: 10px;
    width: 34%;
    height: auto;
    padding: 50px;
    margin: 10px auto 40px;
+   display: grid;
+   grid-template-columns: max-content auto;
+   grid-row-gap: 10px;
    background: rgb(182, 212, 210);
    justify-content: center;
    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.2);
-   border-radius: 4px;
-
-
-
-
-   /*  */
-   display: none;
+   border-radius: 2px;
 }
 
-/* Club Distances Label text */
+/* Club labels */
 .club-distances label {
    color: black;
    margin-right: 16px;
 }
 
-/* Club Distances Input boxes*/
 .club-distances input {
    width: 100%;
 }
 
-/* Input Labels */
 label {
    margin: 10px;
    font-size: 20px;
    color: rgb(13, 131, 123);
 }
 
-/* Input Placeholders */
 input {
    padding-left: 12px;
    height: 35px;
@@ -130,51 +126,44 @@ input {
    text-align: center;
 }
 
-/* Input Focus (background color) */
 input:focus {
-   background: rgb(255, 255, 97);
+   background: greenyellow;
 }
 
-/* Input Placeholders */
 ::placeholder {
-   color: rgb(167, 167, 167);
+   color: gray;
+   font-size: 14px;
 }
 
-/* Yardage Button Reset */
 #resetYardageBtn {
-   margin-left: 4px;
-   padding: 8px 20px;
+   margin: 0 auto;
+   padding: 12px;
    color: green;
    background: yellow;
    border: 2px solid green;
    border-radius: 20px;
    cursor: pointer;
-   text-align: center;
    align-items: center;
 }
 
-/* Yardage Button Reset Hover*/
 #resetYardageBtn:hover {
    color: white;
-   background-color: orange;
+   background: orange;
 }
 
-/* Result */
 .result-container {
    margin-top: 20px;
 }
 
-/* ?????? */
 #result {
-   display: block;
+   /* display: block; */
    font-size: 1.4rem;
    font-weight: bold;
-   color: red;
+   color: green;
    width: 55%;
    text-align: center;
 }
 
-/* Yards Counter Information */
 .yardsCounter {
    /* display: block; */
    display: none;
@@ -202,7 +191,6 @@ h3 {
 }
 
 #remainingDistance {
-   /* Comment out */
    display: block;
    font-size: 1.2rem;
    font-weight: bold;
@@ -213,7 +201,6 @@ h3 {
    text-align: center;
 }
 
-/* Reset all inputs for Clubs */
 .clubs-reset button {
    display: inline-block;
    margin-right: 10px;
@@ -238,24 +225,23 @@ h3 {
    border: none;
 }
 
-/* Yard Distances Information */
+/* Yard Distances information */
 #yardsTraveled,
 #remainingDistance {
    color: rgb(96, 186, 180);
 }
 
-/* Start Round Button */
 .startRoundBtn {
    display: none;
 }
 
-/* Start Round Button Hover */
+/* Start round button */
 .startRoundBtn:hover {
    color: white;
    background: green;
 }
 
-/* Curren Hole Information Text*/
+/* Current hole info */
 .hole {
    text-align: center;
    margin: 20px auto;
@@ -265,13 +251,13 @@ h3 {
    padding: 20px;
 }
 
-.holes-container {
+.hole-container {
    margin-bottom: 20px;
 }
 
 .hole-info {
    color: white;
-   background: rgb(96, 186, 180);
+   background-color: rgb(96, 186, 180);
    border: 1px solid #ccc;
    padding: 10px;
    margin-bottom: 10px;
@@ -306,6 +292,10 @@ p {
 }
 
 .strokes-container {
+   margin: 10px;
+}
+
+.strokes {
    display: inline-block;
    width: 20px;
    height: 20px;
@@ -347,4 +337,27 @@ p {
 #totalScore {
    display: block;
    margin: 0px 0 20px 0;
+}
+
+.new-round {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 20px;
+}
+
+#new-round {
+   display: none;
+   padding: 12px;
+   color: green;
+   background: yellow;
+   border: 2px solid green;
+   border-radius: 20px;
+   cursor: pointer;
+   align-items: center;
+}
+
+#new-round:hover {
+   color: white;
+   background: red;
 }
