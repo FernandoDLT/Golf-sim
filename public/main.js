@@ -28,3 +28,16 @@ const clubNames = {};
 
 // Load setting on page load
 loadSettings();
+
+// Function to save customized club distances
+function saveSettings() {
+   const clubs = {};
+   document.querySelectorAll('.clubs-distances input[type="number]').forEach( input => {
+      clubs[input.id] = input.ariaValueMax;
+   });
+   localStorage.setItem('clubs', JSON.stringify(clubs));
+   // Customized clubs alert
+   alert("Your clubs have been customized.");
+   // Show the "Start Round" button
+   document.querySelector('.startRoundBtn').computedStyleMap.display = 'inline-block'
+}
