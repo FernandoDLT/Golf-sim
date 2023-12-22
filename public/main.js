@@ -41,3 +41,29 @@ function saveSettings() {
    // Show the "Start Round" button
    document.querySelector('.startRoundBtn').computedStyleMap.display = 'inline-block'
 }
+
+// Event Lsitener for "Start Round" button
+document.querySelector('.startRoundBtn').addEventListener('click', function () {
+   // Hides the "Start Round" button
+   this.style.display = 'none';
+
+   // Show the holes container
+   const holesContainer = document.querySelector('.holes-container');
+   holesContainer.style.display = 'block'
+
+   // Shows yards counter
+   const yardsCounter = document.querySelector('.yardsCounter');
+   yardsCounter.style.display = 'block'
+
+   // Hide certain features
+   hideFieldsAndButtons();
+
+   // Start the round and load hole information and the suggested club for the first hole
+   startRound(1);
+});
+
+// Event Listenere for the "New Round" button
+document.querySelector('new-round').addEventListener('click', function () {
+   // Redirect to the Homepage
+   window.location.href = 'index.html';
+}) 
