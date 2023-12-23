@@ -71,3 +71,40 @@ document.querySelector('new-round').addEventListener('click', function () {
 // Initialize variables to store total strokes and par for the round
 let totalStrokes = 0;
 const parForRound = 73; // Assuming the par for the round is 73
+
+// Start Round functionality //
+function startRound(holeNumber) {
+    // Display information for the specified hole
+    const hole = holes[holeNumber - 1];
+    displayHole(hole);
+
+    // Initialize strokes for the current hole
+    let strokes = 0;
+
+    // Determine the suggested club based on distance
+    const suggestedClub = suggestClub(hole.distance);
+
+    // Retrieve customized yardage for the suggested club from localStorage
+    const clubs = JSON.parse(localStorage.getItem('clubs'));
+    const customYardage = clubs && clubs[suggestedClub.toLowerCase()];
+
+    // Update HTML to display suggested club
+    const clubSuggestionElement = document.getElementById(`clubSuggestion${holeNumber}`);
+    if (clubSuggestionElement) {
+        if (customYardage) {
+            clubSuggestionElement.textContent = `Suggested Club: ${suggestedClub} (${customYardage} yards)`;
+        } else {
+            clubSuggestionElement.textContent = `Suggested Club: ${suggestedClub}`;
+        }
+    } else {
+        console.error(`clubSuggestionElement${holeNumber} not found.`);
+    }
+
+    // Enable the swing button for the current hole
+    const swingBtn = document.getElementById(`swingBtn${holeNumber}`);
+    if (!swingBtn) {
+        console.error(`swingBtn${holeNumber} not found.`);
+        return; // Exit the function if the button is not found
+    }
+    swingBtn.disabled = false;
+}
