@@ -106,5 +106,11 @@ function startRound(holeNumber) {
         console.error(`swingBtn${holeNumber} not found.`);
         return; // Exit the function if the button is not found
     }
-    swingBtn.disabled = false;
+   swingBtn.disabled = false;
+   
+   // Initialize variables for power buildup and timer
+   let power = 0;
+   let timer = null;
+   let remainingDistance = hole.distance;
+
 }
