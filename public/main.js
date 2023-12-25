@@ -113,4 +113,16 @@ function startRound(holeNumber) {
    let timer = null;
    let remainingDistance = hole.distance;
 
+   // Initialize yardages display
+    function updateYardagesDisplay(traveled, remaining) {
+        const yardsTraveledSpan = document.getElementById('yardsTraveled');
+        if (yardsTraveledSpan) {
+            yardsTraveledSpan.textContent = `Yards Traveled: ${traveled} yards`;
+        }
+        const remainingDistanceSpan = document.getElementById('remainingDistance');
+        if (remainingDistanceSpan) {
+            remainingDistanceSpan.textContent = `Remaining Distance: ${remaining} yards`;
+        }
+    }
+    updateYardagesDisplay(0, hole.distance);
 }
