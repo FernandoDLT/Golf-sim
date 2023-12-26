@@ -124,5 +124,16 @@ function startRound(holeNumber) {
             remainingDistanceSpan.textContent = `Remaining Distance: ${remaining} yards`;
         }
     }
-    updateYardagesDisplay(0, hole.distance);
+   updateYardagesDisplay(0, hole.distance);
+   
+    // Function to simulate a swing
+    function simulateSwing(power) {
+    // Increment the strokes
+    strokes++;
+
+    // Update the strokes displayed on the UI
+    const strokesSpan = document.getElementById(`strokes${holeNumber}`);
+    if (strokesSpan) {
+        strokesSpan.textContent = strokes;
+    }
 }
