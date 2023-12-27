@@ -135,5 +135,19 @@ function startRound(holeNumber) {
     const strokesSpan = document.getElementById(`strokes${holeNumber}`);
     if (strokesSpan) {
         strokesSpan.textContent = strokes;
-    }
+       }
+       
+   // Retrieve the suggested club
+   const suggestedClub = suggestClub(remainingDistance);
+
+   // Retrieve the customized yardage for the suggested club from localStorage
+   const clubs = JSON.parse(localStorage.getItem('clubs'));
+   const customYardage = clubs && clubs[suggestedClub.toLowerCase()];
+
+   // Determine the maximum yardage for the suggested club
+   const maxYardage = customYardage || hole.distance; // Use hole distance if custom yardage is not available
+
+   // Introduce some randomness to the result (between 85% and 115% of calculated yardage)
+   // const randomnessFactor = Math.random() * 0.6 + 0.7;
+   let randomnessFactor;
 }
