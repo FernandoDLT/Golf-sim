@@ -149,5 +149,13 @@ function startRound(holeNumber) {
 
    // Introduce some randomness to the result (between 85% and 115% of calculated yardage)
    // const randomnessFactor = Math.random() * 0.6 + 0.7;
-   let randomnessFactor;
+       let randomnessFactor;
+       if (power < 80) {
+        // Normal swing behavior
+        randomnessFactor = Math.random() * 0.3 + 0.85;
+    } else {
+        // Swing error due to over-swinging
+        randomnessFactor = Math.random() * 0.3 + 0.7;
+    }
+    const yardsTraveled = Math.min(remainingDistance, Math.floor((power / 100) * maxYardage * randomnessFactor));
 }
