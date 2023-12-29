@@ -157,5 +157,11 @@ function startRound(holeNumber) {
         // Swing error due to over-swinging
         randomnessFactor = Math.random() * 0.3 + 0.7;
     }
-    const yardsTraveled = Math.min(remainingDistance, Math.floor((power / 100) * maxYardage * randomnessFactor));
+       const yardsTraveled = Math.min(remainingDistance, Math.floor((power / 100) * maxYardage * randomnessFactor));
+       
+   // Update remaining distance to the hole
+   remainingDistance -= yardsTraveled;
+
+   // Update yardages display
+   updateYardagesDisplay(yardsTraveled, remainingDistance);
 }
