@@ -163,5 +163,15 @@ function startRound(holeNumber) {
    remainingDistance -= yardsTraveled;
 
    // Update yardages display
-   updateYardagesDisplay(yardsTraveled, remainingDistance);
+       updateYardagesDisplay(yardsTraveled, remainingDistance);
+       
+       // Update suggested club display
+    const newSuggestedClub = suggestClub(remainingDistance);
+    if (clubSuggestionElement) {
+        if (remainingDistance > 0) {
+            clubSuggestionElement.textContent = `Suggested Club: ${newSuggestedClub}`;
+        } else {
+            clubSuggestionElement.style.display = 'none';
+        }
+    }
 }
