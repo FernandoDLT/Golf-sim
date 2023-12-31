@@ -173,5 +173,14 @@ function startRound(holeNumber) {
         } else {
             clubSuggestionElement.style.display = 'none';
         }
+       }
+       
+       // Calculate the score for the current hole
+    const scoreSpan = document.getElementById(`score${holeNumber}`);
+    if (scoreSpan) {
+        scoreSpan.textContent = strokes;
     }
+
+    // Increment the total strokes for the round
+    totalStrokes++;
 }
