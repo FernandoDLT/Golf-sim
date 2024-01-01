@@ -182,5 +182,20 @@ function startRound(holeNumber) {
     }
 
     // Increment the total strokes for the round
-    totalStrokes++;
+       totalStrokes++;
+       
+       // Display a completion message if the remaining distance is 0 or less
+    if (remainingDistance <= 0) {
+        swingBtn.disabled = true;
+        const holeCompletionMessage = document.getElementById('holeCompletionMessage');
+        if (holeCompletionMessage) {
+            holeCompletionMessage.textContent = 'Hole Completed!';
+        }
+
+        // Hide the swing button
+        swingBtn.style.display = 'none';
+
+        // Call the function to complete the hole
+        completeHole(holeNumber);
+
 }
