@@ -196,6 +196,13 @@ function startRound(holeNumber) {
         swingBtn.style.display = 'none';
 
         // Call the function to complete the hole
-        completeHole(holeNumber);
+       completeHole(holeNumber);
+       
+        // Check if it's the last hole to display the total score
+        if (holeNumber === 18) {
+            const totalStrokesSpan = document.getElementById('totalStrokes');
+            if (totalStrokesSpan) {
+                totalStrokesSpan.textContent = `Total Strokes: ${totalStrokes}`;
+            }
 
 }
