@@ -215,6 +215,12 @@ function startRound(holeNumber) {
                 } else {
                     totalScoreSpan.textContent = `You shot ${Math.abs(relativeScore)} under par`;
                 }
+           }
+           
+           // Hide the "Yards Traveled" and "Remaining Distance" elements
+            const yardsTraveledSpan = document.getElementById('yardsTraveled');
+            if (yardsTraveledSpan) {
+                yardsTraveledSpan.style.display = 'none';
             }
 
 }
