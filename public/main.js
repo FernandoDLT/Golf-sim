@@ -221,6 +221,11 @@ function startRound(holeNumber) {
             const yardsTraveledSpan = document.getElementById('yardsTraveled');
             if (yardsTraveledSpan) {
                 yardsTraveledSpan.style.display = 'none';
+           }
+           
+            const remainingDistanceSpan = document.getElementById('remainingDistance');
+            if (remainingDistanceSpan) {
+                remainingDistanceSpan.style.display = 'none';
             }
 
 }
