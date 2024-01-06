@@ -228,4 +228,11 @@ function startRound(holeNumber) {
                 remainingDistanceSpan.style.display = 'none';
             }
 
+ // Check if it's the last hole to hide the progress bar if completed
+            const progressContainer = document.querySelector('.progress-container');
+            if (progressContainer && holeNumber === 18 && remainingDistance <= 0) {
+                progressContainer.style.display = 'none';
+            }
+        }
+    }
 }
