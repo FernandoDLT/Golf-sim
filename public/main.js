@@ -258,3 +258,22 @@ swingBtn.addEventListener('mousedown', function () {
         }, 10); // Adjust interval for desired responsiveness
     }
 });
+   
+   document.addEventListener('mouseup', function () {
+    // Check if timer is running
+    if (timer !== null) {
+        clearInterval(timer); // Stop the timer if mouse is released early
+        timer = null; // Reset timer variable
+        simulateSwing(power); // Simulate swing with calculated power
+        }
+    });
+
+    // Display the swing progress bar for the current hole
+    const progressContainer = document.querySelector('.progress-container');
+    if (progressContainer) {
+        progressContainer.style.display = 'block';
+    }
+
+    // Scroll to the hole
+    document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
+}
