@@ -287,3 +287,14 @@ function loadSettings() {
         }
     }
 }
+
+// Function to check if all input fields in the club-distances div are filled
+function allFieldsFilled() {
+    const inputs = document.querySelectorAll('.club-distances input[type="number"]');
+    for (let i = 0; i < inputs.length; i++) {
+        if (!inputs[i].value) {
+            return false; // Return false if any input field is empty
+        }
+    }
+    return true; // Return true if all input fields are filled
+}
