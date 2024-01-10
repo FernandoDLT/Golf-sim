@@ -298,3 +298,14 @@ function allFieldsFilled() {
     }
     return true; // Return true if all input fields are filled
 }
+
+// Add event listener to input fields when the DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+    // Hide the "Start Round" button initially
+    document.querySelector('.startRoundBtn').style.display = 'none';
+
+    // Add event listeners to input fields
+    document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
+        input.addEventListener('input', handleClubDistanceInputChange);
+    });
+});
