@@ -277,3 +277,13 @@ swingBtn.addEventListener('mousedown', function () {
     // Scroll to the hole
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
+
+// Function to load customized club distances from localStorage
+function loadSettings() {
+    const clubs = JSON.parse(localStorage.getItem('clubs'));
+    if (clubs) {
+        for (let club in clubs) {
+            document.getElementById(club).value = clubs[club];
+        }
+    }
+}
