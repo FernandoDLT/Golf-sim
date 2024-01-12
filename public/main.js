@@ -212,7 +212,6 @@ function startRound(holeNumber) {
             }
         }
     }
-
     
     function updateYardagesDisplay(traveled, remaining) {
         document.getElementById('yardsTraveled').textContent = `Yards Traveled: ${traveled} yards`;
