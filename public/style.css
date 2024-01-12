@@ -200,12 +200,12 @@ input {
    background: rgb(192, 46, 29);
 }
 
-
+/* Result testin container */
 .result-container {
    margin-top: 20px;
 }
 
-/* Result for testing */
+/* Result for testing result*/
 #result {
    width: 55%;
    padding: 10px;
