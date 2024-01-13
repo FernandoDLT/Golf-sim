@@ -309,3 +309,31 @@ document.addEventListener('DOMContentLoaded', function () {
         input.addEventListener('input', handleClubDistanceInputChange);
     });
 });
+
+// Function to save customized club distances to localStorage
+function saveSettings() {
+    // Check if all input fields are filled
+    if (!allFieldsFilled()) {
+        // Display an alert or message to notify the user
+        alert("Please fill in all club distances before saving.");
+        return; // Exit the function if any field is not filled
+    }
+    
+    const clubs = {};
+    document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
+        clubs[input.id] = input.value;
+    });
+    localStorage.setItem('clubs', JSON.stringify(clubs));
+    
+    // Call handleClubDistanceInputChange to check if all fields are filled
+    handleClubDistanceInputChange();
+    
+    // Show the "Start Round" button if all fields are filled
+    if (allFieldsFilled()) {
+        document.querySelector('.startRoundBtn').style.display = 'inline-block';
+    }
+    
+    // Hide the save button
+    document.getElementById('saveBtn').style.display = 'none';
+
+}
