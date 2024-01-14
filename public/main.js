@@ -335,5 +335,17 @@ function saveSettings() {
     
     // Hide the save button
     document.getElementById('saveBtn').style.display = 'none';
-
 }
+
+// Function to handle input change in club distances
+function handleClubDistanceInputChange() {
+    // Check if all fields are filled
+    if (allFieldsFilled()) {
+        // Hide the message
+        document.querySelector('.yardsReset h3').style.display = 'none';
+    } else {
+        // Show the message
+        document.querySelector('.yardsReset h3').style.display = 'block';
+    }
+}
+
