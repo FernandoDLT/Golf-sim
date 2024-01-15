@@ -349,3 +349,25 @@ function handleClubDistanceInputChange() {
     }
 }
 
+// Function to set up event listeners
+function setupEventListeners() {
+    document.getElementById('saveBtn').addEventListener('click', saveSettings);
+    document.querySelector('.reset').addEventListener('click', function () {
+        // localStorage.removeItem('clubs');
+        // Remove the call to loadSettings() here
+        document.getElementById('yardage').value = '';
+    });
+
+    document.querySelector('.resetClubs').addEventListener('click', function () {
+        // Clear local storage
+        localStorage.removeItem('clubs');
+
+        // Reset all input fields within the club-distances div
+        document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
+            input.value = '';
+        });
+
+        // Redirect to the homepage
+        window.location.href = 'index.html';
+    });
+}
