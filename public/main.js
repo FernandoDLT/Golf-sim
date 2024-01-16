@@ -371,3 +371,27 @@ function setupEventListeners() {
         window.location.href = 'index.html';
     });
 }
+
+// Function to suggest the appropriate club based on distance
+function suggestClub(distance) {
+    try {
+        const yardage = parseInt(distance);
+        if (isNaN(yardage) || yardage <= 0) {
+            throw new Error('Please enter a valid positive integer for yardage.');
+        }
+
+        const clubDistancesJSON = localStorage.getItem("clubs");
+        if (!clubDistancesJSON) {
+            throw new Error('Club distances have not been set.');
+        }
+
+        const clubDistances = JSON.parse(clubDistancesJSON);
+        const driverDistance = parseInt(clubDistances.driver);
+        if (!isNaN(driverDistance) && yardage >= driverDistance) {
+            return "Driver, swing for the fences!";
+        }
+
+        const threeWoodDistance = parseInt(clubDistances.threeWood);
+        if (!isNaN(threeWoodDistance) && yardage >= threeWoodDistance && yardage < driverDistance) {
+            return "3 Wood";
+        }
