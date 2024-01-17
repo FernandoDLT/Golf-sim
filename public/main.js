@@ -394,4 +394,20 @@ function suggestClub(distance) {
         const threeWoodDistance = parseInt(clubDistances.threeWood);
         if (!isNaN(threeWoodDistance) && yardage >= threeWoodDistance && yardage < driverDistance) {
             return "3 Wood";
-        }
+      }
+       
+       const clubs = [
+            { name: "Putter, you got this...", distance: clubDistances.putter },
+            { name: "60 Degree", distance: clubDistances.sixtyDegree },
+            { name: "Sand Wedge", distance: clubDistances.wedgeSand },
+            { name: "Pitching Wedge", distance: clubDistances.wedgePitch },
+            { name: "9 Iron", distance: clubDistances.nineIron },
+            { name: "8 Iron", distance: clubDistances.eightIron },
+            { name: "7 Iron", distance: clubDistances.sevenIron },
+            { name: "6 Iron", distance: clubDistances.sixIron },
+            { name: "5 Iron", distance: clubDistances.fiveIron },
+            { name: "4 Iron", distance: clubDistances.fourIron },
+            { name: "3 Iron", distance: clubDistances.threeIron },
+            { name: "5 Wood", distance: clubDistances.fiveWood },
+            // { name: "3 Wood", distance: clubDistances.threeWood },
+        ];
