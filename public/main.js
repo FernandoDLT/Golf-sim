@@ -410,4 +410,12 @@ function suggestClub(distance) {
             { name: "3 Iron", distance: clubDistances.threeIron },
             { name: "5 Wood", distance: clubDistances.fiveWood },
             // { name: "3 Wood", distance: clubDistances.threeWood },
-        ];
+      ];
+       
+      const suggestedClub = clubs.find(club => yardage <= parseInt(club.distance));
+      return suggestedClub ? suggestedClub.name : "No club found for the entered yardage.";
+      } catch (error) {
+         // console.error("Error suggesting club:", error.message);
+         return "Club distances have not been set.";
+      }
+   }
