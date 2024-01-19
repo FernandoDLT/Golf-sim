@@ -418,4 +418,14 @@ function suggestClub(distance) {
          // console.error("Error suggesting club:", error.message);
          return "Club distances have not been set.";
       }
-   }
+}
+   
+// Event listener for yardage input change
+document.getElementById("yardage").addEventListener("input", function () {
+    const yardage = document.getElementById("yardage").value;
+    const suggestedClub = suggestClub(yardage);
+    document.getElementById("result").innerText = suggestedClub;
+});
+
+// Load settings when the page loads
+loadSettings();
