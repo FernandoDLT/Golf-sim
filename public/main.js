@@ -429,3 +429,6 @@ document.getElementById("yardage").addEventListener("input", function () {
 
 // Load settings when the page loads
 loadSettings();
+
+// Event listeners setup
+document.addEventListener('DOMContentLoaded', setupEventListeners);
