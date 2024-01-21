@@ -449,3 +449,22 @@ function displayHole(hole) {
         </div>
         `;
 }
+
+function displayHole(hole) {
+    const holeElement = document.querySelector('.hole');
+    holeElement.innerHTML = `
+        <h2>Hole #${hole.number}</h2>
+        <p>Par: ${hole.par}</p>
+        <p>Distance: ${hole.distance} yards</p>
+        <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
+        <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
+        <button id="nextHoleBtn">Next Hole</button>
+        <div class="strokes-container">
+        <div class="progress-container">
+            <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
+        </div>
+            <span class="strokes-label">Strokes:</span>
+            <span id="strokes${hole.number}" class="strokes">0</span>
+        </div>
+    `;
+}
