@@ -18,7 +18,6 @@
    <header>
       <h1>Automatic Golf Club Selector-Simulator</h1>
    </header>
-
    <!-- Yards input and result information-->
    <div class="yardsReset">
       <label for="yards">Yards:</label>
@@ -35,63 +34,63 @@
    <div class="strokes-container">
       <span id="stroke"></span>
    </div>
-   
+
    <!-- Club distances inputs -->
    <div class="club-distances">
       <label for="putter">Putter:</label>
       <input id="putter" type="number" placeholder="Putter">
-   
+
       <label for="sixtyDegree">60 Degree:</label>
       <input id="sixtyDegree" type="number" placeholder="60 Degree">
-   
+
       <label for="wedgeSand">Sand Wedge:</label>
       <input id="wedgeSand" type="number" placeholder="Sand Wedge">
-   
+
       <label for="wedgePitch">Pitch Wedge:</label>
       <input id="wedgePitch" type="number" placeholder="Pitch Wedge">
-   
+
       <label for="nineIron">9 Iron:</label>
       <input id="nineIron" type="number" placeholder="9 Iron">
-   
+
       <label for="eightIron">8 Iron:</label>
       <input id="eightIron" type="number" placeholder="8 Iron">
-   
+
       <label for="sevenIron">7 Iron:</label>
       <input id="sevenIron" type="number" placeholder="7 Iron">
-   
+
       <label for="sixIron">6 Iron:</label>
       <input id="sixIron" type="number" placeholder="6 Iron">
-   
+
       <label for="fiveIron">5 Iron:</label>
       <input id="fiveIron" type="number" placeholder="5 Iron">
-   
+
       <label for="fourIron">4 Iron:</label>
       <input id="fourIron" type="number" placeholder="4 Iron">
-   
+
       <label for="threeIron">3 Iron:</label>
       <input id="threeIron" type="number" placeholder="3 Iron">
-   
+
       <label for="fiveWood">5 Wood:</label>
       <input id="fiveWood" type="number" placeholder="5 Wood">
-   
+
       <label for="threeWood">3 Wood:</label>
       <input id="threeWood" type="number" placeholder="3 Wood">
-   
+
       <label for="driver">Driver:</label>
       <input id="driver" type="number" placeholder="Driver">
    </div>
 
-   <!-- Inputs not filled message -->
+   <!-- Not working -->
    <div id="alertMessage">
       Please fill all fields to customize your club distances
    </div>
-   
+
    <!-- Customization message -->
    <div class="customization-message">
       <!-- This is the empty <h2> element for the message -->
       <span id="customization-message"></span>
    </div>
-   
+
    <!-- Clubs reset, save, and Start round buttons -->
    <div class="clubs-reset">
       <button id="saveBtn">Save</button>
@@ -100,45 +99,46 @@
       <div id="clubSuggestion"></div>
    </div>
 
-<!-- Holes information -->
-<div class="holes-container">
-   <div class="hole" id="hole1">
-      <h2>Hole: </h2>
-      <p>Par: </p>
-      <p>Distance: </p>
-      <button id="swingBtn1" class="swingBtn" disabled>Swing</button>
-      <span id="holeCompletionMessage" style="display: none;"></span>
-      <button id="nextHoleBtn" style="display: none;">Next Hole</button>
+   <!-- Holes information -->
+   <div class="holes-container">
+      <div class="hole" id="hole1">
+         <h2>Hole: </h2>
+         <p>Par: </p>
+         <p>Distance: </p>
+         <button id="swingBtn1" class="swingBtn" disabled>Swing</button>
+         <span id="holeCompletionMessage" style="display: none;"></span>
+         <button id="nextHoleBtn" style="display: none;">Next Hole</button>
+      </div>
    </div>
-</div>
+   <div class="progress-container">
+      <span>Power</span>
+      <progress id="swingProgressBar1" value="0" max="100"></progress>
+   </div>
 
-<div class="progress-container">
-   <span>Power</span>
-   <progress id="swingProgressBar1" value="0" max="100"></progress>
-</div>
 
-<!-- Yards counter, distances, strokes and score information -->
-<div class="yardsCounter">
-   <h3 id="yardageInformation">Yardage Information:</h3>
-   <hr>
-   <span id="yardsTraveled"></span>
-   <span id="remainingDistance"></span>
-   <span id="holeCompletionMessage"></span>
-   <span id="roundCompletionMessage"></span>
-   <span id="totalStrokes"></span>
-   <span id="totalScore"></span>
-</div>
+   <!-- Yards counter, distances, strokes and score information -->
+   <div class="yardsCounter">
+      <h3 id="yardageInformation">Yardage Information:</h3>
+      <hr>
+      <span id="yardsTraveled"></span>
+      <span id="remainingDistance"></span>
+      <span id="holeCompletionMessage"></span>
+      <span id="roundCompletionMessage"></span>
+      <span id="totalStrokes"></span>
+      <span id="totalScore"></span>
+   </div>
 
-<!-- Records the previous hole's information -->
-<div id="previousHoleResults"></div>
+   <!-- Records the previous hole's information -->
+   <div id="previousHoleResults"></div>
 
-<!-- Resets button to a new round -->
-<div class="new-round">
-   <button id="new-round">Start New Round</button>
-</div>
+   <!-- Resets button to a new round -->
+   <div class="new-round">
+      <button id="new-round">Start New Round</button>
+   </div>
 
-<!-- JS link -->
-<script src="main.js"></script>
+   <!-- JS link -->
+   <script src="main.js"></script>
 
 </body>
+
 </html>
