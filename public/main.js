@@ -434,21 +434,21 @@ loadSettings();
 document.addEventListener('DOMContentLoaded', setupEventListeners);
 
 // Function to display the details for a specific hole
-function displayHole(hole) {
-    const holeElement = document.querySelector('.hole');
-    holeElement.innerHTML = `
-        <h2>Hole #${hole.number}</h2>
-        <p>Par: ${hole.par}</p>
-        <p>Distance: ${hole.distance} yards</p>
-        <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
-        <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
-        <button id="nextHoleBtn">Next Hole</button>
-        <div class="strokes-container">
-            <span class="strokes-label">Strokes:</span>
-            <span id="strokes${hole.number}" class="strokes">0</span>
-        </div>
-        `;
-}
+// function displayHole(hole) {
+//     const holeElement = document.querySelector('.hole');
+//     holeElement.innerHTML = `
+//         <h2>Hole #${hole.number}</h2>
+//         <p>Par: ${hole.par}</p>
+//         <p>Distance: ${hole.distance} yards</p>
+//         <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
+//         <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
+//         <button id="nextHoleBtn">Next Hole</button>
+//         <div class="strokes-container">
+//             <span class="strokes-label">Strokes:</span>
+//             <span id="strokes${hole.number}" class="strokes">0</span>
+//         </div>
+//         `;
+// }
 
 function displayHole(hole) {
     const holeElement = document.querySelector('.hole');
@@ -468,3 +468,21 @@ function displayHole(hole) {
         </div>
     `;
 }
+
+// Function to handle completion of a hole
+function completeHole(holeNumber) {
+    const completedHole = holes[holeNumber - 1]; // Retrieve the completed hole's information
+
+    // Create a container div for the completed hole
+    const holeContainer = document.createElement('div');
+    holeContainer.classList.add('hole-container'); // Add a class for styling
+
+    // Create HTML elements to represent the completed hole's information
+    const holeInfo = document.createElement('div');
+    holeInfo.classList.add('hole-info'); // Add a class for styling
+    holeInfo.innerHTML = `
+        <h2>Hole #${completedHole.number}</h2>
+        <p>Par: ${completedHole.par}</p>
+        <p>Distance: ${completedHole.distance} yards</p>
+        <p>Strokes: ${document.getElementById('strokes' + holeNumber).textContent}</p>
+    `;
