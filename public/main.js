@@ -486,3 +486,6 @@ function completeHole(holeNumber) {
         <p>Distance: ${completedHole.distance} yards</p>
         <p>Strokes: ${document.getElementById('strokes' + holeNumber).textContent}</p>
     `;
+   
+   // Append the completed hole's information to the hole container
+   holeContainer.appendChild(holeInfo);
