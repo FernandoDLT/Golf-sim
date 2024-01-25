@@ -489,3 +489,16 @@ function completeHole(holeNumber) {
    
    // Append the completed hole's information to the hole container
    holeContainer.appendChild(holeInfo);
+
+   // Append the hole container to the previousHoleResults div in descending order
+    const previousHoleResults = document.getElementById('previousHoleResults');
+    const existingContainers = previousHoleResults.querySelectorAll('.hole-container');
+    if (existingContainers.length > 0) {
+        // If there are existing containers, insert new container before the first one
+        previousHoleResults.insertBefore(holeContainer, existingContainers[0]);
+    } else {
+        // If no existing containers, simply append the new container
+        previousHoleResults.appendChild(holeContainer);
+        // Show the previousHoleResults div when the first hole is added
+        previousHoleResults.style.display = 'block';
+    }
