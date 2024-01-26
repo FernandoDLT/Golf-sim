@@ -501,4 +501,24 @@ function completeHole(holeNumber) {
         previousHoleResults.appendChild(holeContainer);
         // Show the previousHoleResults div when the first hole is added
         previousHoleResults.style.display = 'block';
-    }
+   }
+   
+   // Logic for handling completion of holes
+    const remainingDistanceSpan = document.getElementById('remainingDistance');
+    const remainingDistance = parseInt(remainingDistanceSpan.textContent.split(' ')[2]); // Extract the remaining distance
+
+    if (remainingDistance === 0 && holeNumber === holes.length) {
+        // Logic to handle completion of the 18th hole
+        // Hide the "Next Hole" button
+        const nextHoleBtn = document.getElementById('nextHoleBtn');
+        if (nextHoleBtn) {
+            nextHoleBtn.style.display = 'none';
+        }
+
+        // Hide the "Hole Completed" message
+        const holeCompletionMessage = document.getElementById('holeCompletionMessage');
+        if (holeCompletionMessage) {
+            holeCompletionMessage.textContent = '';
+        } else {
+            console.error('Hole Completed message element not found.');
+        }
