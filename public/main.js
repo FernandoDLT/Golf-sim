@@ -521,4 +521,12 @@ function completeHole(holeNumber) {
             holeCompletionMessage.textContent = '';
         } else {
             console.error('Hole Completed message element not found.');
+      }
+       
+       // Display the "New Round" button
+        const newRoundBtn = document.getElementById('new-round');
+        if (newRoundBtn) {
+            newRoundBtn.style.display = 'inline-block';
+        } else {
+            console.error('New Round button element not found.');
         }
