@@ -529,4 +529,14 @@ function completeHole(holeNumber) {
             newRoundBtn.style.display = 'inline-block';
         } else {
             console.error('New Round button element not found.');
+      }
+       
+       // Display the "All Holes Completed!" message
+        const roundCompletionMessageSpan = document.getElementById('roundCompletionMessage');
+        if (roundCompletionMessageSpan) {
+            roundCompletionMessageSpan.textContent = 'All Holes Completed!';
+            const holesContainer = document.querySelector('.holes-container');
+            if (holesContainer) {
+                holesContainer.style.display = 'none'; // Hide the holes container
+            }
         }
