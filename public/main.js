@@ -545,4 +545,18 @@ function completeHole(holeNumber) {
         const hrElement = document.querySelector('hr');
         if (hrElement) {
             hrElement.style.display = 'none';
+      }
+       
+       // Hide the "Yardage Information" element
+        const yardageInformationElement = document.getElementById('yardageInformation');
+        if (yardageInformationElement) {
+            yardageInformationElement.style.display = 'none';
+        }
+        
+        } else {
+        // Logic for holes other than the 18th hole
+        // Display the "Next Hole" button
+        const nextHoleBtn = document.getElementById('nextHoleBtn');
+        if (nextHoleBtn) {
+            nextHoleBtn.style.display = 'inline-block';
         }
