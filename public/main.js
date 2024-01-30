@@ -539,4 +539,10 @@ function completeHole(holeNumber) {
             if (holesContainer) {
                 holesContainer.style.display = 'none'; // Hide the holes container
             }
+      }
+       
+       //Hide <hr> element
+        const hrElement = document.querySelector('hr');
+        if (hrElement) {
+            hrElement.style.display = 'none';
         }
