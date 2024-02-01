@@ -559,4 +559,17 @@ function completeHole(holeNumber) {
         const nextHoleBtn = document.getElementById('nextHoleBtn');
         if (nextHoleBtn) {
             nextHoleBtn.style.display = 'inline-block';
-        }
+      }
+       
+       // Event listener for the "Next Hole" button
+        nextHoleBtn.addEventListener('click', function () {
+            // Hide the "Next Hole" button
+            nextHoleBtn.style.display = 'none';
+
+            // Hide the "Hole Completed" message
+            const holeCompletionMessage = document.getElementById('holeCompletionMessage');
+            if (holeCompletionMessage) {
+                holeCompletionMessage.textContent = '';
+            } else {
+                console.error('Hole Completed message element not found.');
+            }
