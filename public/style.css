@@ -260,13 +260,6 @@ hr {
    text-align: center;
 }
 
-/* Yard Distances information */
-/* #yardsTraveled,
-#remainingDistance {
-   color: black;
-   font-weight: 600 !important;
-} */
-
 /* Reset All Clubs Button */
 .clubs-reset button {
    display: inline-block;
@@ -315,6 +308,7 @@ hr {
    padding: 20px;
 }
 
+/* Hole Info. result containers */
 .hole-info {
    color: yellow;
    background-color: rgb(96, 186, 180);
