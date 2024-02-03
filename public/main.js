@@ -572,4 +572,21 @@ function completeHole(holeNumber) {
                 holeCompletionMessage.textContent = '';
             } else {
                 console.error('Hole Completed message element not found.');
+           }
+           
+           // Move to the next hole
+            if (holeNumber < holes.length) {
+                // Move to the next hole
+                startRound(holeNumber + 1);
+            } else {
+                // All holes are completed, display a message in the roundCompletionMessage span
+                const roundCompletionMessageSpan = document.getElementById('roundCompletionMessage');
+                roundCompletionMessageSpan.textContent = 'All Holes Completed!';
+                const holesContainer = document.querySelector('.holes-container');
+                if (holesContainer) {
+                    holesContainer.style.display = 'none'; // Hide the holes container
+                }
             }
+        });
+    }
+}
