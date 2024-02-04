@@ -590,3 +590,9 @@ function completeHole(holeNumber) {
         });
     }
 }
+
+// Event listener for the "New Round" button
+document.getElementById('new-round').addEventListener('click', function () {
+    // Redirect to the homepage
+    window.location.href = 'index.html';
+});
