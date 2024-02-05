@@ -1,72 +1,72 @@
-// Event Listeners
+// Event listeners setup
 document.addEventListener('DOMContentLoaded', setupEventListeners);
 
 // Define holes
 const holes = [
-   { number: 1, par: 4, distance: 400 },
-   { number: 2, par: 3, distance: 120 },
-   { number: 3, par: 4, distance: 410 },
-   { number: 4, par: 5, distance: 530 },
-   { number: 5, par: 3, distance: 140 },
-   { number: 6, par: 4, distance: 420 },
-   { number: 7, par: 3, distance: 190 },
-   { number: 8, par: 5, distance: 550 },
-   { number: 9, par: 4, distance: 430 },
-   { number: 10, par: 4, distance: 380 },
-   { number: 11, par: 3, distance: 180 },
-   { number: 12, par: 5, distance: 510 },
-   { number: 13, par: 4, distance: 440 },
-   { number: 14, par: 4, distance: 300 },
-   { number: 15, par: 3, distance: 200 },
-   { number: 16, par: 5, distance: 540 },
-   { number: 17, par: 4, distance: 410 },
-   { number: 18, par: 4, distance: 390 }
+    { number: 1, par: 4, distance: 400 },
+    { number: 2, par: 3, distance: 120 },
+    { number: 3, par: 4, distance: 410 },
+    { number: 4, par: 5, distance: 530 },
+    { number: 5, par: 3, distance: 140 },
+    { number: 6, par: 4, distance: 420 },
+    { number: 7, par: 3, distance: 190 },
+    { number: 8, par: 5, distance: 550 },
+    { number: 9, par: 4, distance: 430 },
+    { number: 10, par: 4, distance: 380 },
+    { number: 11, par: 3, distance: 180 },
+    { number: 12, par: 5, distance: 510 },
+    { number: 13, par: 4, distance: 440 },
+    { number: 14, par: 4, distance: 300 },
+    { number: 15, par: 3, distance: 200 },
+    { number: 16, par: 5, distance: 540 },
+    { number: 17, par: 4, distance: 410 },
+    { number: 18, par: 4, distance: 390 }
 ];
 
-// Initialize empty hole object for hole names
+// Initialize empty hole object for club names
 const clubNames = {};
 
-// Load setting on page load
+// Load settings when the page loads
 loadSettings();
 
-// Function to save customized club distances
+// Function to save customized club distances to localStorage
 function saveSettings() {
-   const clubs = {};
-   document.querySelectorAll('.clubs-distances input[type="number]').forEach( input => {
-      clubs[input.id] = input.ariaValueMax;
-   });
-   localStorage.setItem('clubs', JSON.stringify(clubs));
-   // Customized clubs alert
-   alert("Your clubs have been customized.");
-   // Show the "Start Round" button
-   document.querySelector('.startRoundBtn').computedStyleMap.display = 'inline-block'
+    const clubs = {};
+    document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
+        clubs[input.id] = input.value;
+    });
+    localStorage.setItem('clubs', JSON.stringify(clubs));
+    // Customized clubs alert
+    // alert("Your clubs have been customized.");
+    // Show the "Start Round" button
+    document.querySelector('.startRoundBtn').style.display = 'inline-block';
 }
 
-// Event Lsitener for "Start Round" button
+// Event listener for the "Start Round" button
 document.querySelector('.startRoundBtn').addEventListener('click', function () {
-   // Hides the "Start Round" button
-   this.style.display = 'none';
+    // Hide the "Start Round" button
+    this.style.display = 'none';
 
-   // Show the holes container
-   const holesContainer = document.querySelector('.holes-container');
-   holesContainer.style.display = 'block'
+    // Show the holes container
+    const holesContainer = document.querySelector('.holes-container');
+    holesContainer.style.display = 'block';
 
-   // Shows yards counter
-   const yardsCounter = document.querySelector('.yardsCounter');
-   yardsCounter.style.display = 'block'
+    // Shows yards counter
+    const yardsCounter = document.querySelector('.yardsCounter');
+    yardsCounter.style.display = 'block'
 
-   // Hide certain features
-   hideFieldsAndButtons();
+    // Hide certain features
+    hideFieldsAndButton();
 
-   // Start the round and load hole information and the suggested club for the first hole
-   startRound(1);
+    // Start the round and load hole information and the suggested club for the first hole
+    startRound(1);
 });
 
-// Event Listenere for the "New Round" button
-document.querySelector('new-round').addEventListener('click', function () {
-   // Redirect to the Homepage
-   window.location.href = 'index.html';
-}) 
+// Event listener for the "New Round" button
+document.getElementById('new-round').addEventListener('click', function () {
+    // Redirect to the homepage
+    window.location.href = 'index.html';
+});
 
 // Initialize variables to store total strokes and par for the round
 let totalStrokes = 0;
