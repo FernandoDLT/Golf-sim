@@ -278,10 +278,6 @@ swingBtn.addEventListener('mousedown', function () {
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
 
-//     // Retrieve customized yardage for the suggested club from localStorage
-//     const clubs = JSON.parse(localStorage.getItem('clubs'));
-//     const customYardage = clubs && clubs[suggestedClub.toLowerCase()];
-
 //     // Update HTML to display suggested club
 //     const clubSuggestionElement = document.getElementById(`clubSuggestion${holeNumber}`);
 //     if (clubSuggestionElement) {
