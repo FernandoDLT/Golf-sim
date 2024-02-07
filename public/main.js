@@ -278,18 +278,6 @@ swingBtn.addEventListener('mousedown', function () {
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
 
-//     // Update HTML to display suggested club
-//     const clubSuggestionElement = document.getElementById(`clubSuggestion${holeNumber}`);
-//     if (clubSuggestionElement) {
-//         if (customYardage) {
-//             clubSuggestionElement.textContent = `Suggested Club: ${suggestedClub} (${customYardage} yards)`;
-//         } else {
-//             clubSuggestionElement.textContent = `Suggested Club: ${suggestedClub}`;
-//         }
-//     } else {
-//         console.error(`clubSuggestionElement${holeNumber} not found.`);
-//     }
-
 //     // Enable the swing button for the current hole
 //     const swingBtn = document.getElementById(`swingBtn${holeNumber}`);
 //     if (swingBtn) {
