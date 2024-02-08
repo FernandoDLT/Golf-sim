@@ -277,14 +277,6 @@ swingBtn.addEventListener('mousedown', function () {
     // Scroll to the hole
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
-
-//     // Enable the swing button for the current hole
-//     const swingBtn = document.getElementById(`swingBtn${holeNumber}`);
-//     if (swingBtn) {
-//         swingBtn.disabled = false;
-//     // } else {
-//     //     console.error(`swingBtn${holeNumber} not found.`);
-//         // }
         
 //     // Add event listener to the swing button for click (normal swing)
 //     swingBtn.addEventListener('click', function () {
