@@ -278,14 +278,6 @@ swingBtn.addEventListener('mousedown', function () {
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
         
-//     // Add event listener to the swing button for click (normal swing)
-//     swingBtn.addEventListener('click', function () {
-//         // Ensure there is no ongoing power buildup
-//         if (!timer) {
-//             simulateSwing(power); // Simulate swing with current power
-//         }
-//     });
-        
 //     let power = 0; // Variable to track power buildup
 //     let timer = null; // Timer variable for power buildup
         
