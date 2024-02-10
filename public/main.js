@@ -278,29 +278,6 @@ swingBtn.addEventListener('mousedown', function () {
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
         
-//     let power = 0; // Variable to track power buildup
-//     let timer = null; // Timer variable for power buildup
-        
-//     // Add event listener to the swing button for mousedown (power buildup)
-//     swingBtn.addEventListener('mousedown', function () {
-//         // Ensure timer is not already running
-//         if (timer === null) {
-//             power = 0; // Reset power for new swing
-//             timer = setInterval(function () {
-//                 power += 5; // Adjust power increment as needed
-//                 const progressBar = document.getElementById(`swingProgressBar${holeNumber}`);
-//                 progressBar.value = power; // Update the progress bar value
-
-//                 // Logic to check if maximum power is reached
-//                 if (power >= 100) {
-//                     clearInterval(timer); // Stop the timer
-//                     timer = null; // Reset timer variable
-//                     simulateSwing(power); // Simulate swing with calculated power
-//                 }
-//             }, 50); // Adjust interval for desired responsiveness
-//         }
-//     });
-
 //     // Add event listener to stop timer on mouseup anywhere on the document
 //     document.addEventListener('mouseup', function () {
 //         // Check if timer is running
