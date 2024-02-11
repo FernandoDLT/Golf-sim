@@ -278,15 +278,6 @@ swingBtn.addEventListener('mousedown', function () {
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
         
-//     // Add event listener to stop timer on mouseup anywhere on the document
-//     document.addEventListener('mouseup', function () {
-//         // Check if timer is running
-//         if (timer !== null) {
-//             clearInterval(timer); // Stop the timer if mouse is released early
-//             timer = null; // Reset timer variable
-//         }
-//     });
-
 //     // Display the swing progress bar for the current hole
 //     const progressContainer = document.querySelector('.progress-container');
 //     progressContainer.style.display = 'block';
