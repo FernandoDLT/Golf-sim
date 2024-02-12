@@ -277,13 +277,6 @@ swingBtn.addEventListener('mousedown', function () {
     // Scroll to the hole
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
-        
-//     // Display the swing progress bar for the current hole
-//     const progressContainer = document.querySelector('.progress-container');
-//     progressContainer.style.display = 'block';
-
-//     // Declare remainingDistance outside the event listener function
-//     let remainingDistance = hole.distance;
 
 //     // Display the yardage information and remaining distance
 //     const yardageInformationElement = document.getElementById('yardageInformation');
