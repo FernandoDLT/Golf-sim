@@ -277,13 +277,6 @@ swingBtn.addEventListener('mousedown', function () {
     // Scroll to the hole
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
-
-//     // Display the yardage information and remaining distance
-//     const yardageInformationElement = document.getElementById('yardageInformation');
-//     if (yardageInformationElement) {
-//         yardageInformationElement.textContent = `Yardage Information: ${hole.distance} yards`;
-//     }
-
 //     const remainingDistanceSpan = document.getElementById('remainingDistance');
 //     if (remainingDistanceSpan) {
 //         remainingDistanceSpan.textContent = `Remaining Distance: ${hole.distance} yards`;
