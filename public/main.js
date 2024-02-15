@@ -277,10 +277,6 @@ swingBtn.addEventListener('mousedown', function () {
     // Scroll to the hole
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
-//     const remainingDistanceSpan = document.getElementById('remainingDistance');
-//     if (remainingDistanceSpan) {
-//         remainingDistanceSpan.textContent = `Remaining Distance: ${hole.distance} yards`;
-//     }
 
 //     // Initialize yards traveled to 0
 //     const yardsTraveledSpan = document.getElementById('yardsTraveled');
