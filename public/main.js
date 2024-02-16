@@ -278,11 +278,6 @@ swingBtn.addEventListener('mousedown', function () {
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
 
-//     // Initialize yards traveled to 0
-//     const yardsTraveledSpan = document.getElementById('yardsTraveled');
-//     if (yardsTraveledSpan) {
-//         yardsTraveledSpan.textContent = `Yards Traveled: 0 yards`;
-//     }
 
 //     // Add event listener to the swing button
 //     // if (swingBtn) {
