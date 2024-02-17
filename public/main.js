@@ -278,19 +278,6 @@ swingBtn.addEventListener('mousedown', function () {
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
 
-
-//     // Add event listener to the swing button
-//     // if (swingBtn) {
-//         swingBtn.addEventListener('click', function () {
-//             // Increment the strokes
-//             strokes++;
-
-//             // Update the strokes displayed on the UI
-//             const strokesSpan = document.getElementById(`strokes${holeNumber}`);
-//             if (strokesSpan) {
-//                 strokesSpan.textContent = strokes;
-//             }
-
 //             // Generate a random yardage less than or equal to the remaining distance
 //             const yardsTraveled = Math.min(remainingDistance, Math.floor(Math.random() * remainingDistance) + 1);
 
