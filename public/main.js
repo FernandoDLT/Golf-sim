@@ -373,13 +373,6 @@ swingBtn.addEventListener('mousedown', function () {
 //                     }
 //                 }
 //             }
-//         });
-//     } else {
-//         console.error(`swingBtn${holeNumber} not found.`);
-//     }
-
-//     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
-// }
 
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
