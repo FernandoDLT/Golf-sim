@@ -367,13 +367,6 @@ swingBtn.addEventListener('mousedown', function () {
 //                         remainingDistanceSpan.style.display = 'none';
 //                     }
 
-//                     // Check if it's the last hole to hide the progress bar if completed
-//                     if (holeNumber === 18 && remainingDistance <= 0) {
-//                         progressContainer.style.display = 'none';
-//                     }
-//                 }
-//             }
-
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
     // Hide the club-distances div
