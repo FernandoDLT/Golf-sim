@@ -362,10 +362,6 @@ swingBtn.addEventListener('mousedown', function () {
 //                         yardsTraveledSpan.style.display = 'none';
 //                     }
                     
-//                     // Hide the "Remaining Distance" element if last hole is completed
-//                     if (remainingDistanceSpan) {
-//                         remainingDistanceSpan.style.display = 'none';
-//                     }
 
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
