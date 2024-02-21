@@ -344,19 +344,7 @@ swingBtn.addEventListener('mousedown', function () {
 //                     if (totalStrokesSpan) {
 //                         totalStrokesSpan.textContent = `Total Strokes: ${totalStrokes}`;
 //                     }
-//                     // Calculate the relative score compared to par
-//                     const relativeScore = totalStrokes - parForRound;
-//                     const totalScoreSpan = document.getElementById('totalScore');
-//                     if (totalScoreSpan) {
-//                         if (relativeScore === 0) {
-//                             totalScoreSpan.textContent = 'You shot even par';
-//                         } else if (relativeScore > 0) {
-//                             totalScoreSpan.textContent = `You shot ${relativeScore} over par`;
-//                         } else {
-//                             totalScoreSpan.textContent = `You shot ${Math.abs(relativeScore)} under par`;
-//                         }
-//                     }
-                    
+
 
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
