@@ -356,11 +356,6 @@ swingBtn.addEventListener('mousedown', function () {
 //                             totalScoreSpan.textContent = `You shot ${Math.abs(relativeScore)} under par`;
 //                         }
 //                     }
-
-//                     // Hide the "Yards Traveled" and "Remaining Distance" elements
-//                     if (yardsTraveledSpan) {
-//                         yardsTraveledSpan.style.display = 'none';
-//                     }
                     
 
 // Function to hide the input fields and save button after saving settings
