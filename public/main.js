@@ -338,13 +338,6 @@ swingBtn.addEventListener('mousedown', function () {
 //                 // Call the function to complete the hole
 //                 completeHole(holeNumber);
 
-//                 // Check if it's the last hole to display the total score
-//                 if (holeNumber === 18) {
-//                     const totalStrokesSpan = document.getElementById('totalStrokes');
-//                     if (totalStrokesSpan) {
-//                         totalStrokesSpan.textContent = `Total Strokes: ${totalStrokes}`;
-//                     }
-
 
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
