@@ -335,9 +335,6 @@ swingBtn.addEventListener('mousedown', function () {
 //                 //     swingBtn.style.display = 'none';
 //                 // }
 
-//                 // Call the function to complete the hole
-//                 completeHole(holeNumber);
-
 
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
