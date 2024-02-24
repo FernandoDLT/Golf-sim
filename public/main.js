@@ -329,13 +329,6 @@ swingBtn.addEventListener('mousedown', function () {
 //                     holeCompletionMessage.textContent = 'Hole Completed!';
 //                 }
 
-//                 swingBtn.style.display = 'none';
-//                 // Hide the swing button
-//                 // if (swingBtn) {
-//                 //     swingBtn.style.display = 'none';
-//                 // }
-
-
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
     // Hide the club-distances div
