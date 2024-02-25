@@ -319,16 +319,6 @@ swingBtn.addEventListener('mousedown', function () {
 //             // Increment the total strokes for the round
 //             totalStrokes++;
 
-//             // Display a completion message if the remaining distance is 0 or less
-//             if (remainingDistance <= 0) {
-//                 if (swingBtn) {
-//                     swingBtn.disabled = true;
-//                 }
-//                 const holeCompletionMessage = document.getElementById('holeCompletionMessage');
-//                 if (holeCompletionMessage) {
-//                     holeCompletionMessage.textContent = 'Hole Completed!';
-//                 }
-
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
     // Hide the club-distances div
