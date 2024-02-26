@@ -316,8 +316,6 @@ swingBtn.addEventListener('mousedown', function () {
 //                 console.error(`score${holeNumber} not found.`);
 //             }
 
-//             // Increment the total strokes for the round
-//             totalStrokes++;
 
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
