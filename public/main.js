@@ -308,14 +308,6 @@ swingBtn.addEventListener('mousedown', function () {
 //                 console.error(`clubSuggestionElement${holeNumber} not found.`);
 //             }
 
-//             // Calculate the score for the current hole
-//             const scoreSpan = document.getElementById(`score${holeNumber}`);
-//             if (scoreSpan) {
-//                 scoreSpan.textContent = strokes;
-//             } else {
-//                 console.error(`score${holeNumber} not found.`);
-//             }
-
 
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
