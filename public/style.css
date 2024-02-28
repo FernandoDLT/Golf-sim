@@ -135,12 +135,6 @@ div.progress-container span {
    border-radius: 2px;
 }
 
-/* Club labels */
-/* .club-distances label {
-   color: black;
-   margin-right: 126px;
-} */
-
 /* club-distances h3 */
 .club-distances h3 {
    grid-column: 1 / -1;
@@ -149,11 +143,13 @@ div.progress-container span {
    color: black;
 }
 
-
+/* club-distances input (yards)*/
 .club-distances input {
    width: 100%;
+   color: rgb(15, 136, 126);
 }
 
+/* club-distances labels */
 .club-distances label {
    margin: 10px;
    font-size: 20px;
@@ -161,6 +157,7 @@ div.progress-container span {
    color: black;
 }
 
+/* club-distances inputs */
 input {
    padding-left: 12px;
    height: 35px;
@@ -168,15 +165,18 @@ input {
    text-align: center;
 }
 
-input:focus {
-   background: greenyellow;
+/* club-distances input-focus */
+.club-distances input:focus {
+   background: yellow;
 }
 
+/* Placeholders */
 ::placeholder {
    color: gray;
    font-size: 14px;
 }
 
+/* Yards reset button */
 #resetYardageBtn {
    margin: 0 auto;
    padding: 12px;
@@ -188,10 +188,12 @@ input:focus {
    align-items: center;
 }
 
+/* Yards reset button hover*/
 #resetYardageBtn:hover {
    color: white;
    background: orange;
 }
+
 
 .result-container {
    margin-top: 20px;
@@ -208,6 +210,7 @@ input:focus {
    text-align: center;
 }
 
+/* Yardage Information */
 .yardsCounter {
    /* display: block; */
    display: none;
@@ -229,11 +232,13 @@ input:focus {
    padding: 20px;
 }
 
+/* Yardage Info h3 */
 h3 {
    font-size: large;
    color: black;
 }
 
+/* Yardage Info. Remaining Distance counter */
 #remainingDistance {
    display: block;
    font-size: 1.2rem;
@@ -245,6 +250,7 @@ h3 {
    text-align: center;
 }
 
+/* Reset All Clubs Button */
 .clubs-reset button {
    display: inline-block;
    margin-right: 10px;
@@ -258,11 +264,13 @@ h3 {
    align-items: center;
 }
 
+/* Save button */
 #saveBtn:hover {
    color: white;
    background: green;
 }
 
+/* Save button hover*/
 .resetClubs:hover {
    background: red;
    color: white;
@@ -275,6 +283,7 @@ h3 {
    color: rgb(96, 186, 180);
 }
 
+/* Start Round button */
 .startRoundBtn {
    display: none;
 }
@@ -295,17 +304,13 @@ h3 {
    padding: 20px;
 }
 
-.hole-container {
-   margin-bottom: 20px;
-}
-
-.hole-info {
+/* .hole-info {
    color: white;
    background-color: rgb(96, 186, 180);
    border: 1px solid #ccc;
    padding: 10px;
    margin-bottom: 10px;
-}
+} */
 
 #previousHoleResults {
    display: none;
