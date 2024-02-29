@@ -303,11 +303,6 @@ swingBtn.addEventListener('mousedown', function () {
 //                 } else {
 //                     // Hide the suggested club element if remaining distance is 0 or less
 //                     newClubSuggestionElement.style.display = 'block';
-//                 }
-//             } else {
-//                 console.error(`clubSuggestionElement${holeNumber} not found.`);
-//             }
-
 
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
