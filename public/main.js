@@ -289,11 +289,6 @@ swingBtn.addEventListener('mousedown', function () {
 //             // Update remaining distance to the hole
 //             remainingDistance -= yardsTraveled;
 
-//             // Display the remaining distance
-//             if (remainingDistanceSpan) {
-//                 remainingDistanceSpan.textContent = `Remaining Distance: ${remainingDistance} yards`;
-//             }
-
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
     // Hide the club-distances div
