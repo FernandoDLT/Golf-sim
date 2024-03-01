@@ -294,16 +294,6 @@ swingBtn.addEventListener('mousedown', function () {
 //                 remainingDistanceSpan.textContent = `Remaining Distance: ${remainingDistance} yards`;
 //             }
 
-//             // Determine the suggested club based on the updated remaining distance
-//             const newSuggestedClub = suggestClub(remainingDistance);
-//             const newClubSuggestionElement = document.getElementById(`clubSuggestion${holeNumber}`);
-//             if (newClubSuggestionElement) {
-//                 if (remainingDistance > 0) {
-//                     newClubSuggestionElement.textContent = `Suggested Club: ${newSuggestedClub}`;
-//                 } else {
-//                     // Hide the suggested club element if remaining distance is 0 or less
-//                     newClubSuggestionElement.style.display = 'block';
-
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
     // Hide the club-distances div
