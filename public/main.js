@@ -278,9 +278,6 @@ swingBtn.addEventListener('mousedown', function () {
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
 
-//             // Generate a random yardage less than or equal to the remaining distance
-//             const yardsTraveled = Math.min(remainingDistance, Math.floor(Math.random() * remainingDistance) + 1);
-
 // Function to hide the input fields and save button after saving settings
 function hideFieldsAndButton() {
     // Hide the club-distances div
