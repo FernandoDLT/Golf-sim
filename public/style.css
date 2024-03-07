@@ -4,6 +4,7 @@
    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+/* Intro h1 */
 h1 {
    color: rgb(96, 186, 180);
    text-align: center;
@@ -11,6 +12,7 @@ h1 {
    text-decoration: underline;
 }
 
+/* Intro */
 .intro-container {
    background: rgb(182, 212, 210);
    width: 40%;
@@ -21,7 +23,6 @@ h1 {
    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-
 /* intro-container paragraph*/
 .intro-container p {
    font-size: 1.2em;
@@ -30,7 +31,6 @@ h1 {
 
 /* Instructions */
 .instructions {
-   /* color: rgb(112, 112, 112); */
    width: 40%;
    margin: 0 auto;
    padding: 30px;
@@ -39,19 +39,17 @@ h1 {
    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Inst. span */
+.instructions span {
+   color: black;
+   font-size: 20px;
+}
+
+/* Hole and par text */
 .hole p {
    color: rgb(13, 131, 123);
    font-weight: 600;
 }
-
-/* Customization Msg */
-/* h4 {
-   font-size: 24px;
-   color: rgb(15, 136, 126) !important;
-   text-align: center;
-   margin: 30px 0;
-   color: rgb(74, 165, 159);
-} */
 
 /* Reset Yards */
 .yardsReset {
@@ -72,27 +70,17 @@ h3 {
    color: rgb(96, 186, 180);
 }
 
-
-/* Inst. span */
-.instructions span {
-   color: black;
-   font-size: 20px;
-}
-
 /* Ordered list */
 ol {
    text-align: left;
    padding-left: 40px;
+   font-weight: 500;
 }
 
 /* List items */
 li {
    margin-bottom: 12px;
    color: rgb(13, 131, 123);
-}
-
-.instructions h3 {
-   color: gray;
 }
 
 /* Contains Holes information */
@@ -123,22 +111,10 @@ div.progress-container span {
    text-align: center;
 }
 
-.customization-message {
-   color: red;
-   text-align: center;
-   margin-top: 20px;
-}
-
-#alertMessage {
-   display: none;
-   color: red;
-   text-align: center;
-}
-
 /* Resets clubs inputs */
 .clubs-reset {
    width: 60%;
-   margin: 0 auto;
+   margin: 40px auto;
    text-align: center;
 }
 
@@ -147,8 +123,8 @@ div.progress-container span {
 .club-distances {
    width: 40%;
    height: auto;
-   padding: 50px;
-   margin: 10px auto 18px;
+   padding: 50px 50px 30px 50px;
+   margin: 10px auto 30px;
    display: grid;
    grid-template-columns: 150px auto;
    /* Set fixed width for labels */
@@ -160,16 +136,16 @@ div.progress-container span {
 }
 
 /* Club labels */
-.club-distances label {
+/* .club-distances label {
    color: black;
-   margin-right: 16px;
-}
+   margin-right: 126px;
+} */
 
 /* club-distances h3 */
 .club-distances h3 {
    grid-column: 1 / -1;
    text-align: center;
-   margin: 20px 0 0;
+   margin: 10px 0 0;
    color: black;
 }
 
@@ -182,7 +158,7 @@ div.progress-container span {
    margin: 10px;
    font-size: 20px;
    font-weight: 300;
-   color: rgb(13, 131, 123);
+   color: black;
 }
 
 input {
