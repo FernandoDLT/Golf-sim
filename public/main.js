@@ -83,10 +83,10 @@ function handleClubDistanceInputChange() {
     // Check if all fields are filled
     if (allFieldsFilled()) {
         // Hide the message
-        document.querySelector('.club-distances h3').style.display = 'none';
+        document.querySelector('.club-distances h3').style.visibility = 'hidden';
     } else {
         // Show the message
-        document.querySelector('.club-distances h3').style.display = 'block';
+        document.querySelector('.club-distances h3').style.visibility = 'visible';
     }
 }
 
