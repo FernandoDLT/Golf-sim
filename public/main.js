@@ -1,14 +1,13 @@
-// Event listeners setup   
+// Event listeners setup
+const startRoundBtn = document.querySelector('.startRoundBtn');
+startRoundBtn.addEventListener('click', handleStartRound);
+startRoundBtn.style.display = 'none';
+
 document.querySelector('.reset').addEventListener('click', resetYardsAndResult);
 document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
 document.getElementById('saveBtn').addEventListener('click', saveSettings);
 document.getElementById('new-round').addEventListener('click', handleNewRound);
 document.querySelector('.resetClubs').addEventListener('click', resetAllClubs);
-
-const startRoundBtn = document.querySelector('.startRoundBtn');
-startRoundBtn.addEventListener('click', handleStartRound);
-startRoundBtn.style.display = 'none';
-
 // Define holes
 const holes = [
     { number: 1, par: 4, distance: 400 },
@@ -47,19 +46,16 @@ function saveSettings() {
         alert("Please fill in all club distances before saving.");
         return; // Exit the function if any field is not filled
     }
-    
+
     const clubs = {};
     document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
         clubs[input.id] = input.value;
     });
-    
+
     localStorage.setItem('clubs', JSON.stringify(clubs));
 
     // Show the "Start Round" button
-    const startRoundBtn = document.querySelector('.startRoundBtn');
-    if (startRoundBtn) {
-        startRoundBtn.style.display = 'inline-block';
-    }
+    startRoundBtn.style.display = 'inline-block';
 
     // Hide the save button
     document.getElementById('saveBtn').style.display = 'none';
@@ -82,17 +78,9 @@ function handleStartRound() {
 
 // Function to hide specific elements
 function hideFieldsAndButton() {
-    const elementsToHide = [
-        '.club-distances',
-        '.yardsReset',
-        '.clubs-reset'
-    ];
-    
-    elementsToHide.forEach(selector => {
+    ['.club-distances', '.yardsReset', '.clubs-reset'].forEach(selector => {
         const element = document.querySelector(selector);
-        if (element) {
-            element.style.display = 'none';
-        }
+        if (element) element.style.display = 'none';
     });
 }
 
@@ -103,14 +91,122 @@ function handleNewRound() {
 
 // Function to check if all fields are filled
 function allFieldsFilled() {
-    const inputs = document.querySelectorAll('.club-distances input[type="number"]');
-    for (const input of inputs) {
-        if (!input.value) {
-            return false;
-        }
-    }
-    return true;
+    return [...document.querySelectorAll('.club-distances input[type="number"]')].every(input => input.value);
 }
+
+// // Event listeners setup   
+// document.querySelector('.reset').addEventListener('click', resetYardsAndResult);
+// document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
+// document.getElementById('saveBtn').addEventListener('click', saveSettings);
+// document.getElementById('new-round').addEventListener('click', handleNewRound);
+// document.querySelector('.resetClubs').addEventListener('click', resetAllClubs);
+
+// const startRoundBtn = document.querySelector('.startRoundBtn');
+// startRoundBtn.addEventListener('click', handleStartRound);
+// startRoundBtn.style.display = 'none';
+
+// // Define holes
+// const holes = [
+//     { number: 1, par: 4, distance: 400 },
+//     { number: 2, par: 3, distance: 120 },
+//     { number: 3, par: 4, distance: 410 },
+//     { number: 4, par: 5, distance: 530 },
+//     { number: 5, par: 3, distance: 140 },
+//     { number: 6, par: 4, distance: 420 },
+//     { number: 7, par: 3, distance: 190 },
+//     { number: 8, par: 5, distance: 550 },
+//     { number: 9, par: 4, distance: 430 },
+//     { number: 10, par: 4, distance: 380 },
+//     { number: 11, par: 3, distance: 180 },
+//     { number: 12, par: 5, distance: 510 },
+//     { number: 13, par: 4, distance: 440 },
+//     { number: 14, par: 4, distance: 300 },
+//     { number: 15, par: 3, distance: 200 },
+//     { number: 16, par: 5, distance: 540 },
+//     { number: 17, par: 4, distance: 410 },
+//     { number: 18, par: 4, distance: 390 }
+// ];
+
+// function resetYardsAndResult() {
+//     document.getElementById('yardage').value = '';
+//     document.getElementById('result').textContent = 'Suggested Club Will Appear Here';
+// }
+
+// function handleYardageInputChange(event) {
+//     const yardage = event.target.value;
+//     const suggestedClub = suggestClub(yardage);
+//     document.getElementById('result').innerText = suggestedClub;
+// }
+
+// function saveSettings() {
+//     if (!allFieldsFilled()) {
+//         alert("Please fill in all club distances before saving.");
+//         return; // Exit the function if any field is not filled
+//     }
+    
+//     const clubs = {};
+//     document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
+//         clubs[input.id] = input.value;
+//     });
+    
+//     localStorage.setItem('clubs', JSON.stringify(clubs));
+
+//     // Show the "Start Round" button
+//     const startRoundBtn = document.querySelector('.startRoundBtn');
+//     if (startRoundBtn) {
+//         startRoundBtn.style.display = 'inline-block';
+//     }
+
+//     // Hide the save button
+//     document.getElementById('saveBtn').style.display = 'none';
+// }
+
+// function handleStartRound() {
+//     // Hide the "Start Round" button
+//     this.style.display = 'none';
+
+//     // Show the holes container and yards counter
+//     document.querySelector('.holes-container').style.display = 'block';
+//     document.querySelector('.yardsCounter').style.display = 'block';
+
+//     // Hide certain features
+//     hideFieldsAndButton();
+
+//     // Start the round and load hole information and the suggested club for the first hole
+//     startRound(1);
+// }
+
+// // Function to hide specific elements
+// function hideFieldsAndButton() {
+//     const elementsToHide = [
+//         '.club-distances',
+//         '.yardsReset',
+//         '.clubs-reset'
+//     ];
+    
+//     elementsToHide.forEach(selector => {
+//         const element = document.querySelector(selector);
+//         if (element) {
+//             element.style.display = 'none';
+//         }
+//     });
+// }
+
+// function handleNewRound() {
+//     // Redirect to the homepage
+//     window.location.href = 'index.html';
+// }
+
+// // Function to check if all fields are filled
+// function allFieldsFilled() {
+//     const inputs = document.querySelectorAll('.club-distances input[type="number"]');
+//     for (const input of inputs) {
+//         if (!input.value) {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
 
 // Initialize variables to store total strokes and par for the round
 let totalStrokes = 0;
