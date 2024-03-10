@@ -1,13 +1,14 @@
 // Event listeners setup
 const startRoundBtn = document.querySelector('.startRoundBtn');
 startRoundBtn.addEventListener('click', handleStartRound);
+
 startRoundBtn.style.display = 'none';
 
 // Event listeners
-document.querySelector('.reset').addEventListener('click', resetYardsAndResult);
-document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
 document.getElementById('saveBtn').addEventListener('click', saveSettings);
+document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
 document.getElementById('new-round').addEventListener('click', handleNewRound);
+document.querySelector('.reset').addEventListener('click', resetYardsAndResult);
 document.querySelector('.resetClubs').addEventListener('click', resetAllClubs);
 
 // Define holes array
