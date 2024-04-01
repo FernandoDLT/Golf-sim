@@ -339,25 +339,6 @@ function resetAllClubs() {
     // Redirect to the homepage
     window.location.href = 'index.html';
 }
-// Function to set up event listeners
-// function setupEventListeners() {
-//     document.querySelector('.resetClubs').addEventListener('click', function () {
-//         resetAllClubs();
-//     });
-// }
-
-// function resetAllClubs() {
-//     // Clear local storage
-//     localStorage.removeItem('clubs');
-
-//     // Reset all input fields within the club-distances div
-//     document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
-//         input.value = '';
-//     });
-
-//     // Redirect to the homepage
-//     window.location.href = 'index.html';
-// }
 
 // Function to suggest the appropriate club based on distance
 function suggestClub(distance) {
@@ -516,7 +497,7 @@ function completeHole(holeNumber) {
         } else {
         // Logic for holes other than the 18th hole
         const nextHoleBtn = document.getElementById('nextHoleBtn');
-        
+
         if (nextHoleBtn) {
             nextHoleBtn.style.display = 'inline-block';
         }
