@@ -23,7 +23,7 @@ h4 {
 /* Reset Yards */
 .yardsReset {
    width: 60%;
-   margin: 3% auto 0;
+   margin: 5px auto 0;
    text-align: center;
 }
 
@@ -93,7 +93,7 @@ h3 {
    width: 34%;
    height: auto;
    padding: 50px;
-   margin: 10px auto 40px;
+   margin: 10px auto 18px;
    display: grid;
    grid-template-columns: max-content auto;
    grid-row-gap: 10px;

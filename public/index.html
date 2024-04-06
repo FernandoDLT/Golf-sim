@@ -8,26 +8,24 @@
    <meta name="description" content="This is where your description goes">
    <meta name="keywords" content="one, two, three">
 
-   <title>Golf Club Picker</title>
-
+   
    <!-- <link rel="stylesheet" href="css/normalize.css"> -->
    <link rel="stylesheet" href="style.css">
 </head>
+<title>Golf Club Picker</title>
 
 <body>
    <header>
       <h1>Automatic Golf Club Selector-Simulator</h1>
    </header>
-   <!-- Yards input and result information-->
-   <div class="yardsReset">
-      <label for="yards">Yards:</label>
-      <input id="yardage" type="number" placeholder="Enter yards">
-      <button class="reset" id="resetYardageBtn">Reset</button>
-      <div class="result-container">
-         <span id="result">Customized Club Suggestion</span>
-      </div>
-      <!-- Instructions -->
-      <h3>Please enter the yardage for each club:</h3>
+   <div class="instructions">
+      <span>Instructions:</span>
+      <ol>
+         <li>Please enter the yardage for each club based on its potential maximum distance.</li>
+         <li>Click 'Save' to Customized Club Distances.</li>
+         <li>Next, click 'Start Round' button to start.</li>
+         <li>Use the 'Swing' button, each hole will load sequentially.</li>
+      </ol>      
    </div>
 
    <!-- Strokes tracker information -->
@@ -78,6 +76,17 @@
 
       <label for="driver">Driver:</label>
       <input id="driver" type="number" placeholder="Driver">
+   </div>
+
+   <!-- Yards input and result information-->
+   <div class="yardsReset">
+      <label for="yards">Yards:</label>
+      <input id="yardage" type="number" placeholder="Enter yards">
+      <button class="reset" id="resetYardageBtn">Reset</button>
+      <div class="result-container">
+         <span id="result">Customized Club Suggestion</span>
+      </div>
+      <!-- Instructions -->
    </div>
 
    <!-- Not working -->

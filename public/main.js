@@ -68,6 +68,7 @@ function handleStartRound() {
     // Show the holes container and yards counter
     document.querySelector('.holes-container').style.display = 'block';
     document.querySelector('.yardsCounter').style.display = 'block';
+    document.querySelector('.instructions').style.display = 'none';
 
     // Hide certain features
     hideFieldsAndButton();
