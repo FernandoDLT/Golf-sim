@@ -1,10 +1,13 @@
 // Event listeners setup
 // document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.reset').addEventListener('click', resetYardsAndResult);
+    document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
     document.getElementById('saveBtn').addEventListener('click', saveSettings);
-    document.querySelector('.startRoundBtn').addEventListener('click', handleStartRound);
     document.getElementById('new-round').addEventListener('click', handleNewRound);
-    document.querySelector('.startRoundBtn').style.display = 'none';
+
+    const startRoundBtn = document.querySelector('.startRoundBtn');
+    startRoundBtn.addEventListener('click', handleStartRound);
+    startRoundBtn.style.display = 'none';
 // });
 
 // Define holes
@@ -30,18 +33,16 @@ const holes = [
 ];
 
 function resetYardsAndResult() {
-    document.getElementById('yardage').value = ''
-    document.getElementById('result').textContent = 'Suggested Club Will Appear Here'
+    document.getElementById('yardage').value = '';
+    document.getElementById('result').textContent = 'Suggested Club Will Appear Here';
 }
 
-// Event listener for yardage input change
 function handleYardageInputChange(event) {
     const yardage = event.target.value;
     const suggestedClub = suggestClub(yardage);
-    document.getElementById("result").innerText = suggestedClub;
+    document.getElementById('result').innerText = suggestedClub;
 }
 
-// Function to save customized club distances to localStorage
 function saveSettings() {
     if (!allFieldsFilled()) {
         alert("Please fill in all club distances before saving.");
@@ -65,38 +66,16 @@ function saveSettings() {
     document.getElementById('saveBtn').style.display = 'none';
 }
 
-// EventListener for "Start Round" button
-document.querySelector('.startRoundBtn').addEventListener('click', function () {
-    // Hide the "Start Round" button
-    this.style.display = 'none';
-
-    // Show the holes container
-    const holesContainer = document.querySelector('.holes-container');
-    holesContainer.style.display = 'block';
-
-    // Shows yards counter
-    const yardsCounter = document.querySelector('.yardsCounter');
-    yardsCounter.style.display = 'block'
-
-    // Hide certain features
-    hideFieldsAndButton();
-
-    // Start the round and load hole information and the suggested club for the first hole
-    startRound(1);
-});
-
-// Start Round function
 function handleStartRound() {
     // Hide the "Start Round" button
     this.style.display = 'none';
 
     // Show the holes container and yards counter
-    const holesContainer = document.querySelector('.holes-container');
-    holesContainer.style.display = 'block';
+    document.querySelector('.holes-container').style.display = 'block';
     document.querySelector('.yardsCounter').style.display = 'block';
 
     // Hide certain features
-    // hideFieldsAndButton();
+    hideFieldsAndButton();
 
     // Start the round and load hole information and the suggested club for the first hole
     startRound(1);
@@ -157,6 +136,7 @@ function startRound(holeNumber) {
     // Update HTML to display suggested club
     const clubSuggestionElement = document.getElementById(`clubSuggestion${holeNumber}`);
     const swingBtn = document.getElementById(`swingBtn${holeNumber}`);
+
     if (clubSuggestionElement) {
         clubSuggestionElement.textContent = `Suggested Club: ${suggestedClub}${customYardage ? ` (${customYardage} yards)` : ''}`;
     } else {
@@ -169,25 +149,7 @@ function startRound(holeNumber) {
         console.error(`swingBtn${holeNumber} not found.`);
         return; // Exit the function if the button is not found
     }
-    // const clubSuggestionElement = document.getElementById(`clubSuggestion${holeNumber}`);
-    // if (clubSuggestionElement) {
-    //     if (customYardage) {
-    //         clubSuggestionElement.textContent = `Suggested Club: ${suggestedClub} (${customYardage} yards)`;
-    //     } else {
-    //         clubSuggestionElement.textContent = `Suggested Club: ${suggestedClub}`;
-    //     }
-    //     } else {
-    //         console.error(`clubSuggestionElement${holeNumber} not found.`);
-    //     }
-
-    //     // Enable the swing button for the current hole
-    //     const swingBtn = document.getElementById(`swingBtn${holeNumber}`);
-    //     if (!swingBtn) {
-    //         console.error(`swingBtn${holeNumber} not found.`);
-    //         return; // Exit the function if the button is not found
-    //     }
-    //     swingBtn.disabled = false;
-
+    
     // Initialize variables for power buildup and timer
     let power = 0;
     let timer = null;
