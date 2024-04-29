@@ -7,17 +7,25 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="description" content="This is where your description goes">
    <meta name="keywords" content="one, two, three">
-
-   
-   <!-- <link rel="stylesheet" href="css/normalize.css"> -->
    <link rel="stylesheet" href="style.css">
+   <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+   
+   <title>Golf Club Slector-Simulator</title>
 </head>
-<title>Golf Club Picker</title>
+
+<header>
+   <div class="intro-container">
+      <h1>Welcome to the Golf Simulator App</h1>
+      <p>This app allows you to simulate a round of golf by customizing your club distances and playing through different
+         holes. Simply enter the yardage for each club based on your potential maximum distance. Once set up, you can play
+         through a round without having to look for yardage markers, making it easier and more enjoyable to focus on your
+         game.
+      </p>
+      <!-- <button id="startSetupBtn">Start Setup</button> -->
+   </div>
+</header>
 
 <body>
-   <header>
-      <h1>Automatic Golf Club Selector-Simulator</h1>
-   </header>
    <div class="instructions">
       <span>Instructions:</span>
       <ol>
@@ -35,14 +43,14 @@
 
    <!-- Club distances inputs -->
    <div class="club-distances">
-      <label for="putter">Putter:</label>
-      <input id="putter" type="number" placeholder="Putter">
+      <!-- <label for="putter">Putter:</label>
+      <input id="putter" type="number" placeholder="Putter"> -->
 
-      <label for="sixtyDegree">60 Degree:</label>
-      <input id="sixtyDegree" type="number" placeholder="60 Degree">
+      <label for="lobWedge">Lob Wedge:</label>
+      <input id="sixtyDegree" type="number" placeholder="Lob Wedge">
 
-      <label for="wedgeSand">Sand Wedge:</label>
-      <input id="wedgeSand" type="number" placeholder="Sand Wedge">
+      <label for="sandWedge">Sand Wedge:</label>
+      <input id="sandWedge" type="number" placeholder="Sand Wedge">
 
       <label for="wedgePitch">Pitch Wedge:</label>
       <input id="wedgePitch" type="number" placeholder="Pitch Wedge">

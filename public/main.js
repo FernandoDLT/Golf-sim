@@ -8,6 +8,7 @@ document.getElementById('yardage').addEventListener('input', handleYardageInputC
 document.getElementById('saveBtn').addEventListener('click', saveSettings);
 document.getElementById('new-round').addEventListener('click', handleNewRound);
 document.querySelector('.resetClubs').addEventListener('click', resetAllClubs);
+
 // Define holes
 const holes = [
     { number: 1, par: 4, distance: 400 },
@@ -397,9 +398,9 @@ function suggestClub(distance) {
 
         const clubs = [
             { name: "Putter, you got this...", distance: clubDistances.putter },
-            { name: "60 Degree", distance: clubDistances.sixtyDegree },
-            { name: "Sand Wedge", distance: clubDistances.wedgeSand },
-            { name: "Pitching Wedge", distance: clubDistances.wedgePitch },
+            { name: "Lob Wedge", distance: clubDistances.lobWedge },
+            { name: "Sand Wedge", distance: clubDistances.sandWedge },
+            { name: "Pitching Wedge", distance: clubDistances.pitchWedge },
             { name: "9 Iron", distance: clubDistances.nineIron },
             { name: "8 Iron", distance: clubDistances.eightIron },
             { name: "7 Iron", distance: clubDistances.sevenIron },
