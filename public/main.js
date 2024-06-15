@@ -37,7 +37,7 @@ function saveSettings() {
     });
     localStorage.setItem('clubs', JSON.stringify(clubs));
     // Customized clubs alert
-    // alert("Your clubs have been customized.");
+    alert("Your clubs have been customized.");
     // Show the "Start Round" button
     document.querySelector('.startRoundBtn').style.display = 'inline-block';
 }
@@ -474,22 +474,6 @@ loadSettings();
 document.addEventListener('DOMContentLoaded', setupEventListeners);
 
 // Function to display the details for a specific hole
-function displayHole(hole) {
-    const holeElement = document.querySelector('.hole');
-    holeElement.innerHTML = `
-        <h2>Hole #${hole.number}</h2>
-        <p>Par: ${hole.par}</p>
-        <p>Distance: ${hole.distance} yards</p>
-        <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
-        <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
-        <button id="nextHoleBtn">Next Hole</button>
-        <div class="strokes-container">
-            <span class="strokes-label">Strokes:</span>
-            <span id="strokes${hole.number}" class="strokes">0</span>
-        </div>
-        `;
-}
-
 function displayHole(hole) {
     const holeElement = document.querySelector('.hole');
     holeElement.innerHTML = `
