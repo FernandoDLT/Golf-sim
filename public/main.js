@@ -29,6 +29,30 @@ const holes = [
     { number: 18, par: 4, distance: 390 }
 ];
 
+// Function to save customized club distances to localStorage
+function saveSettings() {
+    if (!allFieldsFilled()) {
+        alert("Please fill in all club distances before saving.");
+        return; // Exit the function if any field is not filled
+    }
+    
+    const clubs = {};
+    document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
+        clubs[input.id] = input.value;
+    });
+    
+    localStorage.setItem('clubs', JSON.stringify(clubs));
+
+    // Show the "Start Round" button
+    const startRoundBtn = document.querySelector('.startRoundBtn');
+    if (startRoundBtn) {
+        startRoundBtn.style.display = 'inline-block';
+    }
+
+    // Hide the save button
+    document.getElementById('saveBtn').style.display = 'none';
+}
+
 // Event listener for the "Start Round" button
 document.querySelector('.startRoundBtn').addEventListener('click', function () {
     // Hide the "Start Round" button
