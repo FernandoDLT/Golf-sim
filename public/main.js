@@ -1,5 +1,11 @@
 // Event listeners setup
-document.addEventListener('DOMContentLoaded', setupEventListeners);
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('saveBtn').addEventListener('click', saveSettings);
+    document.querySelector('.startRoundBtn').addEventListener('click', handleStartRound);
+    document.getElementById('new-round').addEventListener('click', handleNewRound);
+    // Hide the "Start Round" button on page load
+    document.querySelector('.startRoundBtn').style.display = 'none';
+});
 
 // Define holes
 const holes = [
@@ -23,25 +29,6 @@ const holes = [
     { number: 18, par: 4, distance: 390 }
 ];
 
-// Initialize empty hole object for club names
-const clubNames = {};
-
-// Load settings when the page loads
-loadSettings();
-
-// Function to save customized club distances to localStorage
-function saveSettings() {
-    const clubs = {};
-    document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
-        clubs[input.id] = input.value;
-    });
-    localStorage.setItem('clubs', JSON.stringify(clubs));
-    // Customized clubs alert
-    alert("Your clubs have been customized.");
-    // Show the "Start Round" button
-    document.querySelector('.startRoundBtn').style.display = 'inline-block';
-}
-
 // Event listener for the "Start Round" button
 document.querySelector('.startRoundBtn').addEventListener('click', function () {
     // Hide the "Start Round" button
@@ -62,11 +49,54 @@ document.querySelector('.startRoundBtn').addEventListener('click', function () {
     startRound(1);
 });
 
-// Event listener for the "New Round" button
-document.getElementById('new-round').addEventListener('click', function () {
+// Start Round function
+function handleStartRound() {
+    // Hide the "Start Round" button
+    this.style.display = 'none';
+
+    // Show the holes container and yards counter
+    const holesContainer = document.querySelector('.holes-container');
+    holesContainer.style.display = 'block';
+    document.querySelector('.yardsCounter').style.display = 'block';
+
+    // Hide certain features
+    hideFieldsAndButton();
+
+    // Start the round and load hole information and the suggested club for the first hole
+    startRound(1);
+}
+
+// Function to hide specific elements
+function hideFieldsAndButton() {
+    const elementsToHide = [
+        '.club-distances',
+        '.yardsReset',
+        '.clubs-reset'
+    ];
+    
+    elementsToHide.forEach(selector => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.style.display = 'none';
+        }
+    });
+}
+
+function handleNewRound() {
     // Redirect to the homepage
     window.location.href = 'index.html';
-});
+}
+
+// Function to check if all fields are filled
+function allFieldsFilled() {
+    const inputs = document.querySelectorAll('.club-distances input[type="number"]');
+    for (const input of inputs) {
+        if (!input.value) {
+            return false;
+        }
+    }
+    return true;
+}
 
 // Initialize variables to store total strokes and par for the round
 let totalStrokes = 0;
@@ -147,8 +177,6 @@ function startRound(holeNumber) {
     // Determine the maximum yardage for the suggested club
     const maxYardage = customYardage || hole.distance; // Use hole distance if custom yardage is not available
 
-    // Introduce some randomness to the result (between 85% and 115% of calculated yardage)
-    // const randomnessFactor = Math.random() * 0.6 + 0.7;
     let randomnessFactor;
     if (power < 80) {
         // Normal swing behavior
@@ -259,7 +287,7 @@ swingBtn.addEventListener('mousedown', function () {
     }
 });
 
-    document.addEventListener('mouseup', function () {
+document.addEventListener('mouseup', function () {
     // Check if timer is running
     if (timer !== null) {
         clearInterval(timer); // Stop the timer if mouse is released early
@@ -278,45 +306,6 @@ swingBtn.addEventListener('mousedown', function () {
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
 
-// Function to hide the input fields and save button after saving settings
-function hideFieldsAndButton() {
-    // Hide the club-distances div
-    const clubDistancesDiv = document.querySelector('.club-distances');
-    if (clubDistancesDiv) {
-        clubDistancesDiv.style.display = 'none';
-    }
-
-    // Hide the save button
-    const saveBtn = document.getElementById('saveBtn');
-    if (saveBtn) {
-        saveBtn.style.display = 'none';
-    }
-
-    // Hide the instruction
-    const instruction = document.querySelector('.yards-reset h3');
-    if (instruction) {
-        instruction.style.display = 'none';
-    }
-
-    // Hide the reset clubs button
-    const resetClubsBtn = document.querySelector('.resetClubs');
-    if (resetClubsBtn) {
-        resetClubsBtn.style.display = 'none';
-    }
-
-    // Hide yardsReset Div
-    const yardsReset = document.querySelector('.yardsReset');
-    if (yardsReset) {
-        yardsReset.style.display = 'none';
-    }
-
-    // Set result element color to black
-    const resultElement = document.getElementById('result');
-    if (resultElement) {
-        resultElement.style.color = 'rgb(0,152,67)';
-    }
-}
-
 // Function to load customized club distances from localStorage
 function loadSettings() {
     const clubs = JSON.parse(localStorage.getItem('clubs'));
@@ -325,55 +314,6 @@ function loadSettings() {
             document.getElementById(club).value = clubs[club];
         }
     }
-}
-
-// Function to check if all input fields in the club-distances div are filled
-function allFieldsFilled() {
-    const inputs = document.querySelectorAll('.club-distances input[type="number"]');
-    for (let i = 0; i < inputs.length; i++) {
-        if (!inputs[i].value) {
-            return false; // Return false if any input field is empty
-        }
-    }
-    return true; // Return true if all input fields are filled
-}
-
-// Add event listener to input fields when the DOM is loaded
-document.addEventListener('DOMContentLoaded', function () {
-    // Hide the "Start Round" button initially
-    document.querySelector('.startRoundBtn').style.display = 'none';
-
-    // Add event listeners to input fields
-    document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
-        input.addEventListener('input', handleClubDistanceInputChange);
-    });
-});
-
-// Function to save customized club distances to localStorage
-function saveSettings() {
-    // Check if all input fields are filled
-    if (!allFieldsFilled()) {
-        // Display an alert or message to notify the user
-        alert("Please fill in all club distances before saving.");
-        return; // Exit the function if any field is not filled
-    }
-    
-    const clubs = {};
-    document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
-        clubs[input.id] = input.value;
-    });
-    localStorage.setItem('clubs', JSON.stringify(clubs));
-    
-    // Call handleClubDistanceInputChange to check if all fields are filled
-    handleClubDistanceInputChange();
-    
-    // Show the "Start Round" button if all fields are filled
-    if (allFieldsFilled()) {
-        document.querySelector('.startRoundBtn').style.display = 'inline-block';
-    }
-    
-    // Hide the save button
-    document.getElementById('saveBtn').style.display = 'none';
 }
 
 // Function to handle input change in club distances
@@ -390,7 +330,7 @@ function handleClubDistanceInputChange() {
 
 // Function to set up event listeners
 function setupEventListeners() {
-    document.getElementById('saveBtn').addEventListener('click', saveSettings);
+    // document.getElementById('saveBtn').addEventListener('click', saveSettings);
     document.querySelector('.reset').addEventListener('click', function () {
         // localStorage.removeItem('clubs');
         // Remove the call to loadSettings() here
@@ -416,7 +356,7 @@ function suggestClub(distance) {
     try {
         const yardage = parseInt(distance);
         if (isNaN(yardage) || yardage <= 0) {
-            throw new Error('Please enter a valid positive integer for yardage.');
+            throw new Error('Please enter a valid yardage.');
         }
 
         const clubDistancesJSON = localStorage.getItem("clubs");
@@ -459,7 +399,6 @@ function suggestClub(distance) {
     }
 }
 
-
 // Event listener for yardage input change
 document.getElementById("yardage").addEventListener("input", function () {
     const yardage = document.getElementById("yardage").value;
@@ -471,9 +410,8 @@ document.getElementById("yardage").addEventListener("input", function () {
 loadSettings();
 
 // Event listeners setup
-document.addEventListener('DOMContentLoaded', setupEventListeners);
+// document.addEventListener('DOMContentLoaded', setupEventListeners);
 
-// Function to display the details for a specific hole
 function displayHole(hole) {
     const holeElement = document.querySelector('.hole');
     holeElement.innerHTML = `
@@ -576,7 +514,7 @@ function completeHole(holeNumber) {
         if (yardageInformationElement) {
             yardageInformationElement.style.display = 'none';
         }
-        
+
         } else {
         // Logic for holes other than the 18th hole
         // Display the "Next Hole" button
@@ -622,9 +560,3 @@ function completeHole(holeNumber) {
         });
     }
 }
-
-// Event listener for the "New Round" button
-document.getElementById('new-round').addEventListener('click', function () {
-    // Redirect to the homepage
-    window.location.href = 'index.html';
-});
