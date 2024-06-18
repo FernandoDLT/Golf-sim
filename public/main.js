@@ -1,11 +1,10 @@
 // Event listeners setup
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('saveBtn').addEventListener('click', saveSettings);
     document.querySelector('.startRoundBtn').addEventListener('click', handleStartRound);
     document.getElementById('new-round').addEventListener('click', handleNewRound);
-    // Hide the "Start Round" button on page load
     document.querySelector('.startRoundBtn').style.display = 'none';
-});
+// });
 
 // Define holes
 const holes = [
@@ -28,6 +27,19 @@ const holes = [
     { number: 17, par: 4, distance: 410 },
     { number: 18, par: 4, distance: 390 }
 ];
+
+document.querySelector('.reset').addEventListener('click', function () {
+        // localStorage.removeItem('clubs');
+        // Remove the call to loadSettings() here
+        document.getElementById('yardage').value = '';
+});
+
+// Event listener for yardage input change
+function handleYardageInputChange(event) {
+    const yardage = event.target.value;
+    const suggestedClub = suggestClub(yardage);
+    document.getElementById("result").innerText = suggestedClub;
+}
 
 // Function to save customized club distances to localStorage
 function saveSettings() {
@@ -53,7 +65,7 @@ function saveSettings() {
     document.getElementById('saveBtn').style.display = 'none';
 }
 
-// Event listener for the "Start Round" button
+// EventListener for "Start Round" button
 document.querySelector('.startRoundBtn').addEventListener('click', function () {
     // Hide the "Start Round" button
     this.style.display = 'none';
@@ -84,7 +96,7 @@ function handleStartRound() {
     document.querySelector('.yardsCounter').style.display = 'block';
 
     // Hide certain features
-    hideFieldsAndButton();
+    // hideFieldsAndButton();
 
     // Start the round and load hole information and the suggested club for the first hole
     startRound(1);
@@ -250,42 +262,41 @@ function startRound(holeNumber) {
         // Call the function to complete the hole
         completeHole(holeNumber);
 
-        // Check if it's the last hole to display the total score
+    // Check if it's the last hole to display the total score
         if (holeNumber === 18) {
             const totalStrokesSpan = document.getElementById('totalStrokes');
-            if (totalStrokesSpan) {
-                totalStrokesSpan.textContent = `Total Strokes: ${totalStrokes}`;
-            }
-            // Calculate the relative score compared to par
-            const relativeScore = totalStrokes - parForRound;
             const totalScoreSpan = document.getElementById('totalScore');
-            if (totalScoreSpan) {
-                if (relativeScore === 0) {
-                    totalScoreSpan.textContent = 'You shot even par';
-                } else if (relativeScore > 0) {
-                    totalScoreSpan.textContent = `You shot ${relativeScore} over par`;
-                } else {
-                    totalScoreSpan.textContent = `You shot ${Math.abs(relativeScore)} under par`;
-                }
-            }
-
-            // Hide the "Yards Traveled" and "Remaining Distance" elements
             const yardsTraveledSpan = document.getElementById('yardsTraveled');
-            if (yardsTraveledSpan) {
-                yardsTraveledSpan.style.display = 'none';
-            }
-
             const remainingDistanceSpan = document.getElementById('remainingDistance');
-            if (remainingDistanceSpan) {
-                remainingDistanceSpan.style.display = 'none';
-            }
-
-            // Check if it's the last hole to hide the progress bar if completed
             const progressContainer = document.querySelector('.progress-container');
-            if (progressContainer && holeNumber === 18 && remainingDistance <= 0) {
-                progressContainer.style.display = 'none';
-            }
+
+        if (totalStrokesSpan) {
+            totalStrokesSpan.textContent = `Total Strokes: ${totalStrokes}`;
         }
+
+        const relativeScore = totalStrokes - parForRound;
+        if (totalScoreSpan) {
+            totalScoreSpan.textContent = (relativeScore === 0) ? 'You shot even par' :
+            (relativeScore > 0) ? `You shot ${relativeScore} over par` :
+            `You shot ${Math.abs(relativeScore)} under par`;
+        }
+
+        if (yardsTraveledSpan) yardsTraveledSpan.style.display = 'none';
+        if (remainingDistanceSpan) remainingDistanceSpan.style.display = 'none';
+        if (progressContainer && remainingDistance <= 0) progressContainer.style.display = 'none';
+    }
+    }
+}
+    
+// Initialize yardages display
+function updateYardagesDisplay(traveled, remaining) {
+    const yardsTraveledSpan = document.getElementById('yardsTraveled');
+    if (yardsTraveledSpan) {
+        yardsTraveledSpan.textContent = `Yards Traveled: ${traveled} yards`;
+    }
+    const remainingDistanceSpan = document.getElementById('remainingDistance');
+    if (remainingDistanceSpan) {
+        remainingDistanceSpan.textContent = `Remaining Distance: ${remaining} yards`;
     }
 }
 
