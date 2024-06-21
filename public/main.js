@@ -277,10 +277,7 @@ swingBtn.addEventListener('mousedown', function () {
     // Scroll to the hole
     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
-// function startRound(holeNumber) {
-//     // Display information for the specified hole
-//     const hole = holes[holeNumber - 1];
-//     displayHole(hole);
+
 
 //     // Initialize strokes for the current hole
 //     let strokes = 0;
