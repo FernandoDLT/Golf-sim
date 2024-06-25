@@ -157,9 +157,11 @@ input:focus {
 
 #result {
    /* display: block; */
-   font-size: 1.4rem;
+   font-size: 1.2rem;
    font-weight: bold;
-   color: green;
+   color: rgb(0, 112, 0);
+   background-color: rgb(202, 202, 202);
+   padding: 10px;
    width: 55%;
    text-align: center;
 }
