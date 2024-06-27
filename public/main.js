@@ -1,5 +1,5 @@
 // Event listeners setup
-// document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.reset').addEventListener('click', resetYardsAndResult);
     document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
     document.getElementById('saveBtn').addEventListener('click', saveSettings);
@@ -9,7 +9,7 @@
     const startRoundBtn = document.querySelector('.startRoundBtn');
     startRoundBtn.addEventListener('click', handleStartRound);
     startRoundBtn.style.display = 'none';
-// });
+});
 
 // Define holes
 const holes = [
