@@ -268,7 +268,7 @@ function startRound(holeNumber) {
         if (timer === null) {
             power = 0; // Reset power for new swing
             timer = setInterval(function () {
-                power += 1; // Adjust power increment as needed
+                power += 2; // Adjust power increment as needed
                 const progressBar = document.getElementById(`swingProgressBar${holeNumber}`);
                 if (progressBar) {
                     progressBar.value = power; // Update the progress bar value
