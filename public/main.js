@@ -160,11 +160,8 @@ function startRound(holeNumber) {
 
         const newSuggestedClub = suggestClub(remainingDistance);
         if (clubSuggestionElement) {
-            if (remainingDistance > 0) {
-                clubSuggestionElement.textContent = `Suggested Club: ${newSuggestedClub}`;
-            } else {
-                clubSuggestionElement.style.display = 'none';
-            }
+            clubSuggestionElement.textContent = remainingDistance > 0 ? `Suggested Club: ${newSuggestedClub}` : '';
+            clubSuggestionElement.style.display = remainingDistance > 0 ? 'block' : 'none';
         }
 
         const scoreSpan = document.getElementById(`score${holeNumber}`);
@@ -338,6 +335,11 @@ loadSettings();
 
 function displayHole(hole) {
     const holeElement = document.querySelector('.hole');
+    if (!holeElement) {
+        console.error('.hole element not found in the DOM.');
+        return;
+    }
+
     holeElement.innerHTML = `
         <h2>Hole #${hole.number}</h2>
         <p>Par: ${hole.par}</p>
