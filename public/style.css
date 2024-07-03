@@ -32,6 +32,34 @@ h3 {
    color: rgb(96, 186, 180);
 }
 
+.instructions {
+   /* color: rgb(112, 112, 112); */
+   width: 34%;
+   margin: 0 auto;
+   padding: 30px;
+   background: rgb(202, 202, 202);
+   text-align: center;
+}
+
+.instructions span {
+   color: black;
+   font-size: 20px;
+}
+
+ol {
+   text-align: left;
+   padding-left: 40px;
+}
+
+li {
+   margin-bottom: 12px;
+   color: rgb(13, 131, 123);
+}
+
+.instructions h3 {
+   color: gray;
+}
+
 /* Contains Holes information */
 .holes-container {
    display: none;
