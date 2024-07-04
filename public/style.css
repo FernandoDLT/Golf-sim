@@ -67,7 +67,7 @@ li {
 
 /* Swing btn */
 .swingBtn {
-   margin: 0 auto;
+   margin: 6px auto;
    padding: 12px;
    color: green;
    background: yellow;
@@ -78,23 +78,48 @@ li {
 }
 
 .progress-container {
+   /* display: none;
+   text-align: center; */
+   /* Center the contents horizontally */
+   /* margin-top: -10px; */
+   /* Adjust margin as needed */
+}
+
+#power {
+   font-weight: bold;
+   margin-top: 5px;
+   color: rgb(13, 131, 123);
+   font-size: 1.2em;
+   display: block;
+   text-align: center;
+}
+
+.progress-container progress {
+   /* width: 180px; */
+   /* Set a width for the progress bar */
+}
+
+#powerPercentage {
+   font-weight: bold;
+   margin-top: 5px;
+   color: #000;
+   font-size: 1.2em;
+   display: block;
+   text-align: center;
+}
+/* .progress-container {
    display: none;
    text-align: center;
-   /* Center the contents horizontally */
    margin-top: -10px;
-   /* Adjust margin as needed */
 }
 
 .progress-container span {
    display: block;
-   /* Ensure "Power" text appears on its own line */
 }
 
 .progress-container progress {
-   /* display: none; */
    width: 180px;
-   /* Set a width for the progress bar */
-}
+} */
 
 .customization-message {
    color: green;

@@ -125,8 +125,27 @@ function startRound(holeNumber) {
         return;
     }
 
+    function updateProgressBarIds(holeNumber) {
+    const progressBar = document.getElementById('swingProgressBar');
+    const powerPercentage = document.getElementById('powerPercentage');
+    
+    if (progressBar) {
+        progressBar.id = `swingProgressBar${holeNumber}`;
+    }
+    if (powerPercentage) {
+        powerPercentage.id = `powerPercentage${holeNumber}`;
+    }
+
+    const progressContainer = document.querySelector('.progress-container');
+    if (progressContainer) {
+        progressContainer.style.display = 'block';
+    }
+}
+    // let power = 0;
+    // let timer = null;
     let power = 0;
     let timer = null;
+    let visualTimer = null;
     let remainingDistance = hole.distance;
 
     updateYardagesDisplay(0, hole.distance);
@@ -208,37 +227,113 @@ function startRound(holeNumber) {
     }
 
     swingBtn.addEventListener('mousedown', function () {
-        if (timer === null) {
-            power = 0;
-            timer = setInterval(function () {
-                power += 2;
-                const progressBar = document.getElementById(`swingProgressBar${holeNumber}`);
-                if (progressBar) {
-                    progressBar.value = power;
-                }
-                if (power >= 100) {
-                    clearInterval(timer);
-                    timer = null;
-                    simulateSwing(power);
-                }
-            }, 10);
-        }
-    });
+    if (timer === null) {
+        power = 0;
+        timer = setInterval(function () {
+            power += 1.7;
+            const progressBar = document.getElementById(`swingProgressBar${hole.number}`);
+            const powerPercentage = document.getElementById(`powerPercentage${hole.number}`);
+            if (progressBar) {
+                progressBar.value = power;
+            }
+            if (powerPercentage) {
+                powerPercentage.textContent = `${Math.min(Math.floor(power), 100)}%`;
+            }
+            if (power >= 100) {
+                clearInterval(timer);
+                timer = null;
+            }
+        }, 10);
+    }
+});
 
-    swingBtn.addEventListener('mouseup', function () {
-        if (timer !== null) {
-            clearInterval(timer);
-            timer = null;
-            simulateSwing(power);
-        }
-    });
-
-    const progressContainer = document.querySelector('.progress-container');
-    if (progressContainer) {
-        progressContainer.style.display = 'block';
+swingBtn.addEventListener('mouseup', function () {
+    if (timer !== null) {
+        clearInterval(timer);
+        timer = null;
+        simulateSwing(power); // Use the actual power value for yardage calculations
     }
 
-    document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
+    let visualPower = power;
+    const progressBar = document.getElementById(`swingProgressBar${hole.number}`);
+    const powerPercentage = document.getElementById(`powerPercentage${hole.number}`);
+    if (visualTimer !== null) {
+        clearInterval(visualTimer);
+    }
+    visualTimer = setInterval(function () {
+        visualPower -= 1.7;
+        if (progressBar) {
+            progressBar.value = visualPower;
+        }
+        if (powerPercentage) {
+            powerPercentage.textContent = `${Math.floor(power)}%`; // Keep power percentage static
+        }
+        if (visualPower <= 0) {
+            clearInterval(visualTimer);
+            visualTimer = null;
+        }
+    }, 10);
+});
+
+const progressContainer = document.querySelector('.progress-container');
+if (progressContainer) {
+    progressContainer.style.display = 'block';
+}
+
+document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
+
+//     swingBtn.addEventListener('mousedown', function () {
+//     if (timer === null) {
+//         power = 0;
+//         timer = setInterval(function () {
+//             power += 1.7;
+//             const progressBar = document.getElementById(`swingProgressBar${holeNumber}`);
+//             const powerPercentage = document.getElementById('powerPercentage');
+//             if (progressBar) {
+//                 progressBar.value = power;
+//             }
+//             if (powerPercentage) {
+//                 powerPercentage.textContent = `${Math.min(Math.floor(power), 100)}%`;
+//             }
+//             if (power >= 100) {
+//                 clearInterval(timer);
+//                 timer = null;
+//             }
+//         }, 10);
+//     }
+// });
+
+//     swingBtn.addEventListener('mouseup', function () {
+//     if (timer !== null) {
+//         clearInterval(timer);
+//         timer = null;
+//         simulateSwing(power); // Use the actual power value for yardage calculations
+//     }
+
+//     // Start decreasing the visual progress bar independently
+//     let visualPower = power;
+//     const progressBar = document.getElementById(`swingProgressBar${holeNumber}`);
+//     if (visualTimer !== null) {
+//         clearInterval(visualTimer);
+//     }
+//     visualTimer = setInterval(function () {
+//         visualPower -= 1.7;
+//         if (progressBar) {
+//             progressBar.value = visualPower;
+//         }
+//         if (visualPower <= 0) {
+//             clearInterval(visualTimer);
+//             visualTimer = null;
+//         }
+//     }, 10);
+// });
+
+//     const progressContainer = document.querySelector('.progress-container');
+//     if (progressContainer) {
+//         progressContainer.style.display = 'block';
+//     }
+
+    //     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
 
 // Function to load customized club distances from localStorage
@@ -342,20 +437,37 @@ function displayHole(hole) {
     }
 
     holeElement.innerHTML = `
-        <h2>Hole #${hole.number}</h2>
-        <p>Par: ${hole.par}</p>
-        <p>Distance: ${hole.distance} yards</p>
-        <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
-        <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
-        <button id="nextHoleBtn">Next Hole</button>
-        <div class="strokes-container">
-            <div class="progress-container">
-                <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
-            </div>
-            <span class="strokes-label">Strokes:</span>
-            <span id="strokes${hole.number}" class="strokes">0</span>
+    <h2>Hole #${hole.number}</h2>
+    <p>Par: ${hole.par}</p>
+    <p>Distance: ${hole.distance} yards</p>
+    <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
+    <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
+    <button id="nextHoleBtn">Next Hole</button>
+    <div class="strokes-container">
+        <div class="progress-container">
+            <span>Power</span>
+            <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
+            <span id="powerPercentage${hole.number}" class="powerPercentage">0%</span>
         </div>
-    `;
+        <span class="strokes-label">Strokes:</span>
+        <span id="strokes${hole.number}" class="strokes">0</span>
+    </div>
+`;
+    // holeElement.innerHTML = `
+    //     <h2>Hole #${hole.number}</h2>
+    //     <p>Par: ${hole.par}</p>
+    //     <p>Distance: ${hole.distance} yards</p>
+    //     <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
+    //     <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
+    //     <button id="nextHoleBtn">Next Hole</button>
+    //     <div class="strokes-container">
+    //         <div class="progress-container">
+    //             <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
+    //         </div>
+    //         <span class="strokes-label">Strokes:</span>
+    //         <span id="strokes${hole.number}" class="strokes">0</span>
+    //     </div>
+    // `;
 }
 
 // Hole completion function
