@@ -11,6 +11,32 @@ h1 {
    text-decoration: underline;
 }
 
+.intro-container {
+   background: rgb(182, 212, 210);
+   width: 40%;
+   padding: 16px 20px;
+   margin: 10px auto;
+   text-align: center;
+   align-items: center;
+}
+
+.intro-container h1 {
+   font-size: 2em;
+   margin-bottom: 20px;
+}
+
+.intro-container p {
+   font-size: 1.2em;
+   margin-bottom: 30px;
+}
+
+/* #startSetupBtn {
+   padding: 10px 20px;
+   margin-bottom: 10px;
+   font-size: 1em;
+   cursor: pointer;
+} */
+
 /* Customization Msg */
 h4 {
    font-size: 24px;
@@ -34,7 +60,7 @@ h3 {
 
 .instructions {
    /* color: rgb(112, 112, 112); */
-   width: 34%;
+   width: 40%;
    margin: 0 auto;
    padding: 30px;
    background: rgb(202, 202, 202);
@@ -143,7 +169,7 @@ li {
 
 /* Club distances container */
 .club-distances {
-   width: 34%;
+   width: 40%;
    height: auto;
    padding: 50px;
    margin: 10px auto 18px;
@@ -155,6 +181,10 @@ li {
    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.2);
    border-radius: 2px;
 }
+
+/* #putter {
+   display: none;
+} */
 
 /* Club labels */
 .club-distances label {
@@ -415,4 +445,5 @@ p {
 #new-round:hover {
    color: white;
    background: red;
+   border: none;
 }
