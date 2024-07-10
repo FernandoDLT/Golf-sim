@@ -112,40 +112,26 @@ function startRound(holeNumber) {
     const suggestedClub = suggestClub(hole.distance);
     const customYardage = clubs && clubs[suggestedClub.toLowerCase()];
 
-    initializeUI(hole, suggestedClub, customYardage);
-    let power = 0;
-    let timer = null;
-    let visualTimer = null;
-    let remainingDistance = hole.distance;
+    const clubSuggestionElement = document.getElementById(`clubSuggestion${hole.number}`);
+    const swingBtn = document.getElementById(`swingBtn${hole.number}`);
 
-    updateYardagesDisplay(0, hole.distance);
+    if (clubSuggestionElement) {
+        clubSuggestionElement.textContent = `Suggested Club: ${suggestedClub}${customYardage ? ` (${customYardage} yards)` : ''}`;
+    } else {
+        console.error(`clubSuggestionElement${hole.number} not found.`);
+    }
 
-    function initializeUI(hole, suggestedClub, customYardage) {
-        const clubSuggestionElement = document.getElementById(`clubSuggestion${hole.number}`);
-        const swingBtn = document.getElementById(`swingBtn${hole.number}`);
-
-        if (clubSuggestionElement) {
-            clubSuggestionElement.textContent = `Suggested Club: ${suggestedClub}${customYardage ? ` (${customYardage} yards)` : ''}`;
-        } else {
-            console.error(`clubSuggestionElement${hole.number} not found.`);
-        }
-
-        if (swingBtn) {
-            swingBtn.disabled = false;
-            addSwingButtonListeners(swingBtn, hole.number);
-        } else {
-            console.error(`swingBtn${hole.number} not found.`);
-            return;
-        }
-
-        updateProgressBarIds(hole.number);
-        document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
+    if (swingBtn) {
+        swingBtn.disabled = false;
+    } else {
+        console.error(`swingBtn${hole.number} not found.`);
+        return;
     }
 
     function updateProgressBarIds(holeNumber) {
         const progressBar = document.getElementById('swingProgressBar');
         const powerPercentage = document.getElementById('powerPercentage');
-
+        
         if (progressBar) {
             progressBar.id = `swingProgressBar${holeNumber}`;
         }
@@ -158,6 +144,15 @@ function startRound(holeNumber) {
             progressContainer.style.display = 'block';
         }
     }
+
+    updateProgressBarIds(holeNumber);
+
+    let power = 0;
+    let timer = null;
+    let visualTimer = null;
+    let remainingDistance = hole.distance;
+
+    updateYardagesDisplay(0, hole.distance);
 
     function updateYardagesDisplay(traveled, remaining) {
         const yardsTraveledSpan = document.getElementById('yardsTraveled');
@@ -172,321 +167,125 @@ function startRound(holeNumber) {
 
     function simulateSwing(power) {
         strokes++;
-        updateStrokeCount(hole.number, strokes);
+        const strokesSpan = document.getElementById(`strokes${holeNumber}`);
+        if (strokesSpan) {
+            strokesSpan.textContent = strokes;
+        }
 
         const suggestedClub = suggestClub(remainingDistance);
         const customYardage = clubs && clubs[suggestedClub.toLowerCase()];
         const maxYardage = customYardage || hole.distance;
 
-        const randomnessFactor = power < 80 ? Math.random() * 0.3 + 0.85 : Math.random() * 0.3 + 0.7;
+        let randomnessFactor = power < 80 ? Math.random() * 0.3 + 0.85 : Math.random() * 0.3 + 0.7;
         const yardsTraveled = Math.min(remainingDistance, Math.floor((power / 100) * maxYardage * randomnessFactor));
 
         remainingDistance -= yardsTraveled;
         updateYardagesDisplay(yardsTraveled, remainingDistance);
-        updateClubSuggestion(remainingDistance, suggestedClub);
 
-        totalStrokes++;
-        handleHoleCompletion(holeNumber, remainingDistance, strokes);
-    }
-
-    function updateStrokeCount(holeNumber, strokes) {
-        const strokesSpan = document.getElementById(`strokes${holeNumber}`);
-        if (strokesSpan) {
-            strokesSpan.textContent = strokes;
-        }
-    }
-
-    function updateClubSuggestion(remainingDistance, suggestedClub) {
-        const clubSuggestionElement = document.getElementById(`clubSuggestion${hole.number}`);
+        const newSuggestedClub = suggestClub(remainingDistance);
         if (clubSuggestionElement) {
-            clubSuggestionElement.textContent = remainingDistance > 0 ? `Suggested Club: ${suggestedClub}` : '';
+            clubSuggestionElement.textContent = remainingDistance > 0 ? `Suggested Club: ${newSuggestedClub}` : '';
             clubSuggestionElement.style.display = remainingDistance > 0 ? 'block' : 'none';
         }
-    }
 
-    function handleHoleCompletion(holeNumber, remainingDistance, strokes) {
+        const scoreSpan = document.getElementById(`score${holeNumber}`);
+        if (scoreSpan) {
+            scoreSpan.textContent = strokes;
+        }
+
+        totalStrokes++;
+
         if (remainingDistance <= 0) {
-            const swingBtn = document.getElementById(`swingBtn${hole.number}`);
-            if (swingBtn) {
-                swingBtn.disabled = true;
-                swingBtn.style.display = 'none';
-            }
-
+            swingBtn.disabled = true;
             const holeCompletionMessage = document.getElementById('holeCompletionMessage');
             if (holeCompletionMessage) {
                 holeCompletionMessage.textContent = 'Hole Completed!';
             }
 
+            swingBtn.style.display = 'none';
             completeHole(holeNumber);
 
             if (holeNumber === 18) {
-                displayFinalScore();
+                const totalStrokesSpan = document.getElementById('totalStrokes');
+                const totalScoreSpan = document.getElementById('totalScore');
+                const yardsTraveledSpan = document.getElementById('yardsTraveled');
+                const remainingDistanceSpan = document.getElementById('remainingDistance');
+                const progressContainer = document.querySelector('.progress-container');
+
+                if (totalStrokesSpan) {
+                    totalStrokesSpan.textContent = `Total Strokes: ${totalStrokes}`;
+                }
+
+                const relativeScore = totalStrokes - parForRound;
+                if (totalScoreSpan) {
+                    totalScoreSpan.textContent = (relativeScore === 0) ? 'You shot even par' :
+                        (relativeScore > 0) ? `You shot ${relativeScore} over par` :
+                        `You shot ${Math.abs(relativeScore)} under par`;
+                }
+
+                if (yardsTraveledSpan) yardsTraveledSpan.style.display = 'none';
+                if (remainingDistanceSpan) remainingDistanceSpan.style.display = 'none';
+                if (progressContainer && remainingDistance <= 0) progressContainer.style.display = 'none';
             }
         }
     }
 
-    function displayFinalScore() {
-        const totalStrokesSpan = document.getElementById('totalStrokes');
-        const totalScoreSpan = document.getElementById('totalScore');
-        const yardsTraveledSpan = document.getElementById('yardsTraveled');
-        const remainingDistanceSpan = document.getElementById('remainingDistance');
-        const progressContainer = document.querySelector('.progress-container');
-
-        if (totalStrokesSpan) {
-            totalStrokesSpan.textContent = `Total Strokes: ${totalStrokes}`;
-        }
-
-        const relativeScore = totalStrokes - parForRound;
-        if (totalScoreSpan) {
-            totalScoreSpan.textContent = (relativeScore === 0) ? 'You shot even par' :
-                (relativeScore > 0) ? `You shot ${relativeScore} over par` :
-                `You shot ${Math.abs(relativeScore)} under par`;
-        }
-
-        if (yardsTraveledSpan) yardsTraveledSpan.style.display = 'none';
-        if (remainingDistanceSpan) remainingDistanceSpan.style.display = 'none';
-        if (progressContainer) progressContainer.style.display = 'none';
-    }
-
-    function addSwingButtonListeners(swingBtn, holeNumber) {
-        swingBtn.addEventListener('mousedown', function () {
-            if (timer === null) {
-                power = 0;
-                timer = setInterval(function () {
-                    power += 1.7;
-                    updateProgressBar(holeNumber, power);
-                    if (power >= 100) {
-                        clearInterval(timer);
-                        timer = null;
-                    }
-                }, 10);
-            }
-        });
-
-        swingBtn.addEventListener('mouseup', function () {
-            if (timer !== null) {
-                clearInterval(timer);
-                timer = null;
-                simulateSwing(power);
-            }
-
-            let visualPower = power;
-            const progressBar = document.getElementById(`swingProgressBar${hole.number}`);
-            const powerPercentage = document.getElementById(`powerPercentage${hole.number}`);
-            if (visualTimer !== null) {
-                clearInterval(visualTimer);
-            }
-            visualTimer = setInterval(function () {
-                visualPower -= 1.7;
+    swingBtn.addEventListener('mousedown', function () {
+        if (timer === null) {
+            power = 0;
+            timer = setInterval(function () {
+                power += 1.7;
+                const progressBar = document.getElementById(`swingProgressBar${hole.number}`);
+                const powerPercentage = document.getElementById(`powerPercentage${hole.number}`);
                 if (progressBar) {
-                    progressBar.value = visualPower;
+                    progressBar.value = power;
                 }
                 if (powerPercentage) {
-                    powerPercentage.textContent = `${Math.floor(power)}%`;
+                    powerPercentage.textContent = `${Math.min(Math.floor(power), 100)}%`;
                 }
-                if (visualPower <= 0) {
-                    clearInterval(visualTimer);
-                    visualTimer = null;
+                if (power >= 100) {
+                    clearInterval(timer);
+                    timer = null;
                 }
             }, 10);
-        });
+        }
+    });
+
+    swingBtn.addEventListener('mouseup', function () {
+        if (timer !== null) {
+            clearInterval(timer);
+            timer = null;
+            simulateSwing(power); // Use the actual power value for yardage calculations
+        }
+
+        let visualPower = power;
+        const progressBar = document.getElementById(`swingProgressBar${hole.number}`);
+        const powerPercentage = document.getElementById(`powerPercentage${hole.number}`);
+        if (visualTimer !== null) {
+            clearInterval(visualTimer);
+        }
+        visualTimer = setInterval(function () {
+            visualPower -= 1.7;
+            if (progressBar) {
+                progressBar.value = visualPower;
+            }
+            if (powerPercentage) {
+                powerPercentage.textContent = `${Math.floor(power)}%`; // Keep power percentage static
+            }
+            if (visualPower <= 0) {
+                clearInterval(visualTimer);
+                visualTimer = null;
+            }
+        }, 10);
+    });
+
+    const progressContainer = document.querySelector('.progress-container');
+    if (progressContainer) {
+        progressContainer.style.display = 'block';
     }
 
-    function updateProgressBar(holeNumber, power) {
-        const progressBar = document.getElementById(`swingProgressBar${holeNumber}`);
-        const powerPercentage = document.getElementById(`powerPercentage${holeNumber}`);
-        if (progressBar) {
-            progressBar.value = power;
-        }
-        if (powerPercentage) {
-            powerPercentage.textContent = `${Math.min(Math.floor(power), 100)}%`;
-        }
-    }
+    document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
 }
-
-// function startRound(holeNumber) {
-//     const hole = holes[holeNumber - 1];
-//     displayHole(hole);
-
-//     let strokes = 0;
-//     const clubs = JSON.parse(localStorage.getItem('clubs'));
-//     const suggestedClub = suggestClub(hole.distance);
-//     const customYardage = clubs && clubs[suggestedClub.toLowerCase()];
-
-//     const clubSuggestionElement = document.getElementById(`clubSuggestion${hole.number}`);
-//     const swingBtn = document.getElementById(`swingBtn${hole.number}`);
-
-//     if (clubSuggestionElement) {
-//         clubSuggestionElement.textContent = `Suggested Club: ${suggestedClub}${customYardage ? ` (${customYardage} yards)` : ''}`;
-//     } else {
-//         console.error(`clubSuggestionElement${hole.number} not found.`);
-//     }
-
-//     if (swingBtn) {
-//         swingBtn.disabled = false;
-//     } else {
-//         console.error(`swingBtn${hole.number} not found.`);
-//         return;
-//     }
-
-//     function updateProgressBarIds(holeNumber) {
-//         const progressBar = document.getElementById('swingProgressBar');
-//         const powerPercentage = document.getElementById('powerPercentage');
-        
-//         if (progressBar) {
-//             progressBar.id = `swingProgressBar${holeNumber}`;
-//         }
-//         if (powerPercentage) {
-//             powerPercentage.id = `powerPercentage${holeNumber}`;
-//         }
-
-//         const progressContainer = document.querySelector('.progress-container');
-//         if (progressContainer) {
-//             progressContainer.style.display = 'block';
-//         }
-//     }
-
-//     updateProgressBarIds(holeNumber);
-
-//     let power = 0;
-//     let timer = null;
-//     let visualTimer = null;
-//     let remainingDistance = hole.distance;
-
-//     updateYardagesDisplay(0, hole.distance);
-
-//     function updateYardagesDisplay(traveled, remaining) {
-//         const yardsTraveledSpan = document.getElementById('yardsTraveled');
-//         if (yardsTraveledSpan) {
-//             yardsTraveledSpan.textContent = `Yards Traveled: ${traveled} yards`;
-//         }
-//         const remainingDistanceSpan = document.getElementById('remainingDistance');
-//         if (remainingDistanceSpan) {
-//             remainingDistanceSpan.textContent = `Remaining Distance: ${remaining} yards`;
-//         }
-//     }
-
-//     function simulateSwing(power) {
-//         strokes++;
-//         const strokesSpan = document.getElementById(`strokes${holeNumber}`);
-//         if (strokesSpan) {
-//             strokesSpan.textContent = strokes;
-//         }
-
-//         const suggestedClub = suggestClub(remainingDistance);
-//         const customYardage = clubs && clubs[suggestedClub.toLowerCase()];
-//         const maxYardage = customYardage || hole.distance;
-
-//         let randomnessFactor = power < 80 ? Math.random() * 0.3 + 0.85 : Math.random() * 0.3 + 0.7;
-//         const yardsTraveled = Math.min(remainingDistance, Math.floor((power / 100) * maxYardage * randomnessFactor));
-
-//         remainingDistance -= yardsTraveled;
-//         updateYardagesDisplay(yardsTraveled, remainingDistance);
-
-//         const newSuggestedClub = suggestClub(remainingDistance);
-//         if (clubSuggestionElement) {
-//             clubSuggestionElement.textContent = remainingDistance > 0 ? `Suggested Club: ${newSuggestedClub}` : '';
-//             clubSuggestionElement.style.display = remainingDistance > 0 ? 'block' : 'none';
-//         }
-
-//         const scoreSpan = document.getElementById(`score${holeNumber}`);
-//         if (scoreSpan) {
-//             scoreSpan.textContent = strokes;
-//         }
-
-//         totalStrokes++;
-
-//         if (remainingDistance <= 0) {
-//             swingBtn.disabled = true;
-//             const holeCompletionMessage = document.getElementById('holeCompletionMessage');
-//             if (holeCompletionMessage) {
-//                 holeCompletionMessage.textContent = 'Hole Completed!';
-//             }
-
-//             swingBtn.style.display = 'none';
-//             completeHole(holeNumber);
-
-//             if (holeNumber === 18) {
-//                 const totalStrokesSpan = document.getElementById('totalStrokes');
-//                 const totalScoreSpan = document.getElementById('totalScore');
-//                 const yardsTraveledSpan = document.getElementById('yardsTraveled');
-//                 const remainingDistanceSpan = document.getElementById('remainingDistance');
-//                 const progressContainer = document.querySelector('.progress-container');
-
-//                 if (totalStrokesSpan) {
-//                     totalStrokesSpan.textContent = `Total Strokes: ${totalStrokes}`;
-//                 }
-
-//                 const relativeScore = totalStrokes - parForRound;
-//                 if (totalScoreSpan) {
-//                     totalScoreSpan.textContent = (relativeScore === 0) ? 'You shot even par' :
-//                         (relativeScore > 0) ? `You shot ${relativeScore} over par` :
-//                         `You shot ${Math.abs(relativeScore)} under par`;
-//                 }
-
-//                 if (yardsTraveledSpan) yardsTraveledSpan.style.display = 'none';
-//                 if (remainingDistanceSpan) remainingDistanceSpan.style.display = 'none';
-//                 if (progressContainer && remainingDistance <= 0) progressContainer.style.display = 'none';
-//             }
-//         }
-//     }
-
-//     swingBtn.addEventListener('mousedown', function () {
-//         if (timer === null) {
-//             power = 0;
-//             timer = setInterval(function () {
-//                 power += 1.7;
-//                 const progressBar = document.getElementById(`swingProgressBar${hole.number}`);
-//                 const powerPercentage = document.getElementById(`powerPercentage${hole.number}`);
-//                 if (progressBar) {
-//                     progressBar.value = power;
-//                 }
-//                 if (powerPercentage) {
-//                     powerPercentage.textContent = `${Math.min(Math.floor(power), 100)}%`;
-//                 }
-//                 if (power >= 100) {
-//                     clearInterval(timer);
-//                     timer = null;
-//                 }
-//             }, 10);
-//         }
-//     });
-
-//     swingBtn.addEventListener('mouseup', function () {
-//         if (timer !== null) {
-//             clearInterval(timer);
-//             timer = null;
-//             simulateSwing(power); // Use the actual power value for yardage calculations
-//         }
-
-//         let visualPower = power;
-//         const progressBar = document.getElementById(`swingProgressBar${hole.number}`);
-//         const powerPercentage = document.getElementById(`powerPercentage${hole.number}`);
-//         if (visualTimer !== null) {
-//             clearInterval(visualTimer);
-//         }
-//         visualTimer = setInterval(function () {
-//             visualPower -= 1.7;
-//             if (progressBar) {
-//                 progressBar.value = visualPower;
-//             }
-//             if (powerPercentage) {
-//                 powerPercentage.textContent = `${Math.floor(power)}%`; // Keep power percentage static
-//             }
-//             if (visualPower <= 0) {
-//                 clearInterval(visualTimer);
-//                 visualTimer = null;
-//             }
-//         }, 10);
-//     });
-
-//     const progressContainer = document.querySelector('.progress-container');
-//     if (progressContainer) {
-//         progressContainer.style.display = 'block';
-//     }
-
-//     document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
-// }
 
 // Function to load customized club distances from localStorage
 function loadSettings() {
