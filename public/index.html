@@ -10,22 +10,26 @@
    <link rel="stylesheet" href="style.css">
    <!-- <link rel="stylesheet" href="css/normalize.css"> -->
    
+   <!-- Title -->
    <title>Golf Club Slector-Simulator</title>
 </head>
-
-<header>
-   <div class="intro-container">
-      <h1>Welcome to the Golf Simulator App</h1>
-      <p>This app allows you to simulate a round of golf by customizing your club distances and playing through different
-         holes. Simply enter the yardage for each club based on your potential maximum distance. Once set up, you can play
-         through a round without having to look for yardage markers, making it easier and more enjoyable to focus on your
-         game.
-      </p>
-      <!-- <button id="startSetupBtn">Start Setup</button> -->
-   </div>
-</header>
-
 <body>
+   
+   <h1>Welcome to the Golf Simulator App</h1>
+
+   <header>
+      <!-- Intro Container -->
+      <div class="intro-container">
+         <p>This app allows you to simulate a round of golf by customizing your club distances and playing through different
+            holes. Simply enter the yardage for each club based on your potential maximum distance. Once set up, you can play
+            through a round without having to look for yardage markers, making it easier and more enjoyable to focus on your
+            game.
+         </p>
+         <!-- <button id="startSetupBtn">Start Setup</button> -->
+      </div>
+   </header>
+   
+   <!-- Instructions -->
    <div class="instructions">
       <span>Instructions:</span>
       <ol>
@@ -90,10 +94,9 @@
       <div class="result-container">
          <span id="result">Customized Club Suggestion</span>
       </div>
-      <!-- Instructions -->
    </div>
 
-   <!-- Not working -->
+   <!-- Fields filled alert -->
    <div id="alertMessage">
       Please fill all fields to customize your club distances
    </div>
