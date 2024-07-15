@@ -3,6 +3,7 @@ const startRoundBtn = document.querySelector('.startRoundBtn');
 startRoundBtn.addEventListener('click', handleStartRound);
 startRoundBtn.style.display = 'none';
 
+// Event listeners
 document.querySelector('.reset').addEventListener('click', resetYardsAndResult);
 document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
 document.getElementById('saveBtn').addEventListener('click', saveSettings);
@@ -31,28 +32,33 @@ const holes = [
     { number: 18, par: 4, distance: 390 }
 ];
 
+// Function for reseting all clubs
 function resetYardsAndResult() {
     document.getElementById('yardage').value = '';
     document.getElementById('result').textContent = 'Suggested Club Will Appear Here';
 }
 
+// Function for suggesting club
 function handleYardageInputChange(event) {
     const yardage = event.target.value;
     const suggestedClub = suggestClub(yardage);
     document.getElementById('result').innerText = suggestedClub;
 }
 
+// Function for saving all club distances
 function saveSettings() {
     if (!allFieldsFilled()) {
         alert("Please fill in all club distances before saving.");
-        return; // Exit the function if any field is not filled
+        return; // Exits the function if any field is not filled
     }
 
     const clubs = {};
+    // Loops through input fileds
     document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
         clubs[input.id] = input.value;
     });
 
+    // Saves "club's" object in local storage
     localStorage.setItem('clubs', JSON.stringify(clubs));
 
     // Show the "Start Round" button
@@ -62,15 +68,16 @@ function saveSettings() {
     document.getElementById('saveBtn').style.display = 'none';
 }
 
+// Funtion for starting round
 function handleStartRound() {
-    // Hide the "Start Round" button
+    // Hides the "Start Round" button
     this.style.display = 'none';
 
     // Show the holes container and yards counter
+    document.querySelector('.intro-container').style.display = 'none';
+    document.querySelector('.instructions').style.display = 'none';
     document.querySelector('.holes-container').style.display = 'block';
     document.querySelector('.yardsCounter').style.display = 'block';
-    document.querySelector('.instructions').style.display = 'none';
-    document.querySelector('.intro-container').style.display = 'none';
     document.getElementById('new-round').style.display = 'block';
 
     // Hide certain features
@@ -82,7 +89,7 @@ function handleStartRound() {
 
 // Function to hide specific elements
 function hideFieldsAndButton() {
-    ['.club-distances', '.yardsReset', '.clubs-reset'].forEach(selector => {
+    ['.club-distances', '.yardsReset', '.clubs-reset'].forEach( selector => {
         const element = document.querySelector(selector);
         if (element) element.style.display = 'none';
     });
@@ -100,7 +107,8 @@ function allFieldsFilled() {
 
 // Initialize variables to store total strokes and par for the round
 let totalStrokes = 0;
-const parForRound = 73; // Assuming the par for the round is 73
+// Assuming the par for the round is 73
+const parForRound = 73; 
 
 // Start Round functionality //
 function startRound(holeNumber) {
@@ -119,7 +127,7 @@ function startRound(holeNumber) {
     let remainingDistance = hole.distance;
 
     updateYardagesDisplay(0, hole.distance);
-
+    // Updates UI elements with suggested club and prepares swing button
     function initializeUI(hole, suggestedClub, customYardage) {
         const clubSuggestionElement = document.getElementById(`clubSuggestion${hole.number}`);
         const swingBtn = document.getElementById(`swingBtn${hole.number}`);
@@ -143,6 +151,7 @@ function startRound(holeNumber) {
     }
 
     function updateProgressBarIds(holeNumber) {
+        // Sets up the IDs for the progress bar and power percentage display
         const progressBar = document.getElementById('swingProgressBar');
         const powerPercentage = document.getElementById('powerPercentage');
 
@@ -160,6 +169,7 @@ function startRound(holeNumber) {
     }
 
     function updateYardagesDisplay(traveled, remaining) {
+        // Updates the displayed distances
         const yardsTraveledSpan = document.getElementById('yardsTraveled');
         if (yardsTraveledSpan) {
             yardsTraveledSpan.textContent = `Yards Traveled: ${traveled} yards`;
@@ -171,6 +181,7 @@ function startRound(holeNumber) {
     }
 
     function simulateSwing(power) {
+        // Calculates how far the ball travels based on swing power and updates the game state
         strokes++;
         updateStrokeCount(hole.number, strokes);
 
@@ -190,6 +201,7 @@ function startRound(holeNumber) {
     }
 
     function updateStrokeCount(holeNumber, strokes) {
+        // Displays the current stroke count for the hole
         const strokesSpan = document.getElementById(`strokes${holeNumber}`);
         if (strokesSpan) {
             strokesSpan.textContent = strokes;
@@ -197,6 +209,7 @@ function startRound(holeNumber) {
     }
 
     function updateClubSuggestion(remainingDistance, suggestedClub) {
+        // Updates the displayed suggested club based on remaining distance
         const clubSuggestionElement = document.getElementById(`clubSuggestion${hole.number}`);
         if (clubSuggestionElement) {
             clubSuggestionElement.textContent = remainingDistance > 0 ? `Suggested Club: ${suggestedClub}` : '';
@@ -205,6 +218,7 @@ function startRound(holeNumber) {
     }
 
     function handleHoleCompletion(holeNumber, remainingDistance, strokes) {
+        // Checks if the hole is completed and updates the UI accordingly
         if (remainingDistance <= 0) {
             const swingBtn = document.getElementById(`swingBtn${hole.number}`);
             if (swingBtn) {
@@ -226,6 +240,7 @@ function startRound(holeNumber) {
     }
 
     function displayFinalScore() {
+        // Displays the player's final score at the end of the round
         const totalStrokesSpan = document.getElementById('totalStrokes');
         const totalScoreSpan = document.getElementById('totalScore');
         const yardsTraveledSpan = document.getElementById('yardsTraveled');
@@ -249,6 +264,7 @@ function startRound(holeNumber) {
     }
 
     function addSwingButtonListeners(swingBtn, holeNumber) {
+        // Sets up event listeners for the swing button to handle power accumulation
         swingBtn.addEventListener('mousedown', function () {
             if (timer === null) {
                 power = 0;
@@ -293,6 +309,7 @@ function startRound(holeNumber) {
     }
 
     function updateProgressBar(holeNumber, power) {
+        // Updates the progress bar's visual representation of the swing power
         const progressBar = document.getElementById(`swingProgressBar${holeNumber}`);
         const powerPercentage = document.getElementById(`powerPercentage${holeNumber}`);
         if (progressBar) {
