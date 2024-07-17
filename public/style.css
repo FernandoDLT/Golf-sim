@@ -53,6 +53,11 @@ h4 {
    text-align: center;
 }
 
+/* .yardsReset h3 {
+   display: none;
+   color: red;
+} */
+
 /* Yardage info */
 h3 {
    color: rgb(96, 186, 180);
