@@ -14,12 +14,12 @@ h1 {
 
 /* Intro */
 .intro-container {
-   background: rgb(182, 212, 210);
    width: 40%;
    padding: 16px 20px;
    margin: 10px auto;
    text-align: center;
-   align-items: center;
+   /* align-items: center; */
+   background: rgb(182, 212, 210);
    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -27,6 +27,7 @@ h1 {
 .intro-container p {
    font-size: 1.2em;
    margin-bottom: 30px;
+   color: rgb(13, 131, 123);
 }
 
 /* Instructions */
