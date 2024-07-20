@@ -234,7 +234,7 @@ hr {
    display: none;
    font-size: 1.2rem;
    font-weight: 400;
-   color: black;
+   color: white;
    background: rgb(96, 186, 180);
    width: 24%;
    padding: 5px;
@@ -337,7 +337,7 @@ hr {
 
 /* Previous Hole */
 p {
-   color: black;
+   color: white;
    font-size: 18px;
 }
 
@@ -404,7 +404,9 @@ span#holeCompletionMessage {
 #roundCompletionMessage {
    display: block;
    margin-top: 14px;
-   color: rgb(13, 131, 123);
+   font-size: 1.6rem;
+   color: yellow;
+
 }
 
 /* Total Score Strokes count */

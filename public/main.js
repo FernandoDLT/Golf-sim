@@ -2,17 +2,14 @@
 document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
 document.getElementById('saveBtn').addEventListener('click', saveSettings);
 
-// Query the startRoundBtn and ensure it exists before setting up the event listener and hiding it
+// Event listeners
 const startRoundBtn = document.querySelector('.startRoundBtn');
-if (startRoundBtn) {
-    startRoundBtn.addEventListener('click', handleStartRound);
-    startRoundBtn.style.display = 'none';
-}
+startRoundBtn.addEventListener('click', handleStartRound);
+startRoundBtn.style.display = 'none';
 
 document.querySelector('.reset').addEventListener('click', resetYardsAndResult);
 document.querySelector('.resetClubs').addEventListener('click', resetAllClubs);
 document.getElementById('new-round').addEventListener('click', handleNewRound);
-
 
 // Define holes array
 const holes = [
@@ -20,16 +17,16 @@ const holes = [
     { number: 2, par: 3, distance: 120 },
     { number: 3, par: 4, distance: 410 },
     { number: 4, par: 5, distance: 530 },
-    { number: 5, par: 3, distance: 140 },
+    { number: 5, par: 3, distance: 210 },
     { number: 6, par: 4, distance: 420 },
-    { number: 7, par: 3, distance: 190 },
+    { number: 7, par: 3, distance: 200 },
     { number: 8, par: 5, distance: 550 },
     { number: 9, par: 4, distance: 430 },
     { number: 10, par: 4, distance: 380 },
-    { number: 11, par: 3, distance: 180 },
+    { number: 11, par: 3, distance: 160 },
     { number: 12, par: 5, distance: 510 },
     { number: 13, par: 4, distance: 440 },
-    { number: 14, par: 4, distance: 300 },
+    { number: 14, par: 4, distance: 340 },
     { number: 15, par: 3, distance: 200 },
     { number: 16, par: 5, distance: 540 },
     { number: 17, par: 4, distance: 410 },
@@ -384,18 +381,18 @@ function suggestClub(distance) {
         const yardage = parseInt(distance);
 
         if (yardage === 0) {
-            return "Click 'Next' to continue.";
+            return "Click 'Next Hole' to continue.";
         }
 
-        if (isNaN(yardage) || yardage <= 0) {
-            throw new Error('Please enter a valid yardage.');
-        }
+        // if (isNaN(yardage) || yardage <= 0) {
+        //     throw new Error('Please enter a valid yardage.');
+        // }
 
         const clubDistancesJSON = localStorage.getItem("clubs");
         if (!clubDistancesJSON) {
             throw new Error('Club distances have not been set.');
         }
-
+        
         const clubDistances = JSON.parse(clubDistancesJSON);
         const driverDistance = parseInt(clubDistances.driver);
         if (!isNaN(driverDistance) && yardage >= driverDistance) {
@@ -432,42 +429,45 @@ function suggestClub(distance) {
     }
 }
 
-
-document.getElementById("yardage").addEventListener("input", function () {
-    const yardageInput = document.getElementById("yardage");
-    const yardage = yardageInput.value;
-    const suggestedClub = suggestClub(yardage);
-    document.getElementById("result").innerText = suggestedClub;
-});
+// document.getElementById("yardage").addEventListener("input", function () {
+//     const yardageInput = document.getElementById("yardage");
+//     const yardage = yardageInput.value;
+//     const suggestedClub = suggestClub(yardage);
+//     document.getElementById("result").innerText = suggestedClub;
+// });
 
 // Load settings when the page loads
 loadSettings();
 
 // Displays hole information
 function displayHole(hole) {
+    // Find the element with the class 'hole' in the DOM
     const holeElement = document.querySelector('.hole');
+
+    // Check if the element exists
     if (!holeElement) {
         console.error('.hole element not found in the DOM.');
         return;
     }
 
+    // Set the inner HTML of the hole element with the hole information
     holeElement.innerHTML = `
-    <h2>Hole #${hole.number}</h2>
-    <p>Par: ${hole.par}</p>
-    <p>Distance: ${hole.distance} yards</p>
-    <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
-    <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
-    <button id="nextHoleBtn">Next Hole</button>
-    <div class="strokes-container">
-        <div class="progress-container">
-            <span>Power</span>
-            <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
-            <span id="powerPercentage${hole.number}" class="powerPercentage">0%</span>
+        <h2>Hole #${hole.number}</h2>
+        <p>Par: ${hole.par}</p>
+        <p>Distance: ${hole.distance} yards</p>
+        <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
+        <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
+        <button id="nextHoleBtn">Next Hole</button>
+        <div class="strokes-container">
+            <div class="progress-container">
+                <span>Power</span>
+                <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
+                <span id="powerPercentage${hole.number}" class="powerPercentage">0%</span>
+            </div>
+            <span class="strokes-label">Strokes:</span>
+            <span id="strokes${hole.number}" class="strokes">0</span>
         </div>
-        <span class="strokes-label">Strokes:</span>
-        <span id="strokes${hole.number}" class="strokes">0</span>
-    </div>
-`;
+    `;
 }
 
 // Hole completion function
@@ -537,11 +537,11 @@ function completeHole(holeNumber) {
         // Logic to handle completion of the 18th hole
         displayElement('nextHoleBtn', 'none');
         setTextContent('holeCompletionMessage', '');
-        displayElement('new-round', 'inline-block');
         setTextContent('roundCompletionMessage', 'All Holes Completed!');
         hideElementBySelector('.holes-container');
         hideElementBySelector('hr');
         displayElement('yardageInformation', 'none');
+        displayElement('new-round', 'inline-block');
     } else {
         // Logic for holes other than the 18th hole
         displayElement('nextHoleBtn', 'inline-block');
