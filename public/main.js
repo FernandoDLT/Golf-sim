@@ -33,10 +33,32 @@ const holes = [
     { number: 18, par: 4, distance: 390 }
 ];
 
-// Function for reseting all clubs
-function resetYardsAndResult() {
-    document.getElementById('yardage').value = '';
-    document.getElementById('result').textContent = 'Suggested Club Will Appear Here';
+// Function to check if all fields are filled
+function allFieldsFilled() {
+    return [...document.querySelectorAll('.club-distances input[type="number"]')]
+        .every(input => input.value.trim() !== '');
+}
+
+// Function to toggle the visibility of the message
+function toggleMessageVisibility() {
+    document.querySelector('.club-distances h3').style.visibility = allFieldsFilled() ? 'hidden' : 'visible';
+}
+
+// Function for saving all club distances
+function saveSettings() {
+    if (!allFieldsFilled()) {
+        alert("Please customize all club distances before saving.");
+        return;
+    }
+
+    const clubs = Object.fromEntries(
+        [...document.querySelectorAll('.club-distances input[type="number"]')]
+            .map(input => [input.id, input.value])
+    );
+
+    localStorage.setItem('clubs', JSON.stringify(clubs));
+    startRoundBtn.style.display = 'inline-block';
+    document.getElementById('saveBtn').style.display = 'none';
 }
 
 // Function for suggesting club
@@ -46,55 +68,87 @@ function handleYardageInputChange(event) {
     document.getElementById('result').innerText = suggestedClub;
 }
 
-// Function for saving all club distances
-function saveSettings() {
-    if (!allFieldsFilled()) {
-        alert("Please fill in all club distances before saving.");
-        return; // Exits the function if any field is not filled
-    }
-
-    const clubs = {};
-    // Loops through input fileds
-    document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
-        clubs[input.id] = input.value;
-    });
-
-    // Saves "club's" object in local storage
-    localStorage.setItem('clubs', JSON.stringify(clubs));
-
-    // Show the "Start Round" button
-    startRoundBtn.style.display = 'inline-block';
-
-    // Hide the save button
-    document.getElementById('saveBtn').style.display = 'none';
-}
-
-function allFieldsFilled() {
-    let allFilled = true;
-    document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
-        if (!input.value) {
-            allFilled = false;
-        }
-    });
-    return allFilled;
+// Function for resetting all clubs
+function resetYardsAndResult() {
+    document.getElementById('yardage').value = '';
+    document.getElementById('result').textContent = 'Suggested Club Will Appear Here';
 }
 
 // Function to handle input change in club distances
 function handleClubDistanceInputChange() {
-    // Check if all fields are filled
-    if (allFieldsFilled()) {
-        // Hide the message
-        document.querySelector('.club-distances h3').style.visibility = 'hidden';
-    } else {
-        // Show the message
-        document.querySelector('.club-distances h3').style.visibility = 'visible';
-    }
+    toggleMessageVisibility();
 }
 
 // Attach event listeners to the input fields
 document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
     input.addEventListener('input', handleClubDistanceInputChange);
 });
+
+
+// // Function to check if all fields are filled
+// function allFieldsFilled() {
+//     return [...document.querySelectorAll('.club-distances input[type="number"]')]
+//     .every(input => input.value.trim() !== '');
+// }
+
+// // Function to toggle the visibility of the message
+// function toggleMessageVisibility() {
+//     document.querySelector('.club-distances h3').style.visibility = allFieldsFilled() ? 'hidden' : 'visible';
+// }
+
+// // Function for saving all club distances
+// function saveSettings() {
+//     if (!allFieldsFilled()) {
+//         alert("Please fill in all club distances before saving.");
+//         return;
+//     }
+    
+//     const clubs = Object.fromEntries(
+//         [...document.querySelectorAll('.club-distances input[type="number"]')]
+//         .map(input => [input.id, input.value])
+//     );
+    
+//     localStorage.setItem('clubs', JSON.stringify(clubs));
+//     startRoundBtn.style.display = 'inline-block';
+//     document.getElementById('saveBtn').style.display = 'none';
+// }
+
+// // Function for suggesting club
+// function handleYardageInputChange(event) {
+//     const yardage = event.target.value;
+//     const suggestedClub = suggestClub(yardage);
+//     document.getElementById('result').innerText = suggestedClub;
+// }
+
+
+// // Function for reseting all clubs
+// function resetYardsAndResult() {
+//     document.getElementById('yardage').value = '';
+//     document.getElementById('result').textContent = 'Suggested Club Will Appear Here';
+// }
+
+
+// // Function to handle input change in club distances
+// function handleClubDistanceInputChange() {
+//     // Check if all fields are filled
+//     if (allFieldsFilled()) {
+//         // Hide the message
+//         document.querySelector('.club-distances h3').style.visibility = 'hidden';
+//     } else {
+//         // Show the message
+//         document.querySelector('.club-distances h3').style.visibility = 'visible';
+//     }
+// }
+
+// // Function to handle input change in club distances
+// function handleClubDistanceInputChange() {
+//     toggleMessageVisibility();
+// }
+
+// // Attach event listeners to the input fields
+// document.querySelectorAll('.club-distances input[type="number"]').forEach(input => {
+//     input.addEventListener('input', handleClubDistanceInputChange);
+// });
 
 // Function to load customized club distances from localStorage
 function loadSettings() {
@@ -445,10 +499,10 @@ function displayHole(hole) {
     const holeElement = document.querySelector('.hole');
 
     // Check if the element exists
-    if (!holeElement) {
-        console.error('.hole element not found in the DOM.');
-        return;
-    }
+    // if (!holeElement) {
+    //     console.error('.hole element not found in the DOM.');
+    //     return;
+    // }
 
     // Set the inner HTML of the hole element with the hole information
     holeElement.innerHTML = `
