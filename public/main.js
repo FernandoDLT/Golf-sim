@@ -117,11 +117,12 @@ function handleStartRound() {
         const element = document.querySelector(selector);
         if (element) element.style.display = 'none';
     });
-
+    
     // Show holes container and yards counter
-    document.querySelector('.holes-container').style.display = 'block';
-    document.querySelector('.yardsCounter').style.display = 'block';
-    document.getElementById('new-round').style.display = 'block';
+    ['.holes-container', '.yardsCounter', '#new-round'].forEach(selector => {
+        const element = document.querySelector(selector);
+        if (element) element.style.display = 'block';
+    });
 
     // Start the round and load hole information and the suggested club for the first hole
     startRound(1);
@@ -372,10 +373,6 @@ function suggestClub(distance) {
             return "Click 'Next Hole' to continue.";
         }
 
-        // if (isNaN(yardage) || yardage <= 0) {
-        //     throw new Error('Please enter a valid yardage.');
-        // }
-
         const clubDistancesJSON = localStorage.getItem("clubs");
         if (!clubDistancesJSON) {
             throw new Error('Club distances have not been set.');
@@ -406,7 +403,6 @@ function suggestClub(distance) {
             { name: "3 Iron", distance: clubDistances.threeIron },
             { name: "5 Wood", distance: clubDistances.fiveWood },
             { name: "3 Wood", distance: clubDistances.threeWood }
-            // { name: "driver", distance: clubDistances.driver }
         ];
 
         const suggestedClub = clubs.find(club => yardage <= parseInt(club.distance));
@@ -417,13 +413,6 @@ function suggestClub(distance) {
     }
 }
 
-// document.getElementById("yardage").addEventListener("input", function () {
-//     const yardageInput = document.getElementById("yardage");
-//     const yardage = yardageInput.value;
-//     const suggestedClub = suggestClub(yardage);
-//     document.getElementById("result").innerText = suggestedClub;
-// });
-
 // Load settings when the page loads
 loadSettings();
 
@@ -431,12 +420,6 @@ loadSettings();
 function displayHole(hole) {
     // Find the element with the class 'hole' in the DOM
     const holeElement = document.querySelector('.hole');
-
-    // Check if the element exists
-    // if (!holeElement) {
-    //     console.error('.hole element not found in the DOM.');
-    //     return;
-    // }
 
     // Set the inner HTML of the hole element with the hole information
     holeElement.innerHTML = `
@@ -554,3 +537,11 @@ function completeHole(holeNumber) {
 function handleNewRound() {
     window.location.href = 'index.html';
 }
+
+// This was at 416
+// document.getElementById("yardage").addEventListener("input", function () {
+//     const yardageInput = document.getElementById("yardage");
+//     const yardage = yardageInput.value;
+//     const suggestedClub = suggestClub(yardage);
+//     document.getElementById("result").innerText = suggestedClub;
+// });
