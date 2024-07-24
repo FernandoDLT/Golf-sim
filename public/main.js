@@ -537,11 +537,3 @@ function completeHole(holeNumber) {
 function handleNewRound() {
     window.location.href = 'index.html';
 }
-
-// This was at 416
-// document.getElementById("yardage").addEventListener("input", function () {
-//     const yardageInput = document.getElementById("yardage");
-//     const yardage = yardageInput.value;
-//     const suggestedClub = suggestClub(yardage);
-//     document.getElementById("result").innerText = suggestedClub;
-// });
