@@ -1,6 +1,6 @@
 // Event listeners setup
-document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
 document.getElementById('saveBtn').addEventListener('click', saveSettings);
+document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
 
 // Event listeners
 const startRoundBtn = document.querySelector('.startRoundBtn');
@@ -208,15 +208,13 @@ function startRound(holeNumber) {
         document.getElementById('remainingDistance').textContent = `Remaining Distance: ${remaining} yards`;
     }
 
-    function simulateSwing(power) {
+    // function simulateSwing(power)
+    function simulateSwing() {
         strokes++;
         updateStrokeCount(hole.number, strokes);
 
         // Calculate the yards traveled based on the power and update remaining distance
-        const suggestedClub = suggestClub(remainingDistance);
-        const customYardage = clubs?.[suggestedClub.toLowerCase()] || hole.distance;
-        const randomnessFactor = power < 80 ? Math.random() * 0.3 + 0.85 : Math.random() * 0.3 + 0.7;
-        const yardsTraveled = Math.min(remainingDistance, Math.floor((power / 100) * customYardage * randomnessFactor));
+        const yardsTraveled = Math.min(remainingDistance, Math.floor(Math.random() * remainingDistance) + 1);
 
         remainingDistance -= yardsTraveled;
         updateYardagesDisplay(yardsTraveled, remainingDistance);
@@ -537,3 +535,10 @@ function completeHole(holeNumber) {
 function handleNewRound() {
     window.location.href = 'index.html';
 }
+
+
+// Line 216
+// const suggestedClub = suggestClub(remainingDistance);
+// const customYardage = clubs?.[suggestedClub.toLowerCase()] || hole.distance;
+// const randomnessFactor = power < 80 ? Math.random() * 0.3 + 0.85 : Math.random() * 0.3 + 0.7;
+// const yardsTraveled = Math.min(remainingDistance, Math.floor((power / 100) * customYardage * randomnessFactor));
