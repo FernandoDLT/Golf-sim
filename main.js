@@ -1,4 +1,9 @@
 // Event listeners setup
+// document.getElementById('start').addEventListener('click', function() {
+//     window.location.href = 'index.html';
+// })
+
+
 document.getElementById('saveBtn').addEventListener('click', saveSettings);
 document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
 

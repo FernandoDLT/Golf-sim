@@ -1,40 +1,92 @@
 * {
    box-sizing: border-box;
+   margin: 0;
    padding: 0;
    font-family: Georgia, 'Times New Roman', Times, serif;
+   line-height: 1.4;
 }
 
 /* Intro h1 */
 h1 {
    color: rgb(96, 186, 180);
    text-align: center;
-   margin: 30px 0;
+   margin: 180px 0 20px;
+   font-size: clamp(24px, 3vw, 34px);
+   font-weight: bold;
    text-decoration: underline;
+   font-family: 'Lobster', cursive;
 }
 
 /* Intro */
 .intro-container {
-   width: 40%;
-   padding: 16px 20px;
-   margin: 10px auto;
+   width: 60%;
+   max-width: 800px;
+   padding: 30px 20px;
+   margin: 40px auto;
    text-align: center;
-   /* align-items: center; */
-   background: rgb(182, 212, 210);
-   box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.2);
+   font-size: clamp(18px, 1.5vw, 22px);
+   background: #e0f7fa;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* intro-container paragraph*/
 .intro-container p {
-   font-size: 1.2em;
-   margin-bottom: 30px;
-   color: rgb(13, 131, 123);
+   font-size: clamp(18px, 1.5vw, 22px);
+   padding-bottom: 20px;
+   color: #0d837b;
+}
+
+/* Intro text for span */
+.intro-container span {
+   display: block;
+   margin: 20px 0;
+   font-size: 18px;
+   color: #0d837b;
+   text-align: center;
+   /* display: block;
+   padding-bottom: 12px;
+   font-size: 18px;
+   color: #0d837b; */
+}
+
+/* Main Start button */
+#start {
+   display: inline-block;
+   display: flex;
+   margin: 0 auto;
+   padding: 14px 28px;
+   font-size: 18px;
+   color: #fff;
+   background: rgb(96, 186, 180);
+   border: 2px solid rgb(96, 186, 180);
+   border-radius: 35px;
+   cursor: pointer;
+   transition: background 0.3s, border-color 0.3s;
+   /* display: inline-block;
+   margin: 1px auto 0;
+   padding: 14px;
+   color: green;
+   background: yellow;
+   border: 2px solid green;
+   border-radius: 25px;
+   cursor: pointer;
+   align-items: center; */
+}
+
+/* Start button hover */
+#start:hover {
+   color: white;
+   background: green;
+   border: 2px solid white;
 }
 
 /* Instructions */
 .instructions {
    width: 40%;
-   margin: 0 auto;
-   padding: 30px;
+   margin: 60px auto 0;
+   padding: 40px 0 40px;
    background: rgb(202, 202, 202);
    text-align: center;
    box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.2);
@@ -42,8 +94,8 @@ h1 {
 
 /* Inst. span */
 .instructions span {
-   color: black;
    font-size: 20px;
+   color: black;
 }
 
 /* Hole and par text */
@@ -73,8 +125,10 @@ h3 {
 
 /* Ordered list */
 ol {
+   width: 92%;
    text-align: left;
-   padding-left: 40px;
+   padding-left: 10%;
+   margin-top: 20px;
    font-weight: 500;
 }
 
@@ -436,7 +490,7 @@ span#holeCompletionMessage {
    padding: 12px;
    color: green;
    background: yellow;
-   border: 2px solid green;
+   border: 1px solid green;
    border-radius: 20px;
    cursor: pointer;
    align-items: center;
@@ -447,4 +501,5 @@ span#holeCompletionMessage {
    color: white;
    background: red;
    border: none;
+   border: 1px solid black;
 }
