@@ -45,10 +45,6 @@ h1 {
    font-size: 18px;
    color: #0d837b;
    text-align: center;
-   /* display: block;
-   padding-bottom: 12px;
-   font-size: 18px;
-   color: #0d837b; */
 }
 
 /* Main Start button */
@@ -64,15 +60,6 @@ h1 {
    border-radius: 35px;
    cursor: pointer;
    transition: background 0.3s, border-color 0.3s;
-   /* display: inline-block;
-   margin: 1px auto 0;
-   padding: 14px;
-   color: green;
-   background: yellow;
-   border: 2px solid green;
-   border-radius: 25px;
-   cursor: pointer;
-   align-items: center; */
 }
 
 /* Start button hover */
