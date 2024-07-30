@@ -133,11 +133,11 @@ li {
 /* Swing btn */
 .swingBtn {
    margin: 6px auto;
-   padding: 12px;
+   padding: 10px 24px;
    color: green;
    background: yellow;
    border: 2px solid green;
-   border-radius: 20px;
+   border-radius: 25px;
    align-items: center;
 }
 
@@ -145,7 +145,7 @@ li {
 .swingBtn:hover {
    color: white;
    background: green;
-   border: 1px solid green;
+   /* border: px solid green; */
    cursor: pointer;
 }
 
@@ -227,11 +227,11 @@ input {
 /* Yards reset button */
 #resetYardageBtn {
    margin: 0 auto;
-   padding: 12px;
+   padding: 8px 16px;
    color: green;
    background: yellow;
    border: 2px solid green;
-   border-radius: 20px;
+   border-radius: 25px;
    cursor: pointer;
    align-items: center;
 }
@@ -302,16 +302,21 @@ hr {
    text-align: center;
 }
 
+button#saveBtn {
+   padding: 10px 16px;
+   border-radius: 25px;
+}
+
 /* Reset All Clubs Button */
 .clubs-reset button {
    display: inline-block;
    margin-right: 10px;
    margin: 0 auto;
-   padding: 12px;
+   padding: 10px 16px;
    color: green;
    background: yellow;
    border: 2px solid green;
-   border-radius: 20px;
+   border-radius: 25px;
    cursor: pointer;
    align-items: center;
 }
@@ -344,10 +349,10 @@ hr {
 .hole {
    text-align: center;
    margin: 20px auto;
+   padding: 20px;
    width: 80%;
    max-width: 600px;
    border: 1px solid #ccc;
-   padding: 20px;
 }
 
 /* Hole Info. result containers */
@@ -355,7 +360,7 @@ hr {
    color: yellow;
    background-color: rgb(96, 186, 180);
    border: 1px solid black;
-   padding: 10px;
+   padding: 60px;
    margin-bottom: 10px;
 }
 
@@ -387,12 +392,12 @@ p {
 #nextHoleBtn {
    display: none;
    margin-right: 10px;
-   margin: 0 auto;
-   padding: 12px;
+   margin: 10px auto 0;
+   padding: 10px 16px;
    color: green;
    background: yellow;
    border: 2px solid green;
-   border-radius: 20px;
+   border-radius: 25px;
    cursor: pointer;
    align-items: center;
 }
@@ -471,14 +476,14 @@ span#holeCompletionMessage {
    margin-top: 20px;
 }
 
-/* New Round button */
+/* Start New Round button */
 #new-round {
    display: none;
    padding: 12px;
    color: green;
    background: yellow;
    border: 1px solid green;
-   border-radius: 20px;
+   border-radius: 25px;
    cursor: pointer;
    align-items: center;
 }

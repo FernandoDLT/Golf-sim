@@ -1,9 +1,3 @@
-// Event listeners setup
-// document.getElementById('start').addEventListener('click', function() {
-//     window.location.href = 'index.html';
-// })
-
-
 document.getElementById('saveBtn').addEventListener('click', saveSettings);
 document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
 
@@ -109,13 +103,18 @@ function resetAllClubs() {
     });
 
     // Redirect to the homepage
-    window.location.href = 'index.html';
+    window.location.href = 'index.main.html';
 }
 
 // Function for starting round
 function handleStartRound() {
     // Hides the "Start Round" button
     this.style.display = 'none';
+    // Auio var
+    // const swingSound = new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav');
+    const swingSound = new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav');
+
+    swingSound.play();
 
     // Hide specific elements
     ['.intro-container', '.instructions', '.club-distances', '.yardsReset', '.clubs-reset'].forEach(selector => {
@@ -123,11 +122,14 @@ function handleStartRound() {
         if (element) element.style.display = 'none';
     });
     
-    // Show holes container and yards counter
-    ['.holes-container', '.yardsCounter', '#new-round'].forEach(selector => {
-        const element = document.querySelector(selector);
-        if (element) element.style.display = 'block';
-    });
+    setTimeout(function() {
+        // Show holes container and yards counter
+        ['.holes-container', '.yardsCounter', '#new-round'].forEach(selector => {
+            const element = document.querySelector(selector);
+            if (element) element.style.display = 'block';
+        });
+            // window.location.href = '';
+    }, 100);
 
     // Start the round and load hole information and the suggested club for the first hole
     startRound(1);
@@ -232,7 +234,6 @@ function startRound(holeNumber) {
         handleHoleCompletion(holeNumber, remainingDistance, strokes);
     }
 
-
     function updateStrokeCount(holeNumber, strokes) {
         const strokesSpan = document.getElementById(`strokes${holeNumber}`);
         if (strokesSpan) {
@@ -285,14 +286,29 @@ function startRound(holeNumber) {
         document.getElementById('remainingDistance').style.display = 'none';
         document.querySelector('.progress-container').style.display = 'none'; // Hide Progress Container
     }
-    
+
     function addSwingButtonListeners(swingBtn, holeNumber) {
         swingBtn.addEventListener('mousedown', function () {
-            if (timer === null) {
-                power = 0;
-                const targetPower = 100.9;  // target power
-                timer = setInterval(function () {
-                    // Check if the next increment will exceed 100%
+        // Determine the suggested club for this swing
+        const suggestedClub = suggestClub(remainingDistance);
+        
+        // Create an audio object for the swing sound based on the suggested club
+        let swingSound;
+            if (suggestedClub.toLowerCase().includes('putter')) {
+                swingSound = new Audio('assets/audio/golf-putt.wav');
+            } else {
+                swingSound = new Audio('assets/audio/mixkit-golf-shot.wav');
+            }
+                        
+        // Play the swing sound effect
+        swingSound.play();
+
+        // Your existing code for mousedown event...
+        if (timer === null) {
+            power = 0;
+            const targetPower = 100.9;  // target power
+            timer = setInterval(function () {
+                // Check if the next increment will exceed 100%
                 if (power <= 100 && power + (targetPower - power) * 0.1 > 100) {
                     power = 100;  // Set power to 100
                 } else if (power + (targetPower - power) * 0.1 > 100.01) {
@@ -314,16 +330,16 @@ function startRound(holeNumber) {
         }
     });
 
-        swingBtn.addEventListener('mouseup', function () {
-            if (timer !== null) {
-                clearInterval(timer);
-                timer = null;
-                simulateSwing(power);
-            }
+    swingBtn.addEventListener('mouseup', function () {
+        if (timer !== null) {
+            clearInterval(timer);
+            timer = null;
+            simulateSwing(power);
+        }
 
-            let visualPower = power;
-            updateVisualPower(holeNumber, visualPower);
-        });
+        let visualPower = power;
+        updateVisualPower(holeNumber, visualPower);
+    });
     }
 
     function updateVisualPower(holeNumber, visualPower) {
@@ -373,6 +389,8 @@ function suggestClub(distance) {
         const yardage = parseInt(distance);
 
         if (yardage === 0) {
+            const holeSound = new Audio('assets/audio/putt-ball-in-the-hole.mp3');
+            holeSound.play();
             return "Click 'Next Hole' to continue.";
         }
 
@@ -393,7 +411,7 @@ function suggestClub(distance) {
         }
 
         const clubs = [
-            { name: "Putter, you got this...", distance: clubDistances.putter },
+            { name: "Putter", distance: clubDistances.putter },
             { name: "Lob Wedge", distance: clubDistances.lobWedge },
             { name: "Sand Wedge", distance: clubDistances.sandWedge },
             { name: "Pitching Wedge", distance: clubDistances.pitchWedge },
@@ -410,10 +428,10 @@ function suggestClub(distance) {
 
         const suggestedClub = clubs.find(club => yardage <= parseInt(club.distance));
         return suggestedClub ? suggestedClub.name : "No club found for the entered yardage.";
-    } catch (error) {
-        // console.error("Error suggesting club:", error.message);
-        return "Club distances have not been set.";
-    }
+        } catch (error) {
+            // console.error("Error suggesting club:", error.message);
+            return "Club distances have not been set.";
+        }
 }
 
 // Load settings when the page loads
@@ -538,12 +556,5 @@ function completeHole(holeNumber) {
 
 // Redirects to homepage
 function handleNewRound() {
-    window.location.href = 'index.html';
+    window.location.href = 'index.main.html';
 }
-
-
-// Line 216
-// const suggestedClub = suggestClub(remainingDistance);
-// const customYardage = clubs?.[suggestedClub.toLowerCase()] || hole.distance;
-// const randomnessFactor = power < 80 ? Math.random() * 0.3 + 0.85 : Math.random() * 0.3 + 0.7;
-// const yardsTraveled = Math.min(remainingDistance, Math.floor((power / 100) * customYardage * randomnessFactor));
