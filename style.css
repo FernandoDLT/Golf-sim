@@ -267,7 +267,7 @@ h3 {
 
 /* Horizontal Line */
 hr {
-   margin-bottom: 20px;
+   margin: 4px auto 30px;
    width: 80%;
 }
 

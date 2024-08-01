@@ -1,7 +1,3 @@
-// document.getElementById('start').addEventListener('click', function() {
-//    window.location.href = 'index.main.html';
-// });
-
 // Load the audio file
 const swingSound = new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav');
 
