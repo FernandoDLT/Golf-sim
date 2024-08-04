@@ -210,7 +210,7 @@ function startRound(holeNumber) {
         }
     }
     
-    function updateYardagesDisplay(traveled, remaining) {
+    function updateYardagesDisplay(traveled, remaining, callback) {
         const traveledDisplay = document.getElementById('yardsTraveled');
         const remainingDisplay = document.getElementById('remainingDistance');
 
@@ -225,15 +225,42 @@ function startRound(holeNumber) {
             } else {
                 clearInterval(intervalId);
                 traveledDisplay.textContent = `Yards Traveled: ${traveled} yards`; // Ensure final value is set
+
+                // Call the callback after animation is complete
+                if (callback) callback();
             }
-            
         }, 10); // Adjust the interval time for smoother/faster increments
 
-        // Set the remaining distance immediately    
+        // Set the remaining distance display immediately if not animated
         if (remainingDisplay) {
             remainingDisplay.textContent = `Remaining Distance: ${remaining} yards`;
         }
     }
+
+    // function updateYardagesDisplay(traveled, remaining) {
+    //     const traveledDisplay = document.getElementById('yardsTraveled');
+    //     const remainingDisplay = document.getElementById('remainingDistance');
+
+    //     // Incremental update for traveled yardage
+    //     let currentTraveled = 0;
+    //     const increment = traveled / 100; // Adjust this value for smoother/faster increments
+
+    //     const intervalId = setInterval(() => {
+    //         if (currentTraveled < traveled) {
+    //             currentTraveled += increment;
+    //             traveledDisplay.textContent = `Yards Traveled: ${Math.min(Math.floor(currentTraveled), traveled)} yards`;
+    //         } else {
+    //             clearInterval(intervalId);
+    //             traveledDisplay.textContent = `Yards Traveled: ${traveled} yards`; // Ensure final value is set
+    //         }
+            
+    //     }, 10); // Adjust the interval time for smoother/faster increments
+
+    //     // Set the remaining distance immediately    
+    //     if (remainingDisplay) {
+    //         remainingDisplay.textContent = `Remaining Distance: ${remaining} yards`;
+    //     }
+    // }
 
     // function simulateSwing
     function simulateSwing() {
@@ -243,16 +270,41 @@ function startRound(holeNumber) {
         // Calculate the yards traveled based on the power and update remaining distance
         const yardsTraveled = Math.min(remainingDistance, Math.floor(Math.random() * remainingDistance) + 1);
 
-        remainingDistance -= yardsTraveled;
-        updateYardagesDisplay(yardsTraveled, remainingDistance);
+        // Update yardages display with a callback to update remaining distance after animation
+        updateYardagesDisplay(yardsTraveled, remainingDistance, () => {
+            remainingDistance -= yardsTraveled;
+            // Ensure the remaining distance is updated correctly
+            const remainingDisplay = document.getElementById('remainingDistance');
+            if (remainingDisplay) {
+                remainingDisplay.textContent = `Remaining Distance: ${remainingDistance} yards`;
+            }
 
-        // Update club suggestion with the remaining distance
-        const newSuggestedClub = suggestClub(remainingDistance);
-        updateClubSuggestion(hole.number, newSuggestedClub);
+            // Update club suggestion with the remaining distance
+            const newSuggestedClub = suggestClub(remainingDistance);
+            updateClubSuggestion(hole.number, newSuggestedClub);
 
-        totalStrokes++;
-        handleHoleCompletion(holeNumber, remainingDistance, strokes);
+            totalStrokes++;
+            handleHoleCompletion(holeNumber, remainingDistance, strokes);
+        });
     }
+
+    // function simulateSwing() {
+    //     strokes++;
+    //     updateStrokeCount(hole.number, strokes);
+
+    //     // Calculate the yards traveled based on the power and update remaining distance
+    //     const yardsTraveled = Math.min(remainingDistance, Math.floor(Math.random() * remainingDistance) + 1);
+
+    //     remainingDistance -= yardsTraveled;
+    //     updateYardagesDisplay(yardsTraveled, remainingDistance);
+
+    //     // Update club suggestion with the remaining distance
+    //     const newSuggestedClub = suggestClub(remainingDistance);
+    //     updateClubSuggestion(hole.number, newSuggestedClub);
+
+    //     totalStrokes++;
+    //     handleHoleCompletion(holeNumber, remainingDistance, strokes);
+    // }
 
     function updateStrokeCount(holeNumber, strokes) {
         const strokesSpan = document.getElementById(`strokes${holeNumber}`);
@@ -419,7 +471,16 @@ function suggestClub(distance) {
             throw new Error('Club distances have not been set.');
         }
         
+        // Stored club distances
         const clubDistances = JSON.parse(clubDistancesJSON);
+        
+        // Check if the player is on the green (within 25 yards)
+        const greenThreshold = 25
+        if (yardage <= greenThreshold) {
+            return ('Putter');
+        }
+
+        // Suggest Driver or 3 Wood if applicable
         const driverDistance = parseInt(clubDistances.driver);
         if (!isNaN(driverDistance) && yardage >= driverDistance) {
             return "Driver, swing for the fences!";
@@ -430,8 +491,8 @@ function suggestClub(distance) {
             return "3 Wood";
         }
 
+        // List of clubs excluding the putter
         const clubs = [
-            { name: "Putter", distance: clubDistances.putter },
             { name: "Lob Wedge", distance: clubDistances.lobWedge },
             { name: "Sand Wedge", distance: clubDistances.sandWedge },
             { name: "Pitching Wedge", distance: clubDistances.pitchWedge },
@@ -446,13 +507,65 @@ function suggestClub(distance) {
             { name: "3 Wood", distance: clubDistances.threeWood }
         ];
 
+        // Find the most appropriate club based on the distance
         const suggestedClub = clubs.find(club => yardage <= parseInt(club.distance));
         return suggestedClub ? suggestedClub.name : "No club found for the entered yardage.";
-        } catch (error) {
-            // console.error("Error suggesting club:", error.message);
-            return "Club distances have not been set.";
-        }
+
+    } catch (error) {
+        // console.error("Error suggesting club:", error.message);
+        return "Club distances have not been set.";
+    }
 }
+
+// function suggestClub(distance) {
+//     try {
+//         const yardage = parseInt(distance);
+
+//         if (yardage === 0) {
+//             const holeSound = new Audio('assets/audio/putt-ball-in-the-hole.mp3');
+//             holeSound.play();
+//             return "Click 'Next Hole' to continue.";
+//         }
+
+//         const clubDistancesJSON = localStorage.getItem("clubs");
+//         if (!clubDistancesJSON) {
+//             throw new Error('Club distances have not been set.');
+//         }
+        
+//         const clubDistances = JSON.parse(clubDistancesJSON);
+//         const driverDistance = parseInt(clubDistances.driver);
+//         if (!isNaN(driverDistance) && yardage >= driverDistance) {
+//             return "Driver, swing for the fences!";
+//         }
+
+//         const threeWoodDistance = parseInt(clubDistances.threeWood);
+//         if (!isNaN(threeWoodDistance) && yardage >= threeWoodDistance && yardage < driverDistance) {
+//             return "3 Wood";
+//         }
+
+//         const clubs = [
+//             { name: "Putter", distance: clubDistances.putter },
+//             { name: "Lob Wedge", distance: clubDistances.lobWedge },
+//             { name: "Sand Wedge", distance: clubDistances.sandWedge },
+//             { name: "Pitching Wedge", distance: clubDistances.pitchWedge },
+//             { name: "9 Iron", distance: clubDistances.nineIron },
+//             { name: "8 Iron", distance: clubDistances.eightIron },
+//             { name: "7 Iron", distance: clubDistances.sevenIron },
+//             { name: "6 Iron", distance: clubDistances.sixIron },
+//             { name: "5 Iron", distance: clubDistances.fiveIron },
+//             { name: "4 Iron", distance: clubDistances.fourIron },
+//             { name: "3 Iron", distance: clubDistances.threeIron },
+//             { name: "5 Wood", distance: clubDistances.fiveWood },
+//             { name: "3 Wood", distance: clubDistances.threeWood }
+//         ];
+
+//         const suggestedClub = clubs.find(club => yardage <= parseInt(club.distance));
+//         return suggestedClub ? suggestedClub.name : "No club found for the entered yardage.";
+//         } catch (error) {
+//             // console.error("Error suggesting club:", error.message);
+//             return "Club distances have not been set.";
+//         }
+// }
 
 // Load settings when the page loads
 loadSettings();
