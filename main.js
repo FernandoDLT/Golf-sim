@@ -237,31 +237,6 @@ function startRound(holeNumber) {
         }
     }
 
-    // function updateYardagesDisplay(traveled, remaining) {
-    //     const traveledDisplay = document.getElementById('yardsTraveled');
-    //     const remainingDisplay = document.getElementById('remainingDistance');
-
-    //     // Incremental update for traveled yardage
-    //     let currentTraveled = 0;
-    //     const increment = traveled / 100; // Adjust this value for smoother/faster increments
-
-    //     const intervalId = setInterval(() => {
-    //         if (currentTraveled < traveled) {
-    //             currentTraveled += increment;
-    //             traveledDisplay.textContent = `Yards Traveled: ${Math.min(Math.floor(currentTraveled), traveled)} yards`;
-    //         } else {
-    //             clearInterval(intervalId);
-    //             traveledDisplay.textContent = `Yards Traveled: ${traveled} yards`; // Ensure final value is set
-    //         }
-            
-    //     }, 10); // Adjust the interval time for smoother/faster increments
-
-    //     // Set the remaining distance immediately    
-    //     if (remainingDisplay) {
-    //         remainingDisplay.textContent = `Remaining Distance: ${remaining} yards`;
-    //     }
-    // }
-
     // function simulateSwing
     function simulateSwing() {
         strokes++;
@@ -287,25 +262,7 @@ function startRound(holeNumber) {
             handleHoleCompletion(holeNumber, remainingDistance, strokes);
         });
     }
-
-    // function simulateSwing() {
-    //     strokes++;
-    //     updateStrokeCount(hole.number, strokes);
-
-    //     // Calculate the yards traveled based on the power and update remaining distance
-    //     const yardsTraveled = Math.min(remainingDistance, Math.floor(Math.random() * remainingDistance) + 1);
-
-    //     remainingDistance -= yardsTraveled;
-    //     updateYardagesDisplay(yardsTraveled, remainingDistance);
-
-    //     // Update club suggestion with the remaining distance
-    //     const newSuggestedClub = suggestClub(remainingDistance);
-    //     updateClubSuggestion(hole.number, newSuggestedClub);
-
-    //     totalStrokes++;
-    //     handleHoleCompletion(holeNumber, remainingDistance, strokes);
-    // }
-
+    
     function updateStrokeCount(holeNumber, strokes) {
         const strokesSpan = document.getElementById(`strokes${holeNumber}`);
         if (strokesSpan) {
