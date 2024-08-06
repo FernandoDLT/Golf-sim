@@ -517,56 +517,6 @@ function suggestClub(distance) {
     }
 }
 
-// function suggestClub(distance) {
-//     try {
-//         const yardage = parseInt(distance);
-
-//         if (yardage === 0) {
-//             const holeSound = new Audio('assets/audio/putt-ball-in-the-hole.mp3');
-//             holeSound.play();
-//             return "Click 'Next Hole' to continue.";
-//         }
-
-//         const clubDistancesJSON = localStorage.getItem("clubs");
-//         if (!clubDistancesJSON) {
-//             throw new Error('Club distances have not been set.');
-//         }
-        
-//         const clubDistances = JSON.parse(clubDistancesJSON);
-//         const driverDistance = parseInt(clubDistances.driver);
-//         if (!isNaN(driverDistance) && yardage >= driverDistance) {
-//             return "Driver, swing for the fences!";
-//         }
-
-//         const threeWoodDistance = parseInt(clubDistances.threeWood);
-//         if (!isNaN(threeWoodDistance) && yardage >= threeWoodDistance && yardage < driverDistance) {
-//             return "3 Wood";
-//         }
-
-//         const clubs = [
-//             { name: "Putter", distance: clubDistances.putter },
-//             { name: "Lob Wedge", distance: clubDistances.lobWedge },
-//             { name: "Sand Wedge", distance: clubDistances.sandWedge },
-//             { name: "Pitching Wedge", distance: clubDistances.pitchWedge },
-//             { name: "9 Iron", distance: clubDistances.nineIron },
-//             { name: "8 Iron", distance: clubDistances.eightIron },
-//             { name: "7 Iron", distance: clubDistances.sevenIron },
-//             { name: "6 Iron", distance: clubDistances.sixIron },
-//             { name: "5 Iron", distance: clubDistances.fiveIron },
-//             { name: "4 Iron", distance: clubDistances.fourIron },
-//             { name: "3 Iron", distance: clubDistances.threeIron },
-//             { name: "5 Wood", distance: clubDistances.fiveWood },
-//             { name: "3 Wood", distance: clubDistances.threeWood }
-//         ];
-
-//         const suggestedClub = clubs.find(club => yardage <= parseInt(club.distance));
-//         return suggestedClub ? suggestedClub.name : "No club found for the entered yardage.";
-//         } catch (error) {
-//             // console.error("Error suggesting club:", error.message);
-//             return "Club distances have not been set.";
-//         }
-// }
-
 // Load settings when the page loads
 loadSettings();
 
@@ -691,9 +641,3 @@ function completeHole(holeNumber) {
 function handleNewRound() {
     window.location.href = 'index.html';
 }
-
-// At line 213
-    // function updateYardagesDisplay(traveled, remaining) {
-    //     document.getElementById('yardsTraveled').textContent = `Yards Traveled: ${traveled} yards`;
-    //     document.getElementById('remainingDistance').textContent = `Remaining Distance: ${remaining} yards`;
-    // }
