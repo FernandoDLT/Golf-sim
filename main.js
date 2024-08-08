@@ -111,7 +111,6 @@ function handleStartRound() {
     // Hides the "Start Round" button
     this.style.display = 'none';
     // Auio var
-    // const swingSound = new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav');
     const swingSound = new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav');
 
     swingSound.play();
@@ -165,10 +164,10 @@ function startRound(holeNumber) {
     let timer = null;
     let visualTimer = null;
     let remainingDistance = hole.distance;
+    let isSwingInProgress = false; // Track if swing is in progress
 
     updateYardagesDisplay(0, hole.distance);
 
-    // Updates Club Suggestion
     function initializeUI(hole, suggestedClub, customYardage) {
         updateClubSuggestion(hole.number, suggestedClub, customYardage);
         const swingBtn = document.getElementById(`swingBtn${hole.number}`);
@@ -180,7 +179,6 @@ function startRound(holeNumber) {
         document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Update Progress Bar IDs
     function updateProgressBarIds(holeNumber) {
         const progressBar = document.getElementById('swingProgressBar');
         const powerPercentage = document.getElementById('powerPercentage');
@@ -198,7 +196,6 @@ function startRound(holeNumber) {
         }
     }
 
-    // Update Yardages Display
     function updateClubSuggestion(holeNumber, suggestedClub, remainingDistance) {
         const clubSuggestionElement = document.getElementById(`clubSuggestion${holeNumber}`);
         if (clubSuggestionElement) {
@@ -209,12 +206,11 @@ function startRound(holeNumber) {
             }
         }
     }
-    
+
     function updateYardagesDisplay(traveled, remaining, callback) {
         const traveledDisplay = document.getElementById('yardsTraveled');
         const remainingDisplay = document.getElementById('remainingDistance');
 
-        // Incremental update for traveled yardage
         let currentTraveled = 0;
         const increment = traveled / 100; // Adjust this value for smoother/faster increments
 
@@ -224,45 +220,43 @@ function startRound(holeNumber) {
                 traveledDisplay.textContent = `Yards Traveled: ${Math.min(Math.floor(currentTraveled), traveled)} yards`;
             } else {
                 clearInterval(intervalId);
-                traveledDisplay.textContent = `Yards Traveled: ${traveled} yards`; // Ensure final value is set
+                traveledDisplay.textContent = `Yards Traveled: ${traveled} yards`;
 
-                // Call the callback after animation is complete
                 if (callback) callback();
             }
-        }, 10); // Adjust the interval time for smoother/faster increments
+        }, 10);
 
-        // Set the remaining distance display immediately if not animated
         if (remainingDisplay) {
             remainingDisplay.textContent = `Remaining Distance: ${remaining} yards`;
         }
     }
 
-    // function simulateSwing
-    function simulateSwing() {
+    function simulateSwing(power) {
+        if (isSwingInProgress) return; // Prevent multiple swings
+        isSwingInProgress = true; // Indicate that a swing is in progress
+
         strokes++;
         updateStrokeCount(hole.number, strokes);
 
-        // Calculate the yards traveled based on the power and update remaining distance
         const yardsTraveled = Math.min(remainingDistance, Math.floor(Math.random() * remainingDistance) + 1);
 
-        // Update yardages display with a callback to update remaining distance after animation
         updateYardagesDisplay(yardsTraveled, remainingDistance, () => {
             remainingDistance -= yardsTraveled;
-            // Ensure the remaining distance is updated correctly
             const remainingDisplay = document.getElementById('remainingDistance');
             if (remainingDisplay) {
                 remainingDisplay.textContent = `Remaining Distance: ${remainingDistance} yards`;
             }
 
-            // Update club suggestion with the remaining distance
             const newSuggestedClub = suggestClub(remainingDistance);
             updateClubSuggestion(hole.number, newSuggestedClub);
 
             totalStrokes++;
             handleHoleCompletion(holeNumber, remainingDistance, strokes);
+
+            isSwingInProgress = false; // Indicate that the swing is complete
         });
     }
-    
+
     function updateStrokeCount(holeNumber, strokes) {
         const strokesSpan = document.getElementById(`strokes${holeNumber}`);
         if (strokesSpan) {
@@ -270,133 +264,112 @@ function startRound(holeNumber) {
         }
     }
 
-    function handleHoleCompletion(holeNumber, remainingDistance) {
+    function handleHoleCompletion(holeNumber, remainingDistance, strokes) {
         if (remainingDistance <= 0) {
-        const swingBtn = document.getElementById(`swingBtn${holeNumber}`);
-        if (swingBtn) {
-            swingBtn.disabled = true;
-            swingBtn.style.display = 'none';
-        }
+            const swingBtn = document.getElementById(`swingBtn${holeNumber}`);
+            if (swingBtn) {
+                swingBtn.disabled = true;
+                swingBtn.style.display = 'none';
+            }
 
-        // Display Hole Completion
-        const holeCompletionMessage = document.getElementById('holeCompletionMessage');
-        if (holeCompletionMessage) {
-            holeCompletionMessage.textContent = 'Hole Completed!';
-        }
+            const holeCompletionMessage = document.getElementById('holeCompletionMessage');
+            if (holeCompletionMessage) {
+                holeCompletionMessage.textContent = 'Hole Completed!';
+            }
 
-        completeHole(holeNumber);
+            completeHole(holeNumber);
 
-        if (holeNumber === 18) {
-            displayFinalScore();
-        }
+            if (holeNumber === 18) {
+                displayFinalScore();
+            }
         }
     }
 
-    // DisplayFinalScore Function
     function displayFinalScore() {
-        const totalStrokesSpan = document.getElementById('totalStrokes'); // Retrieve Total Strokes Element
-        const totalScoreSpan = document.getElementById('totalScore'); // Retrieve Total Score Element
-        const relativeScore = totalStrokes - parForRound; // Calculate Relative Score
+        const totalStrokesSpan = document.getElementById('totalStrokes');
+        const totalScoreSpan = document.getElementById('totalScore');
+        const relativeScore = totalStrokes - parForRound;
 
-        // Update Total Strokes Display
         if (totalStrokesSpan) { 
             totalStrokesSpan.textContent = `Total Strokes: ${totalStrokes}`;
         }
 
-        // Update Final Score Display
         if (totalScoreSpan) {
             totalScoreSpan.textContent = relativeScore === 0 ? 'You shot even par' :
                 relativeScore > 0 ? `You shot ${relativeScore} over par` :
                 `You shot ${Math.abs(relativeScore)} under par`;
         }
 
-        // Hide Yardage Displays 
         document.getElementById('yardsTraveled').style.display = 'none';
         document.getElementById('remainingDistance').style.display = 'none';
-        document.querySelector('.progress-container').style.display = 'none'; // Hide Progress Container
+        document.querySelector('.progress-container').style.display = 'none';
     }
+
+    const putterSound = new Audio('assets/audio/golf-putt.wav');
+    const shotSound = new Audio('assets/audio/mixkit-golf-shot.wav');
 
     function addSwingButtonListeners(swingBtn, holeNumber) {
         swingBtn.addEventListener('mousedown', function () {
-        // Determine the suggested club for this swing
-        const suggestedClub = suggestClub(remainingDistance);
-        
-        // Create an audio object for the swing sound based on the suggested club
-        let swingSound;
-            if (suggestedClub.toLowerCase().includes('putter')) {
-                swingSound = new Audio('assets/audio/golf-putt.wav');
-            } else {
-                swingSound = new Audio('assets/audio/mixkit-golf-shot.wav');
+            if (isSwingInProgress) return; // Prevent action if a swing is in progress
+
+            const suggestedClub = suggestClub(remainingDistance);
+            let swingSound = suggestedClub.toLowerCase().includes('putter') ? putterSound : shotSound;
+            swingSound.play();
+
+            if (timer === null) {
+                power = 0;
+                const targetPower = 100.9;
+                timer = setInterval(function () {
+                    if (power > 100) {
+                        alert("Power exceeded 100% resulting in a bad swing.");
+                        clearInterval(timer);
+                        timer = null;
+                        return;
+                    }
+
+                    power += (targetPower - power) * 0.099;
+                    updateProgressBar(holeNumber, power);
+
+                    if (power >= targetPower) {
+                        clearInterval(timer);
+                        timer = null;
+                    }
+                }, 10);
             }
-                        
-        // Play the swing sound effect
-        swingSound.play();
+        });
 
-        // Your existing code for mousedown event...
-        if (timer === null) {
-            power = 0;
-            const targetPower = 100.9;  // target power
-            timer = setInterval(function () {
-                // Check if the next increment will exceed 100%
-                if (power <= 100 && power + (targetPower - power) * 0.1 > 100) {
-                    power = 100;  // Set power to 100
-                } else if (power + (targetPower - power) * 0.1 > 100.01) {
-                    alert("Power exceeded 100% resulting in a bad swing.");
-                    clearInterval(timer);
-                    timer = null;
-                    return; // Exit the function
-                }
+        swingBtn.addEventListener('mouseup', function () {
+            if (isSwingInProgress) return; // Prevent action if a swing is in progress
 
-                // Smooth increment using an easing factor
-                power += (targetPower - power) * 0.099;  // Easing factor
-                updateProgressBar(holeNumber, power);
+            if (timer !== null) {
+                clearInterval(timer);
+                timer = null;
+                simulateSwing(power);
+            }
 
-                if (power >= targetPower) {
-                    clearInterval(timer);
-                    timer = null;
-                }
-            }, 10);  // Interval for updates
-        }
-    });
-
-    swingBtn.addEventListener('mouseup', function () {
-        if (timer !== null) {
-            clearInterval(timer);
-            timer = null;
-            simulateSwing(power);
-        }
-
-        let visualPower = power;
-        updateVisualPower(holeNumber, visualPower);
-    });
+            let visualPower = power;
+            updateVisualPower(holeNumber, visualPower);
+        });
     }
 
     function updateVisualPower(holeNumber, visualPower) {
         const progressBar = document.getElementById(`swingProgressBar${holeNumber}`);
         const powerPercentage = document.getElementById(`powerPercentage${holeNumber}`);
 
-        // Clear any existing visual timer
         if (visualTimer !== null) {
             clearInterval(visualTimer);
         }
 
-        // Start a new visual timer
         visualTimer = setInterval(function () {
-            // Decrease visual power more slowly for a smoother effect
-            visualPower -= 1.5;  // Adjust this value for desired smoothness
+            visualPower -= 1.5;
 
-            // Ensure visualPower doesn't go below zero
             if (visualPower < 0) {
                 visualPower = 0;
             }
 
-            // Update the progress bar with the visual power
             if (progressBar) progressBar.value = visualPower;
-
-            // Show the actual power as the percentage
             if (powerPercentage) powerPercentage.textContent = `${Math.floor(power)}%`;
 
-            // Stop the timer when visual power is zero
             if (visualPower <= 0) {
                 clearInterval(visualTimer);
                 visualTimer = null;
@@ -434,7 +407,7 @@ function suggestClub(distance) {
         // Check if the player is on the green (within 25 yards)
         const greenThreshold = 25
         if (yardage <= greenThreshold) {
-            return ('Putter');
+            return ('Your are on the green, use Putter');
         }
 
         // Suggest Driver or 3 Wood if applicable
