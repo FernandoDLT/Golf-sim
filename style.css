@@ -1,3 +1,8 @@
+:root {
+   --primary-color: #60BAB4;
+   --secondary-color: #0d837b;
+}
+
 * {
    box-sizing: border-box;
    margin: 0;
@@ -8,7 +13,7 @@
 
 /* Intro h1 */
 h1 {
-   color: rgb(96, 186, 180);
+   color: var(--primary-color);
    text-align: center;
    margin: 180px 0 20px;
    font-size: clamp(24px, 3vw, 34px);
@@ -55,8 +60,8 @@ h1 {
    padding: 14px 28px;
    font-size: 18px;
    color: #fff;
-   background: rgb(96, 186, 180);
-   border: 2px solid rgb(96, 186, 180);
+   background: var(--primary-color);
+   border: 2px solid var(--primary-color);
    border-radius: 35px;
    cursor: pointer;
    transition: background 0.3s, border-color 0.3s;
@@ -107,7 +112,7 @@ h1 {
 
 /* Yardage info */
 h3 {
-   color: rgb(96, 186, 180);
+   color: var(--primary-color);
 }
 
 /* Ordered list */
@@ -277,7 +282,7 @@ hr {
    font-size: 1.2rem;
    font-weight: 400;
    color: white;
-   background: rgb(96, 186, 180);
+   background: var(--primary-color);
    width: 24%;
    padding: 5px;
    margin: 0 auto;
@@ -358,7 +363,7 @@ button#saveBtn {
 /* Hole Info. result containers */
 .hole-info {
    color: yellow;
-   background-color: rgb(96, 186, 180);
+   background-color: var(--primary-color);
    border: 1px solid black;
    padding: 60px;
    margin-bottom: 10px;
