@@ -1,7 +1,7 @@
+// Event listeners
 document.getElementById('saveBtn').addEventListener('click', saveSettings);
 document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
 
-// Event listeners
 const startRoundBtn = document.querySelector('.startRoundBtn');
 startRoundBtn.addEventListener('click', handleStartRound);
 startRoundBtn.style.display = 'none';
@@ -38,7 +38,7 @@ function allFieldsFilled() {
         .every(input => input.value.trim() !== '');
 }
 
-// Function to toggle the visibility of the message
+// Function to toggle the visibility of the message # the bottom of club-distances
 function toggleMessageVisibility() {
     document.querySelector('.club-distances h3').style.visibility = allFieldsFilled() ? 'hidden' : 'visible';
 }
@@ -108,12 +108,8 @@ function resetAllClubs() {
 
 // Function for starting round
 function handleStartRound() {
-    // Hides the "Start Round" button
-    this.style.display = 'none';
     // Auio var
-    const swingSound = new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav');
-
-    swingSound.play();
+    new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav').play();
 
     // Hide specific elements
     ['.intro-container', '.instructions', '.club-distances', '.yardsReset', '.clubs-reset'].forEach(selector => {
@@ -135,9 +131,9 @@ function handleStartRound() {
 }
 
 // Function to check if all fields are filled
-function allFieldsFilled() {
-    return [...document.querySelectorAll('.club-distances input[type="number"]')].every(input => input.value);
-}
+// function allFieldsFilled() {
+//     return [...document.querySelectorAll('.club-distances input[type="number"]')].every(input => input.value);
+// }
 
 // Initialize variables to store total strokes and par for the round
 let totalStrokes = 0;
@@ -407,7 +403,7 @@ function suggestClub(distance) {
         // Check if the player is on the green (within 25 yards)
         const greenThreshold = 25
         if (yardage <= greenThreshold) {
-            return ('Your are on the green, use Putter');
+            return ('On the GREEN, use Putter');
         }
 
         // Suggest Driver or 3 Wood if applicable
@@ -468,8 +464,8 @@ function displayHole(hole) {
                 <span>Power</span>
                 <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
                 <span id="powerPercentage${hole.number}" class="powerPercentage">0%</span>
+                <span class="strokes-label">Strokes:</span>
             </div>
-            <span class="strokes-label">Strokes:</span>
             <span id="strokes${hole.number}" class="strokes">0</span>
         </div>
     `;
