@@ -510,7 +510,7 @@ function completeHole(holeNumber) {
     const remainingDistance = parseInt(remainingDistanceSpan.textContent.split(' ')[2]); // Extract the remaining distance
 
     const displayElement = (id, displayStyle) => {
-        const element = document.getElementById(id);
+    const element = document.getElementById(id);
         if (element) {
             element.style.display = displayStyle;
         } else {

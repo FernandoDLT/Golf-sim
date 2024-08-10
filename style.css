@@ -1,6 +1,10 @@
 :root {
    --primary-color: #60BAB4;
    --secondary-color: #0d837b;
+   --third-green-color: #0D837B;
+   --yellow-color: #fff000;
+   --green-color: #008000;
+   --white-color: #FFFFFF;
 }
 
 * {
@@ -40,7 +44,7 @@ h1 {
 .intro-container p {
    font-size: clamp(18px, 1.5vw, 22px);
    padding-bottom: 20px;
-   color: #0d837b;
+   color: var(--secondary-color);
 }
 
 /* Intro text for span */
@@ -48,7 +52,7 @@ h1 {
    display: block;
    margin: 20px 0;
    font-size: 18px;
-   color: #0d837b;
+   color: var(--secondary-color);
    text-align: center;
 }
 
@@ -59,7 +63,7 @@ h1 {
    margin: 0 auto;
    padding: 14px 28px;
    font-size: 18px;
-   color: #fff;
+   color: var(--white-color);
    background: var(--primary-color);
    border: 2px solid var(--primary-color);
    border-radius: 35px;
@@ -69,9 +73,9 @@ h1 {
 
 /* Start button hover */
 #start:hover {
-   color: white;
-   background: green;
-   border: 2px solid white;
+   color: var(--white-color);
+   background: var(--green-color);
+   border: 2px solid var(--white-color);
 }
 
 /* Instructions */
@@ -92,7 +96,7 @@ h1 {
 
 /* Hole and par text */
 .hole p {
-   color: rgb(13, 131, 123);
+   color: var(--third-green-color);
    font-weight: 600;
 }
 
@@ -127,7 +131,7 @@ ol {
 /* List items */
 li {
    margin-bottom: 12px;
-   color: rgb(13, 131, 123);
+   color: var(--third-green-color);
 }
 
 /* Contains Holes information */
@@ -139,18 +143,18 @@ li {
 .swingBtn {
    margin: 6px auto;
    padding: 10px 24px;
-   color: green;
-   background: yellow;
-   border: 2px solid green;
+   color: var(--green-color);
+   background: var(--yellow-color);
+   border: 2px solid var(--green-color);
    border-radius: 25px;
    align-items: center;
 }
 
 /* Swing button hover */
 .swingBtn:hover {
-   color: white;
-   background: green;
-   /* border: px solid green; */
+   color: var(--white-color);
+   background: var(--green-color);
+   /* border: px solid var(--green-color); */
    cursor: pointer;
 }
 
@@ -159,7 +163,7 @@ div.progress-container span {
    font-weight: bold;
    margin-top: 5px;
    margin-bottom: 10px;
-   color: rgb(13, 131, 123);
+   color: var(--third-green-color);
    font-size: 1.2em;
    display: block;
    text-align: center;
@@ -220,7 +224,7 @@ input {
 
 /* club-distances input-focus */
 .club-distances input:focus {
-   background: yellow;
+   background: var(--yellow-color);
 }
 
 /* Placeholders */
@@ -233,9 +237,9 @@ input {
 #resetYardageBtn {
    margin: 0 auto;
    padding: 8px 16px;
-   color: green;
-   background: yellow;
-   border: 2px solid green;
+   color: var(--green-color);
+   background: var(--yellow-color);
+   border: 2px solid var(--green-color);
    border-radius: 25px;
    cursor: pointer;
    align-items: center;
@@ -243,7 +247,7 @@ input {
 
 /* Yards reset button hover*/
 #resetYardageBtn:hover {
-   color: white;
+   color: var(--white-color);
    background: rgb(192, 46, 29);
 }
 
@@ -266,7 +270,7 @@ input {
 /* Yardage Info h3 */
 h3 {
    font-size: 24px;
-   color: yellow;
+   color: var(--yellow-color);
    margin: 5px 0px 5px;
 }
 
@@ -281,7 +285,7 @@ hr {
    display: none;
    font-size: 1.2rem;
    font-weight: 400;
-   color: white;
+   color: var(--white-color);
    background: var(--primary-color);
    width: 24%;
    padding: 5px;
@@ -318,9 +322,9 @@ button#saveBtn {
    margin-right: 10px;
    margin: 0 auto;
    padding: 10px 16px;
-   color: green;
-   background: yellow;
-   border: 2px solid green;
+   color: var(--green-color);
+   background: var(--yellow-color);
+   border: 2px solid var(--green-color);
    border-radius: 25px;
    cursor: pointer;
    align-items: center;
@@ -328,14 +332,14 @@ button#saveBtn {
 
 /* Save button */
 #saveBtn:hover {
-   color: white;
-   background: green;
+   color: var(--white-color);
+   background: var(--green-color);
 }
 
 /* Save button hover*/
 .resetClubs:hover {
    background: red;
-   color: white;
+   color: var(--white-color);
    border: none;
 }
 
@@ -346,8 +350,8 @@ button#saveBtn {
 
 /* Start round button */
 .startRoundBtn:hover {
-   color: white;
-   background: green;
+   color: var(--white-color);
+   background: var(--green-color);
 }
 
 /* Current hole info */
@@ -362,7 +366,7 @@ button#saveBtn {
 
 /* Hole Info. result containers */
 .hole-info {
-   color: yellow;
+   color: var(--yellow-color);
    background-color: var(--primary-color);
    border: 1px solid black;
    padding: 60px;
@@ -389,7 +393,7 @@ button#saveBtn {
 
 /* Previous Hole */
 p {
-   color: white;
+   color: var(--white-color);
    font-size: 18px;
 }
 
@@ -399,9 +403,9 @@ p {
    margin-right: 10px;
    margin: 10px auto 0;
    padding: 10px 16px;
-   color: green;
-   background: yellow;
-   border: 2px solid green;
+   color: var(--green-color);
+   background: var(--yellow-color);
+   border: 2px solid var(--green-color);
    border-radius: 25px;
    cursor: pointer;
    align-items: center;
@@ -410,7 +414,7 @@ p {
 /* H3 span for Hole Completion Message */
 span#holeCompletionMessage {
    font-size: 1.1rem;
-   color: yellow;
+   color: var(--yellow-color);
    margin-top: 40px !important;
 }
 
@@ -424,20 +428,20 @@ span#holeCompletionMessage {
    display: inline-block;
    width: 20px;
    height: 20px;
-   color: white;
-   background: green;
+   color: var(--white-color);
+   background: var(--green-color);
 }
 
 /* Strokes text for label */
 .strokes-label {
-   color: rgb(13, 131, 123);
+   color: var(--third-green-color);
    font-weight: 900;
 }
 
 /* Next Hole btn hover */
 #nextHoleBtn:hover {
-   color: white;
-   background: green;
+   color: var(--white-color);
+   background: var(--green-color);
 }
 
 /* Club Suggestion text */
@@ -447,8 +451,8 @@ span#holeCompletionMessage {
    padding: 8px;
    width: 60%;
    margin: 10px auto;
-   color: white;
-   background: rgb(13, 131, 123);
+   color: var(--white-color);
+   background: var(--third-green-color);
    border-radius: 2px;
 }
 
@@ -457,7 +461,7 @@ span#holeCompletionMessage {
    display: block;
    margin-top: 14px;
    font-size: 1.6rem;
-   color: yellow;
+   color: var(--yellow-color);
 
 }
 
@@ -485,9 +489,9 @@ span#holeCompletionMessage {
 #new-round {
    display: none;
    padding: 12px;
-   color: green;
-   background: yellow;
-   border: 1px solid green;
+   color: var(--green-color);
+   background: var(--yellow-color);
+   border: 1px solid var(--green-color);
    border-radius: 25px;
    cursor: pointer;
    align-items: center;
@@ -495,7 +499,7 @@ span#holeCompletionMessage {
 
 /* New Round hover */
 #new-round:hover {
-   color: white;
+   color: var(--white-color);
    background: red;
    border: none;
    border: 1px solid black;
