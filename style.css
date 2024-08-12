@@ -2,7 +2,6 @@
 :root {
    --primary-color: #60BAB4;
    --secondary-color: #0d837b;
-   --third-green-color: #0D837B;
    --yellow-color: #fff000;
    --green-color: #008000;
    --white-color: #FFFFFF;
@@ -97,7 +96,7 @@ h1 {
 
 /* Hole and par text */
 .hole p {
-   color: var(--third-green-color);
+   color: var(--secondary-color);
    font-weight: 600;
 }
 
@@ -132,7 +131,7 @@ ol {
 /* List items */
 li {
    margin-bottom: 12px;
-   color: var(--third-green-color);
+   color: var(--secondary-color);
 }
 
 /* Contains Holes information */
@@ -164,7 +163,7 @@ div.progress-container span {
    font-weight: bold;
    margin-top: 5px;
    margin-bottom: 10px;
-   color: var(--third-green-color);
+   color: var(--secondary-color);
    font-size: 1.2em;
    display: block;
    text-align: center;
@@ -435,7 +434,7 @@ span#holeCompletionMessage {
 
 /* Strokes text for label */
 .strokes-label {
-   color: var(--third-green-color);
+   color: var(--secondary-color);
    font-weight: 900;
 }
 
@@ -453,7 +452,7 @@ span#holeCompletionMessage {
    width: 60%;
    margin: 10px auto;
    color: var(--white-color);
-   background: var(--third-green-color);
+   background: var(--secondary-color);
    border-radius: 2px;
 }
 
