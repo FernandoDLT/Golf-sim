@@ -5,6 +5,7 @@
    --yellow-color: #fff000;
    --green-color: #008000;
    --white-color: #FFFFFF;
+   --black-color: #000000;
 }
 
 * {
@@ -91,7 +92,7 @@ h1 {
 /* Inst. span */
 .instructions span {
    font-size: 20px;
-   color: black;
+   color: var(--black-color);
 }
 
 /* Hole and par text */
@@ -197,7 +198,7 @@ div.progress-container span {
    text-align: center;
    margin: 10px 0 0;
    font-size: 1rem;
-   color: black;
+   color: var(--black-color);
 }
 
 /* club-distances input (yards)*/
@@ -211,7 +212,7 @@ div.progress-container span {
    margin: 10px;
    font-size: 20px;
    font-weight: 300;
-   color: black;
+   color: var(--black-color);
 }
 
 /* club-distances inputs */
@@ -368,7 +369,7 @@ button#saveBtn {
 .hole-info {
    color: var(--yellow-color);
    background-color: var(--primary-color);
-   border: 1px solid black;
+   border: 1px solid var(--black-color);
    padding: 60px;
    margin-bottom: 10px;
 }
@@ -388,7 +389,7 @@ button#saveBtn {
 #previousHoleResults span {
    font-size: 20px;
    font-weight: 600;
-   color: black;
+   color: var(--black-color);
 }
 
 /* Previous Hole */
@@ -502,5 +503,5 @@ span#holeCompletionMessage {
    color: var(--white-color);
    background: red;
    border: none;
-   border: 1px solid black;
+   border: 1px solid var(--black-color);
 }
