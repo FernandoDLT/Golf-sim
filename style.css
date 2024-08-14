@@ -2,9 +2,9 @@
 :root {
    --primary-color: #60BAB4;
    --secondary-color: #0d837b;
-   --yellow-color: #fff000;
    --green-color: #008000;
    --white-color: #FFFFFF;
+   --yellow-color: #fff000;
    --black-color: #000000;
 }
 
@@ -157,6 +157,7 @@ li {
    background: var(--green-color);
    /* border: px solid var(--green-color); */
    cursor: pointer;
+   transition: background 0.3s, border-color 0.3s;
 }
 
 /* Power */
@@ -246,10 +247,11 @@ input {
    align-items: center;
 }
 
-/* Yards reset button hover*/
+/* Yards reset test button hover*/
 #resetYardageBtn:hover {
    color: var(--white-color);
-   background: rgb(192, 46, 29);
+   background:red;
+   transition: background 0.3s, border-color 0.3s;
 }
 
 /* Result testin container */
@@ -331,18 +333,20 @@ button#saveBtn {
    align-items: center;
 }
 
+/* Save button hover*/
+.resetClubs:hover {
+   background: red;
+   color: var(--white-color);
+   border: 2px solid var(--green-color);
+   transition: background 0.3s, border-color 0.3s;
+}
+
 /* Save button */
 #saveBtn:hover {
    color: var(--white-color);
    background: var(--green-color);
 }
 
-/* Save button hover*/
-.resetClubs:hover {
-   background: red;
-   color: var(--white-color);
-   border: none;
-}
 
 /* Start Round button */
 .startRoundBtn {
@@ -504,4 +508,5 @@ span#holeCompletionMessage {
    background: red;
    border: none;
    border: 1px solid var(--black-color);
+   transition: background 0.3s, border-color 0.3s;
 }
