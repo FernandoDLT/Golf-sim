@@ -84,9 +84,11 @@ h1 {
    width: 40%;
    margin: 60px auto 0;
    padding: 40px 0 40px;
-   background: rgb(202, 202, 202);
    text-align: center;
-   box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.2);
+   /* background: rgb(202, 202, 202); */
+   background: #e0f7fa;
+   border: 1px solid lightgray;
+   box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Inst. span */
@@ -262,12 +264,13 @@ input {
 /* Result for testing result*/
 #result {
    width: 55%;
-   padding: 10px;
+   padding: 12px;
    text-align: center;
    font-size: 1.2rem;
    font-weight: 300;
    color: rgb(255, 255, 255);
-   background: rgb(153, 190, 188);
+   background: rgb(16, 114, 109);
+   border-radius: 5px;
 }
 
 /* Yardage Info h3 */
