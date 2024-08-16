@@ -93,6 +93,7 @@ function loadSettings() {
     }
 }
 
+// Resets all clubs fromo local storage
 function resetAllClubs() {
     // Clear local storage
     localStorage.removeItem('clubs');
@@ -130,11 +131,6 @@ function handleStartRound() {
     startRound(1);
 }
 
-// Function to check if all fields are filled
-// function allFieldsFilled() {
-//     return [...document.querySelectorAll('.club-distances input[type="number"]')].every(input => input.value);
-// }
-
 // Initialize variables to store total strokes and par for the round
 let totalStrokes = 0;
 
@@ -164,6 +160,7 @@ function startRound(holeNumber) {
 
     updateYardagesDisplay(0, hole.distance);
 
+    // Populates first hole information
     function initializeUI(hole, suggestedClub, customYardage) {
         updateClubSuggestion(hole.number, suggestedClub, customYardage);
         const swingBtn = document.getElementById(`swingBtn${hole.number}`);
@@ -175,6 +172,8 @@ function startRound(holeNumber) {
         document.querySelector('.hole').scrollIntoView({ behavior: 'smooth' });
     }
 
+    // Updates the IDs of the progress bar and power percentage elements with the current hole number.
+    // Also ensures the progress container is visible.
     function updateProgressBarIds(holeNumber) {
         const progressBar = document.getElementById('swingProgressBar');
         const powerPercentage = document.getElementById('powerPercentage');
@@ -192,6 +191,7 @@ function startRound(holeNumber) {
         }
     }
 
+    // Updates the club suggestion text for the current hole based on remaining distance and suggested club.
     function updateClubSuggestion(holeNumber, suggestedClub, remainingDistance) {
         const clubSuggestionElement = document.getElementById(`clubSuggestion${holeNumber}`);
         if (clubSuggestionElement) {
@@ -203,6 +203,8 @@ function startRound(holeNumber) {
         }
     }
 
+    // Animates and updates the displayed yardages for traveled and remaining distances.
+    // Calls a callback function once the animation completes.
     function updateYardagesDisplay(traveled, remaining, callback) {
         const traveledDisplay = document.getElementById('yardsTraveled');
         const remainingDisplay = document.getElementById('remainingDistance');
@@ -227,6 +229,8 @@ function startRound(holeNumber) {
         }
     }
 
+    // Simulates a swing by updating stroke count, traveled distance, and club suggestion.
+    // Prevents multiple swings while one is in progress and handles hole completion logic.
     function simulateSwing(power) {
         if (isSwingInProgress) return; // Prevent multiple swings
         isSwingInProgress = true; // Indicate that a swing is in progress
@@ -253,6 +257,7 @@ function startRound(holeNumber) {
         });
     }
 
+    // Updates the displayed stroke count for the given hole number.
     function updateStrokeCount(holeNumber, strokes) {
         const strokesSpan = document.getElementById(`strokes${holeNumber}`);
         if (strokesSpan) {
@@ -260,6 +265,7 @@ function startRound(holeNumber) {
         }
     }
 
+    // Handles hole completion by hiding the swing button, showing a completion message, and displaying the final score if it's the 18th hole.
     function handleHoleCompletion(holeNumber, remainingDistance, strokes) {
         if (remainingDistance <= 0) {
             const swingBtn = document.getElementById(`swingBtn${holeNumber}`);
@@ -281,6 +287,7 @@ function startRound(holeNumber) {
         }
     }
 
+    // Displays the final score and total strokes, and hides relevant UI elements at the end of the round.
     function displayFinalScore() {
         const totalStrokesSpan = document.getElementById('totalStrokes');
         const totalScoreSpan = document.getElementById('totalScore');
@@ -301,9 +308,11 @@ function startRound(holeNumber) {
         document.querySelector('.progress-container').style.display = 'none';
     }
 
+    // Audio variables
     const putterSound = new Audio('assets/audio/golf-putt.wav');
     const shotSound = new Audio('assets/audio/mixkit-golf-shot.wav');
 
+    // Adds a mousedown event listener to the swing button to handle swing actions, play sounds, and update the power progress.
     function addSwingButtonListeners(swingBtn, holeNumber) {
         swingBtn.addEventListener('mousedown', function () {
             if (isSwingInProgress) return; // Prevent action if a swing is in progress
@@ -334,6 +343,7 @@ function startRound(holeNumber) {
             }
         });
 
+        // Handles the mouseup event on the swing button by stopping the power increase, simulating the swing, and updating the visual power.
         swingBtn.addEventListener('mouseup', function () {
             if (isSwingInProgress) return; // Prevent action if a swing is in progress
 
@@ -347,7 +357,7 @@ function startRound(holeNumber) {
             updateVisualPower(holeNumber, visualPower);
         });
     }
-
+    // Animates the visual power display by decrementing the power value and updating the progress bar and percentage text.
     function updateVisualPower(holeNumber, visualPower) {
         const progressBar = document.getElementById(`swingProgressBar${holeNumber}`);
         const powerPercentage = document.getElementById(`powerPercentage${holeNumber}`);
@@ -373,6 +383,7 @@ function startRound(holeNumber) {
         }, 10);
     }
 
+    // Updates the progress bar and power percentage display for the given hole number based on the current power value.
     function updateProgressBar(holeNumber, power) {
         const progressBar = document.getElementById(`swingProgressBar${holeNumber}`);
         const powerPercentage = document.getElementById(`powerPercentage${holeNumber}`);
@@ -412,6 +423,7 @@ function suggestClub(distance) {
             return "Driver, swing for the fences!";
         }
 
+        // Returns "3 Wood" if the yardage is within the range for a 3 Wood club but less than the driver distance.
         const threeWoodDistance = parseInt(clubDistances.threeWood);
         if (!isNaN(threeWoodDistance) && yardage >= threeWoodDistance && yardage < driverDistance) {
             return "3 Wood";
@@ -509,6 +521,7 @@ function completeHole(holeNumber) {
     const remainingDistanceSpan = document.getElementById('remainingDistance');
     const remainingDistance = parseInt(remainingDistanceSpan.textContent.split(' ')[2]); // Extract the remaining distance
 
+    // Sets the display style of an element by its ID and logs an error if the element is not found.
     const displayElement = (id, displayStyle) => {
     const element = document.getElementById(id);
         if (element) {
@@ -517,7 +530,7 @@ function completeHole(holeNumber) {
             console.error(`${id} element not found.`);
         }
     };
-
+    // Sets the text content of an element by its ID and logs an error if the element is not found.
     const setTextContent = (id, text) => {
         const element = document.getElementById(id);
         if (element) {
@@ -526,7 +539,7 @@ function completeHole(holeNumber) {
             console.error(`${id} element not found.`);
         }
     };
-
+    // Hides an element selected by the given CSS selector.
     const hideElementBySelector = (selector) => {
         const element = document.querySelector(selector);
         if (element) {
@@ -535,7 +548,7 @@ function completeHole(holeNumber) {
     };
 
     if (remainingDistance === 0 && holeNumber === holes.length) {
-        // Logic to handle completion of the 18th hole
+        // End of the 18th hole: Hide elements and show 'New Round' button
         displayElement('nextHoleBtn', 'none');
         setTextContent('holeCompletionMessage', '');
         setTextContent('roundCompletionMessage', 'All Holes Completed!');
@@ -544,12 +557,15 @@ function completeHole(holeNumber) {
         displayElement('yardageInformation', 'none');
         displayElement('new-round', 'inline-block');
     } else {
-        // Logic for holes other than the 18th hole
+         // For other holes: Show 'Next Hole' button and completion message
         displayElement('nextHoleBtn', 'inline-block');
         setTextContent('holeCompletionMessage', 'Hole Completed!');
 
         const nextHoleBtn = document.getElementById('nextHoleBtn');
         nextHoleBtn.addEventListener('click', function () {
+        // On 'Next Hole' button click:
+        // - Hide the button and clear the message
+        // - Start the next hole or show completion message if all holes are done
             displayElement('nextHoleBtn', 'none');
             setTextContent('holeCompletionMessage', '');
 
