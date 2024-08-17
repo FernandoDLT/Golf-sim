@@ -2,12 +2,15 @@
 document.getElementById('saveBtn').addEventListener('click', saveSettings);
 document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
 
+// Start Round var and event listener
 const startRoundBtn = document.querySelector('.startRoundBtn');
 startRoundBtn.addEventListener('click', handleStartRound);
 startRoundBtn.style.display = 'none';
 
+// Event Listeners for resetting yardage, clubs and 
 document.querySelector('.reset').addEventListener('click', resetYardsAndResult);
 document.querySelector('.resetClubs').addEventListener('click', resetAllClubs);
+// Start New Round Event Listener
 document.getElementById('new-round').addEventListener('click', handleNewRound);
 
 // Define holes array
