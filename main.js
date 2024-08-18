@@ -52,9 +52,11 @@ function saveSettings() {
         alert("Please customize all club distances before saving.");
         return;
     }
-
+    // Create an object `clubs` that maps the IDs of input elements to their values
     const clubs = Object.fromEntries(
+        // Select all input elements of type "number" within the '.club-distances' container
         [...document.querySelectorAll('.club-distances input[type="number"]')]
+            // Map each input element to a key-value pair where the key is the input's ID and the value is its current value
             .map(input => [input.id, input.value])
     );
 
