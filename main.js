@@ -60,8 +60,13 @@ function saveSettings() {
             .map(input => [input.id, input.value])
     );
 
+    // Save the `clubs` object to local storage as a JSON string
     localStorage.setItem('clubs', JSON.stringify(clubs));
+
+    // Display the 'Start Round' button
     startRoundBtn.style.display = 'inline-block';
+
+    // Hide the 'Save' button
     document.getElementById('saveBtn').style.display = 'none';
 }
 
