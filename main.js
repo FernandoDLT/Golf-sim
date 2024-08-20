@@ -68,6 +68,7 @@ function saveSettings() {
 
     // Hide the 'Save' button
     document.getElementById('saveBtn').style.display = 'none';
+
 }
 
 // Function for suggesting club

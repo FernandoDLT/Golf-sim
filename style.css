@@ -1,3 +1,11 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   line-height: 1.4;
+}
+
 /* Color variables */
 :root {
    --primary-color: #60BAB4;
@@ -8,12 +16,13 @@
    --black-color: #000000;
 }
 
-* {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
-   font-family: Georgia, 'Times New Roman', Times, serif;
-   line-height: 1.4;
+/* Intro Header */
+header {
+   transition: transform .5s ease-in-out;
+}
+
+.slide-up {
+   transform: translateY(-136%);
 }
 
 /* Intro h1 */
