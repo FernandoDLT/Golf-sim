@@ -120,27 +120,87 @@ function resetAllClubs() {
 
 // Function for starting round
 function handleStartRound() {
-    // Auio var
+    // Play the audio
     new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav').play();
 
-    // Hide specific elements
-    ['.intro-container', '.instructions', '.club-distances', '.yardsReset', '.clubs-reset'].forEach(selector => {
+    // Add the slide-up effect to the main elements
+    ['.intro-container', '.instructions', '.club-distances', '.slide-wrapper'].forEach(selector => {
         const element = document.querySelector(selector);
-        if (element) element.style.display = 'none';
+        if (element) {
+            element.classList.add('slide-up-main');
+        }
     });
-    
+
+    // Use setTimeout to hide the elements after the slide-up effect
     setTimeout(function() {
+        ['.result-container', '.intro-container', '.instructions', '.club-distances', '.slide-wrapper'].forEach(selector => {
+            const element = document.querySelector(selector);
+            if (element) element.style.display = 'none';
+        });
+
         // Show holes container and yards counter
         ['.holes-container', '.yardsCounter', '#new-round'].forEach(selector => {
             const element = document.querySelector(selector);
             if (element) element.style.display = 'block';
         });
-            // window.location.href = '';
-    }, 100);
 
-    // Start the round and load hole information and the suggested club for the first hole
-    startRound(1);
+        // Start the round and load hole information and the suggested club for the first hole
+        startRound(1);
+    }, 500); // Match the duration of the CSS transition
 }
+
+// function handleStartRound() {
+//     // Play the audio
+//     new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav').play();
+
+//     // Add the slide-up effect to the main elements
+//     ['.intro-container', '.instructions', '.club-distances', '.yardsReset', '.clubs-reset'].forEach(selector => {
+//         const element = document.querySelector(selector);
+//         if (element) {
+//             element.classList.add('slide-up-main');
+//         }
+//     });
+
+//     // Use setTimeout to hide the elements after the slide-up effect
+//     setTimeout(function() {
+//         [ '.result-container', '.intro-container', '.instructions', '.club-distances', '.yardsReset', '.clubs-reset'].forEach(selector => {
+//             const element = document.querySelector(selector);
+//             if (element) element.style.display = 'none';
+//         });
+
+//         // Show holes container and yards counter
+//         ['.holes-container', '.yardsCounter', '#new-round'].forEach(selector => {
+//             const element = document.querySelector(selector);
+//             if (element) element.style.display = 'block';
+//         });
+
+//         // Start the round and load hole information and the suggested club for the first hole
+//         startRound(1);
+//     }, 500); // Match the duration of the CSS transition
+// }
+
+// function handleStartRound() {
+//     // Auio var
+//     new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav').play();
+
+//     // Hide specific elements
+//     ['.intro-container', '.instructions', '.club-distances', '.yardsReset', '.clubs-reset'].forEach(selector => {
+//         const element = document.querySelector(selector);
+//         if (element) element.style.display = 'none';
+//     });
+    
+//     setTimeout(function() {
+//         // Show holes container and yards counter
+//         ['.holes-container', '.yardsCounter', '#new-round'].forEach(selector => {
+//             const element = document.querySelector(selector);
+//             if (element) element.style.display = 'block';
+//         });
+//             // window.location.href = '';
+//     }, 500);
+
+//     // Start the round and load hole information and the suggested club for the first hole
+//     startRound(1);
+// }
 
 // Initialize variables to store total strokes and par for the round
 let totalStrokes = 0;

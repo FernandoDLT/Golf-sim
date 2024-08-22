@@ -9,7 +9,7 @@ startButton.addEventListener('click', function() {
     // Play the sound effect
     swingSound.play();
     
-    // Add class for sliding effect
+    // Add class to Intro page for sliding effect
     const header = document.querySelector('header');
     header.classList.add('slide-up');
 
