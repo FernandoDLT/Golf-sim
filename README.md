@@ -22,7 +22,7 @@ Click the "Click to Start" button to start the simulation.
 License
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
-https://golf-simm.netlify.app/
+https://golf-club-selector-sim.netlify.app/
 
 Contact
 For any questions or feedback, please reach out to ferchodlt1971@gmail.com or open an issue on the GitHub repository.
