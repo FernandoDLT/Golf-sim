@@ -3,7 +3,7 @@
    margin: 0;
    padding: 0;
    font-family: Georgia, 'Times New Roman', Times, serif;
-   line-height: 1.4;
+   line-height: 1.2;
 }
 
 /* Color variables */
@@ -21,10 +21,6 @@ header {
    transition: transform .5s ease-in-out;
 }
 
-/* slide-up effect for Intro  */
-/* .slide-up {
-   transform: translateY(-136%);
-} */
  /* Add this CSS to target the specific elements you want to slide up */
  .slide-up,
  .slide-up-main {
@@ -97,13 +93,13 @@ h1 {
 
 /* Instructions */
 .instructions {
-   width: 40%;
+   width: 600px;
    margin: 60px auto 0;
    padding: 40px 0 40px;
    text-align: center;
    background: #e0f7fa;
    border: 1px solid lightgray;
-   box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.2);
+   box-shadow: -4px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Inst. span */
@@ -158,10 +154,6 @@ li {
 }
 
 /* Add this CSS to target the specific elements you want to slide up */
-/* .slide-up,.slide-up-main {
-    transition: transform .5s ease-in-out;
-    transform: translateY(-136%);
-} */
 
 /* Swing btn */
 .swingBtn {
@@ -215,16 +207,13 @@ div.progress-container span {
    align-items: center;
 }
 
+/* Add transition for sliding effect */
 .slide-wrapper {
    position: relative;
-   /* Ensure transform applies correctly */
    transition: transform 0.5s ease-in-out;
-   /* Add transition for sliding effect */
 }
 
-/* .slide-wrapper.slide-up-main {
-   transform: translateY(-600%);
-} */
+/* Add this CSS to target the specific elements you want to slide up */
  .slide-wrapper.slide-up-main {
     transform: translateY(-100vh);
     /* Move the element up by the viewport height */
@@ -236,7 +225,7 @@ div.progress-container span {
 
 /* Club distances container */
 .club-distances {
-   width: 40%;
+   width: 600px;
    height: auto;
    padding: 50px 50px 30px 50px;
    margin: 10px auto 30px;
@@ -325,6 +314,7 @@ input {
    color: rgb(255, 255, 255);
    background: rgb(16, 114, 109);
    border-radius: 5px;
+   box-shadow: -4px 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Yardage Info h3 */
@@ -553,4 +543,58 @@ span#holeCompletionMessage {
    background: red;
    border: none;
    border: 1px solid var(--black-color);
+}
+
+/* For screens narrower than 768px */
+@media (max-width: 668px) {
+   header {
+      margin-top: 200px;
+      min-width: 400px;
+   }
+   
+   h1, .intro-container, .instructions, .club-distances {
+      width: 80%;
+      margin: 40px auto 0;
+   }
+
+   .instructions {
+      padding: 10px 0;
+      min-width: 300px;
+   }
+
+   .club-distances {
+      min-width: 300px;
+      margin: 10px auto 20px;
+      /* Adjust the value as needed */
+   }
+
+   .club-distances label {
+      font-size: 16px;
+      /* margin-right: 2px; */
+   }
+
+   .club-distances input {
+      min-width: 120px;
+      /* Adjust the value as needed */
+   }
+
+   .club-distances h3 {
+      font-size: 12px;
+   }
+
+   .yardsReset label {
+      font-size: 16px;
+   }
+
+   #resetYardageBtn {
+      margin-top: 10px;
+   }
+
+   #result {
+      font-size: 14px;
+   }
+
+   h2 {
+      font-size: 18px;
+   }
 }
