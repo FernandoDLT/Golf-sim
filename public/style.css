@@ -545,7 +545,7 @@ span#holeCompletionMessage {
    border: 1px solid var(--black-color);
 }
 
-/* For screens narrower than 768px */
+/* For screens narrower than 668px */
 @media (max-width: 668px) {
    header {
       margin-top: 200px;
@@ -592,6 +592,17 @@ span#holeCompletionMessage {
 
    #result {
       font-size: 14px;
+   }
+
+   /* .startRoundBtn {
+      margin-bottom: 24px;
+   } */
+
+   div.clubs-reset {
+      margin-top: 16px;
+   }
+   .clubs-reset button {
+      margin-top: 6px;
    }
 
    h2 {

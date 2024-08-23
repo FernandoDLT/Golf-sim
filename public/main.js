@@ -332,49 +332,104 @@ function startRound(holeNumber) {
 
     // Adds a mousedown event listener to the swing button to handle swing actions, play sounds, and update the power progress.
     function addSwingButtonListeners(swingBtn, holeNumber) {
-        swingBtn.addEventListener('mousedown', function () {
-            if (isSwingInProgress) return; // Prevent action if a swing is in progress
+    function startPowerGeneration() {
+        if (isSwingInProgress) return; // Prevent action if a swing is in progress
 
-            const suggestedClub = suggestClub(remainingDistance);
-            let swingSound = suggestedClub.toLowerCase().includes('putter') ? putterSound : shotSound;
-            swingSound.play();
+        const suggestedClub = suggestClub(remainingDistance);
+        let swingSound = suggestedClub.toLowerCase().includes('putter') ? putterSound : shotSound;
+        swingSound.play();
 
-            if (timer === null) {
-                power = 0;
-                const targetPower = 100.9;
-                timer = setInterval(function () {
-                    if (power > 100) {
-                        alert("Power exceeded 100% resulting in a bad swing.");
-                        clearInterval(timer);
-                        timer = null;
-                        return;
-                    }
+        if (timer === null) {
+            power = 0;
+            const targetPower = 100.9;
+            timer = setInterval(function () {
+                if (power > 100) {
+                    alert("Power exceeded 100% resulting in a bad swing.");
+                    clearInterval(timer);
+                    timer = null;
+                    return;
+                }
 
-                    power += (targetPower - power) * 0.099;
-                    updateProgressBar(holeNumber, power);
+                power += (targetPower - power) * 0.099;
+                updateProgressBar(holeNumber, power);
 
-                    if (power >= targetPower) {
-                        clearInterval(timer);
-                        timer = null;
-                    }
-                }, 10);
-            }
-        });
-
-        // Handles the mouseup event on the swing button by stopping the power increase, simulating the swing, and updating the visual power.
-        swingBtn.addEventListener('mouseup', function () {
-            if (isSwingInProgress) return; // Prevent action if a swing is in progress
-
-            if (timer !== null) {
-                clearInterval(timer);
-                timer = null;
-                simulateSwing(power);
-            }
-
-            let visualPower = power;
-            updateVisualPower(holeNumber, visualPower);
-        });
+                if (power >= targetPower) {
+                    clearInterval(timer);
+                    timer = null;
+                }
+            }, 10);
+        }
     }
+
+    function stopPowerGeneration() {
+        if (isSwingInProgress) return; // Prevent action if a swing is in progress
+
+        if (timer !== null) {
+            clearInterval(timer);
+            timer = null;
+            simulateSwing(power);
+        }
+
+        let visualPower = power;
+        updateVisualPower(holeNumber, visualPower);
+    }
+
+    // Add event listeners for both mouse and touch events
+    swingBtn.addEventListener('mousedown', startPowerGeneration);
+    swingBtn.addEventListener('mouseup', stopPowerGeneration);
+
+    swingBtn.addEventListener('touchstart', function(e) {
+        e.preventDefault(); // Prevent context menu on long press
+        startPowerGeneration();
+    }, { passive: false });
+
+    swingBtn.addEventListener('touchend', stopPowerGeneration);
+}
+
+    // function addSwingButtonListeners(swingBtn, holeNumber) {
+    //     swingBtn.addEventListener('mousedown', function () {
+    //         if (isSwingInProgress) return; // Prevent action if a swing is in progress
+
+    //         const suggestedClub = suggestClub(remainingDistance);
+    //         let swingSound = suggestedClub.toLowerCase().includes('putter') ? putterSound : shotSound;
+    //         swingSound.play();
+
+    //         if (timer === null) {
+    //             power = 0;
+    //             const targetPower = 100.9;
+    //             timer = setInterval(function () {
+    //                 if (power > 100) {
+    //                     alert("Power exceeded 100% resulting in a bad swing.");
+    //                     clearInterval(timer);
+    //                     timer = null;
+    //                     return;
+    //                 }
+
+    //                 power += (targetPower - power) * 0.099;
+    //                 updateProgressBar(holeNumber, power);
+
+    //                 if (power >= targetPower) {
+    //                     clearInterval(timer);
+    //                     timer = null;
+    //                 }
+    //             }, 10);
+    //         }
+    //     });
+
+    //     // Handles the mouseup event on the swing button by stopping the power increase, simulating the swing, and updating the visual power.
+    //     swingBtn.addEventListener('mouseup', function () {
+    //         if (isSwingInProgress) return; // Prevent action if a swing is in progress
+
+    //         if (timer !== null) {
+    //             clearInterval(timer);
+    //             timer = null;
+    //             simulateSwing(power);
+    //         }
+
+    //         let visualPower = power;
+    //         updateVisualPower(holeNumber, visualPower);
+    //     });
+    // }
     // Animates the visual power display by decrementing the power value and updating the progress bar and percentage text.
     function updateVisualPower(holeNumber, visualPower) {
         const progressBar = document.getElementById(`swingProgressBar${holeNumber}`);
