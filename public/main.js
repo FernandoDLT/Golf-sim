@@ -15,7 +15,7 @@ document.getElementById('new-round').addEventListener('click', handleNewRound);
 
 // Define holes array
 const holes = [
-    { number: 1, par: 4, distance: 400 },
+    { number: 1, par: 3, distance: 100 },
     { number: 2, par: 3, distance: 120 },
     { number: 3, par: 4, distance: 410 },
     { number: 4, par: 5, distance: 530 },
