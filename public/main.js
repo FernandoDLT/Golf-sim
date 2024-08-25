@@ -542,17 +542,17 @@ function displayHole(hole) {
         <p>Par: ${hole.par}</p>
         <p>Distance: ${hole.distance} yards</p>
         <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
-        <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
-        <button id="nextHoleBtn">Next Hole</button>
         <div class="strokes-container">
-            <div class="progress-container">
-                <span>Power</span>
-                <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
-                <span id="powerPercentage${hole.number}" class="powerPercentage">0%</span>
-                <span class="strokes-label">Strokes:</span>
-            </div>
-            <span id="strokes${hole.number}" class="strokes">0</span>
+        <div class="progress-container">
+            <span>Power</span>
+            <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
+            <span id="powerPercentage${hole.number}" class="powerPercentage">0%</span>
+            <span class="strokes-label">Strokes:</span>
         </div>
+        <span id="strokes${hole.number}" class="strokes">0</span>
+        </div>
+        <button id="nextHoleBtn">Next Hole</button>
+        <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
     `;
 }
 

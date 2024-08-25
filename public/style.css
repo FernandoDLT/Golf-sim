@@ -443,15 +443,19 @@ p {
 /* Next Hole button */
 #nextHoleBtn {
    display: none;
-   margin-right: 10px;
-   margin: 10px auto 0;
-   padding: 10px 16px;
+   margin: 6px auto;
+   padding: 10px 24px;
    color: var(--green-color);
    background: var(--yellow-color);
    border: 2px solid var(--green-color);
    border-radius: 25px;
-   cursor: pointer;
    align-items: center;
+}
+
+/* Next Hole btn hover */
+#nextHoleBtn:hover {
+   color: var(--white-color);
+   background: var(--green-color);
 }
 
 /* H3 span for Hole Completion Message */
@@ -481,25 +485,15 @@ span#holeCompletionMessage {
    font-weight: 900;
 }
 
-/* Next Hole btn hover */
-#nextHoleBtn:hover {
-   color: var(--white-color);
-   background: var(--green-color);
-}
-
 /* Club Suggestion text */
-/* #clubSuggestion,.clubSuggestion {
-   width: 350px;
-} */
-
 .clubSuggestion {
-   display: block;
-   font-size: 16px;
-   padding: 8px;
-   width: 45%;
-   margin: 10px auto;
+   display: inline-block;
+   padding: 6px 16px;
+   margin: 0 auto;
    color: var(--white-color);
+   background-color: #60BAB4;
    background: var(--secondary-color);
+   white-space: nowrap;
    border-radius: 2px;
 }
 
@@ -509,7 +503,6 @@ span#holeCompletionMessage {
    margin-top: 14px;
    font-size: 1.6rem;
    color: var(--yellow-color);
-
 }
 
 /* Total Score Strokes count */
@@ -573,17 +566,14 @@ span#holeCompletionMessage {
    .club-distances {
       min-width: 300px;
       margin: 10px auto 20px;
-      /* Adjust the value as needed */
    }
 
    .club-distances label {
       font-size: 16px;
-      /* margin-right: 2px; */
    }
 
    .club-distances input {
       min-width: 120px;
-      /* Adjust the value as needed */
    }
 
    .club-distances h3 {
@@ -603,10 +593,6 @@ span#holeCompletionMessage {
       font-size: 12px;
    }
 
-   /* .startRoundBtn {
-      margin-bottom: 24px;
-   } */
-
    div.clubs-reset {
       margin-top: 16px;
    }
@@ -619,27 +605,16 @@ span#holeCompletionMessage {
    }
 
    .hole {
-      padding: 10px 0 0;
-   }
-
-   .swingBtn {
-      margin: 0;
+      padding: 10px 0 8px;
    }
 
    div.progress-container span {
       margin: 2px auto;
    }
 
-   #clubSuggestion1 {
-      width: 42%;
-   }
-
    .clubSuggestion {
-      /* width: 200px; */
-      color: white;
       margin: 4px auto;
-      background-color: var(--secondary-color);
-      padding: 6px;
+      padding: 6px 8px;
       font-size: 12px;
    }
 
@@ -647,20 +622,26 @@ span#holeCompletionMessage {
       margin: 6px;
    }
 
-   h3 {
-      font-size: 18px;
+   #previousHoleResults span {
+      font-size: 14px;
    }
 
-   /* .yardsCounter {
-      height: 220px;
-   } */
+   .yardsCounter {
+      padding: 12px 0 2px;
+      font-size: 1rem;
+   }
+   
+   #remainingDistance {
+      font-size: 1rem;
+      margin: 4px 0 10px;
+   }
+
+   h3 {
+      font-size: 16px;
+   }
 
    hr {
       margin-bottom: 20px;
-   }
-
-   #remainingDistance {
-      margin: 6px 0;
    }
 
    .hole-info {
@@ -677,7 +658,18 @@ span#holeCompletionMessage {
    h2 {
       margin-bottom: 14px;
    }
+
    p {
       margin: 4px 0;
+      font-size: 16px;
+   }
+
+   #roundCompletionMessage {
+      margin-top: 4px;
+      font-size: 16.8px;
+   }
+
+   #totalStrokes {
+      margin: 10px auto 5px;
    }
 }
