@@ -549,7 +549,7 @@ span#holeCompletionMessage {
 /* For screens narrower than 668px */
 @media (max-width: 668px) {
    header {
-      margin-top: 40px;
+      margin-top: 20px;
       min-width: 400px;
    }
    
@@ -613,10 +613,19 @@ span#holeCompletionMessage {
    }
 
    .clubSuggestion {
-      width: 90%;
+         /* width: 90%;
+         /* display: inline-block; */
+         /* padding: 6px 16px; */
+         /* margin: 0 auto; */
+         /* color: var(--white-color); */
+         /* background-color: #60BAB4; */
+         /* background: var(--secondary-color); */
       margin: 4px auto;
       padding: 6px 8px;
       font-size: 10px;
+      white-space: nowrap;
+      /* border-radius: 2px; */
+         
    }
 
    .strokes-container {
