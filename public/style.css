@@ -613,9 +613,10 @@ span#holeCompletionMessage {
    }
 
    .clubSuggestion {
+      width: 90%;
       margin: 4px auto;
       padding: 6px 8px;
-      font-size: 12px;
+      font-size: 10px;
    }
 
    .strokes-container {
