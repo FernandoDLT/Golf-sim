@@ -589,13 +589,16 @@ span#holeCompletionMessage {
    }
 
    #result {
-      padding: 8px;
-      font-size: 12px;
+      margin: 4px auto;
+      padding: 6px 8px;
+      font-size: 10px;
+      white-space: nowrap;
    }
 
    div.clubs-reset {
       margin-top: 16px;
    }
+
    .clubs-reset button {
       margin-top: 6px;
    }
@@ -613,19 +616,11 @@ span#holeCompletionMessage {
    }
 
    .clubSuggestion {
-         /* width: 90%;
-         /* display: inline-block; */
-         /* padding: 6px 16px; */
-         /* margin: 0 auto; */
-         /* color: var(--white-color); */
-         /* background-color: #60BAB4; */
-         /* background: var(--secondary-color); */
       margin: 4px auto;
       padding: 6px 8px;
       font-size: 10px;
       white-space: nowrap;
-      /* border-radius: 2px; */
-         
+      border-radius: 2px;      
    }
 
    .strokes-container {
