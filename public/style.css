@@ -607,6 +607,17 @@ span#holeCompletionMessage {
       font-size: 18px;
    }
 
+   .swingBtn {
+      /* margin: 0; */
+      /* align-items: left; */
+            margin: 6px 0 0 24px;
+               /* Remove auto margin to align to the left */
+               display: block;
+               /* Ensure it remains a block element */
+               text-align: left;
+               /* Align text to the left */
+   }
+
    .hole {
       padding: 10px 0 8px;
    }
