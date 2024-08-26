@@ -549,7 +549,7 @@ span#holeCompletionMessage {
 /* For screens narrower than 668px */
 @media (max-width: 668px) {
    header {
-      margin-top: 60px;
+      margin-top: 40px;
       min-width: 400px;
    }
    
