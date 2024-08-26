@@ -552,10 +552,18 @@ span#holeCompletionMessage {
       margin-top: 0;
       min-width: 400px;
    }
+
+   h1 {
+      font-size: 20px;
+   }
    
    h1, .intro-container, .instructions, .club-distances {
       width: 80%;
-      margin: 40px auto 0;
+      margin: 20px auto 0;
+   }
+
+   .intro-container p {
+      padding-bottom: 10px;
    }
 
    .instructions {
