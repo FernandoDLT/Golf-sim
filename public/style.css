@@ -549,7 +549,7 @@ span#holeCompletionMessage {
 /* For screens narrower than 668px */
 @media (max-width: 668px) {
    header {
-      margin-top: 20px;
+      margin-top: 10px;
       min-width: 400px;
    }
    
@@ -608,14 +608,9 @@ span#holeCompletionMessage {
    }
 
    .swingBtn {
-      /* margin: 0; */
-      /* align-items: left; */
-            margin: 6px 0 0 24px;
-               /* Remove auto margin to align to the left */
-               display: block;
-               /* Ensure it remains a block element */
-               text-align: left;
-               /* Align text to the left */
+      margin: 6px 0 0 16px;
+      display: block;
+      text-align: left;
    }
 
    .hole {
