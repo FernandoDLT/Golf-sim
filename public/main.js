@@ -15,7 +15,7 @@ document.getElementById('new-round').addEventListener('click', handleNewRound);
 
 // Define holes array
 const holes = [
-    { number: 1, par: 4, distance: 1 },
+    { number: 1, par: 4, distance: 400 },
     { number: 2, par: 4, distance: 380 },
     { number: 3, par: 3, distance: 180 },
     { number: 4, par: 5, distance: 530 },
@@ -355,64 +355,6 @@ function startRound(holeNumber) {
         }
     }
 
-// Other functions and code...
-
-    // function simulateSwing(power) {
-    //     if (isSwingInProgress) return; // Prevent multiple swings
-    //     isSwingInProgress = true; // Indicate that a swing is in progress
-
-    //     strokes++;
-    //     updateStrokeCount(hole.number, strokes);
-
-    //     const yardsTraveled = Math.min(remainingDistance, Math.floor(Math.random() * remainingDistance) + 1);
-
-    //     updateYardagesDisplay(yardsTraveled, remainingDistance, () => {
-    //         remainingDistance -= yardsTraveled;
-    //         const remainingDisplay = document.getElementById('remainingDistance');
-    //         if (remainingDisplay) {
-    //             remainingDisplay.textContent = `Remaining Distance: ${remainingDistance} yards`;
-    //         }
-
-    //         const newSuggestedClub = suggestClub(remainingDistance);
-    //         updateClubSuggestion(hole.number, newSuggestedClub);
-
-    //         totalStrokes++;
-    //         handleHoleCompletion(holeNumber, remainingDistance, strokes);
-
-    //         isSwingInProgress = false; // Indicate that the swing is complete
-    //     });
-    // }
-
-    // // Updates the displayed stroke count for the given hole number.
-    // function updateStrokeCount(holeNumber, strokes) {
-    //     const strokesSpan = document.getElementById(`strokes${holeNumber}`);
-    //     if (strokesSpan) {
-    //         strokesSpan.textContent = strokes;
-    //     }
-    // }
-
-    // // Handles hole completion by hiding the swing button, showing a completion message, and displaying the final score if it's the 18th hole.
-    // function handleHoleCompletion(holeNumber, remainingDistance, strokes) {
-    //     if (remainingDistance <= 0) {
-    //         const swingBtn = document.getElementById(`swingBtn${holeNumber}`);
-    //         if (swingBtn) {
-    //             swingBtn.disabled = true;
-    //             swingBtn.style.display = 'none';
-    //         }
-
-    //         const holeCompletionMessage = document.getElementById('holeCompletionMessage');
-    //         if (holeCompletionMessage) {
-    //             holeCompletionMessage.textContent = 'Hole Completed!';
-    //         }
-
-    //         completeHole(holeNumber);
-
-    //         if (holeNumber === 18) {
-    //             displayFinalScore();
-    //         }
-    //     }
-    // }
-
     // Displays the final score and total strokes, and hides relevant UI elements at the end of the round.
     function displayFinalScore() {
         const totalStrokesSpan = document.getElementById('totalStrokes');
@@ -482,62 +424,18 @@ function startRound(holeNumber) {
         updateVisualPower(holeNumber, visualPower);
     }
 
-    // Add event listeners for both mouse and touch events
-    swingBtn.addEventListener('mousedown', startPowerGeneration);
-    swingBtn.addEventListener('mouseup', stopPowerGeneration);
+        // Add event listeners for both mouse and touch events
+        swingBtn.addEventListener('mousedown', startPowerGeneration);
+        swingBtn.addEventListener('mouseup', stopPowerGeneration);
 
-    swingBtn.addEventListener('touchstart', function(e) {
-        e.preventDefault(); // Prevent context menu on long press
-        startPowerGeneration();
-    }, { passive: false });
+        swingBtn.addEventListener('touchstart', function(e) {
+            e.preventDefault(); // Prevent context menu on long press
+            startPowerGeneration();
+        }, { passive: false });
 
-    swingBtn.addEventListener('touchend', stopPowerGeneration);
-}
+        swingBtn.addEventListener('touchend', stopPowerGeneration);
+    }
 
-    // function addSwingButtonListeners(swingBtn, holeNumber) {
-    //     swingBtn.addEventListener('mousedown', function () {
-    //         if (isSwingInProgress) return; // Prevent action if a swing is in progress
-
-    //         const suggestedClub = suggestClub(remainingDistance);
-    //         let swingSound = suggestedClub.toLowerCase().includes('putter') ? putterSound : shotSound;
-    //         swingSound.play();
-
-    //         if (timer === null) {
-    //             power = 0;
-    //             const targetPower = 100.9;
-    //             timer = setInterval(function () {
-    //                 if (power > 100) {
-    //                     alert("Power exceeded 100% resulting in a bad swing.");
-    //                     clearInterval(timer);
-    //                     timer = null;
-    //                     return;
-    //                 }
-
-    //                 power += (targetPower - power) * 0.099;
-    //                 updateProgressBar(holeNumber, power);
-
-    //                 if (power >= targetPower) {
-    //                     clearInterval(timer);
-    //                     timer = null;
-    //                 }
-    //             }, 10);
-    //         }
-    //     });
-
-    //     // Handles the mouseup event on the swing button by stopping the power increase, simulating the swing, and updating the visual power.
-    //     swingBtn.addEventListener('mouseup', function () {
-    //         if (isSwingInProgress) return; // Prevent action if a swing is in progress
-
-    //         if (timer !== null) {
-    //             clearInterval(timer);
-    //             timer = null;
-    //             simulateSwing(power);
-    //         }
-
-    //         let visualPower = power;
-    //         updateVisualPower(holeNumber, visualPower);
-    //     });
-    // }
     // Animates the visual power display by decrementing the power value and updating the progress bar and percentage text.
     function updateVisualPower(holeNumber, visualPower) {
         const progressBar = document.getElementById(`swingProgressBar${holeNumber}`);
