@@ -152,26 +152,44 @@ li {
    display: none;
 }
 
-/* Add this CSS to target the specific elements you want to slide up */
-
 /* Swing btn */
 .swingBtn {
+   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+   border: none;
+   color: white;
+   font-size: 12px;
+   font-weight: bold;
+   cursor: pointer;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   transition: all 0.3s ease;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   outline: none;
+   margin: 6px 0 0 16px;
+   display: block;
+   border-radius: 50%;
+   width: 60px;
+   height: 60px;
+   padding: 0;
    margin: 6px auto;
-   padding: 10px 24px;
-   color: var(--green-color);
-   background: var(--yellow-color);
-   border: 2px solid var(--green-color);
-   border-radius: 25px;
-   align-items: center;
 }
 
 /* Swing button hover */
 .swingBtn:hover {
    color: var(--white-color);
    background: var(--green-color);
-   /* border: px solid var(--green-color); */
    cursor: pointer;
-   transition: background 0.3s, border-color 0.3s;
+   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+   transform: translateY(-3px);
+}
+
+/* Swing button active state */
+.swingBtn:active {
+   background: linear-gradient(135deg, #66bb6a, var(--green-color));
+   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+   transform: translateY(2px) scale(0.98);
+   opacity: 0.9;
 }
 
 /* Power */
@@ -550,11 +568,15 @@ span#holeCompletionMessage {
 @media (max-width: 668px) {
    header {
       margin-top: 0;
-      min-width: 400px;
+      /* min-width: 400px; */
    }
 
    h1 {
       font-size: 20px;
+   }
+
+   .intro-container {
+      padding: 16px;
    }
    
    h1, .intro-container, .instructions, .club-distances {
@@ -616,9 +638,12 @@ span#holeCompletionMessage {
    }
 
    .swingBtn {
-      margin: 6px 0 0 16px;
-      display: block;
-      text-align: left;
+      font-size: 10px;
+      margin: 6px 0 0 8px;
+      border-radius: 55%;
+      width: 55px;
+      height: 55px;
+      padding: 0;
    }
 
    .hole {
