@@ -451,6 +451,33 @@ button#saveBtn {
    color: var(--black-color);
 }
 
+.congratulations-message {
+   position: fixed;
+   /* Makes sure the message stays in place */
+   top: 50%;
+   /* Centers vertically */
+   left: 50%;
+   /* Centers horizontally */
+   transform: translate(-50%, -50%);
+   /* Centers the message perfectly */
+   font-size: 3em;
+   /* Adjust font size to make it large */
+   color: #fff;
+   /* Text color, adjust as needed */
+   background-color: rgba(0, 0, 0, 0.5);
+   /* Semi-transparent background */
+   padding: 20px;
+   /* Adds some padding around the text */
+   border-radius: 10px;
+   /* Rounded corners */
+   text-align: center;
+   /* Centers text */
+   z-index: 9999;
+   /* Ensures it is on top of all other elements */
+   display: none;
+   /* Initially hidden */
+}
+
 /* Previous Hole */
 p {
    color: var(--white-color);

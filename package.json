@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "canvas-confetti": "^1.9.3",
     "express": "^4.19.2",
     "nodemon": "^3.1.4"
   }

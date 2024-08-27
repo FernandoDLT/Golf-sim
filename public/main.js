@@ -15,7 +15,7 @@ document.getElementById('new-round').addEventListener('click', handleNewRound);
 
 // Define holes array
 const holes = [
-    { number: 1, par: 4, distance: 400 },
+    { number: 1, par: 4, distance: 1 },
     { number: 2, par: 4, distance: 380 },
     { number: 3, par: 3, distance: 180 },
     { number: 4, par: 5, distance: 530 },
@@ -249,6 +249,44 @@ function startRound(holeNumber) {
 
     // Simulates a swing by updating stroke count, traveled distance, and club suggestion.
     // Prevents multiple swings while one is in progress and handles hole completion logic.
+    // Define the confetti trigger function
+    function triggerConfetti() {
+    const confettiDuration = 300; // Duration of confetti effect in milliseconds
+    const messageDuration = 4000; // Duration to show the congratulatory message
+
+    // Show congratulatory message
+    const messageElement = document.getElementById('congratulationsMessage');
+    if (messageElement) {
+        // messageElement.textContent = 'Congratulations! Hole-in-One!';
+        messageElement.style.display = 'block';
+
+        // Hide the message after `messageDuration` milliseconds
+        setTimeout(() => {
+            if (messageElement) {
+                messageElement.style.display = 'none';
+            }
+        }, messageDuration);
+    }
+
+    // Start the confetti effect
+    const animationEnd = Date.now() + confettiDuration;
+
+        (function frame() {
+            confetti({
+                particleCount: 100,
+                angle: 90,
+                spread: 70,
+                origin: { x: 0.5, y: 0.5 },
+                colors: ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF']
+            });
+
+            if (Date.now() < animationEnd) {
+                requestAnimationFrame(frame);
+            }
+        })();
+    }
+
+    // Existing simulateSwing function
     function simulateSwing(power) {
         if (isSwingInProgress) return; // Prevent multiple swings
         isSwingInProgress = true; // Indicate that a swing is in progress
@@ -297,13 +335,83 @@ function startRound(holeNumber) {
                 holeCompletionMessage.textContent = 'Hole Completed!';
             }
 
+            const congratulatoryMessage = document.getElementById('congratulatoryMessage');
+            if (congratulatoryMessage) {
+                // congratulatoryMessage.textContent = 'You\'ve made A Hole-in-One, Congratulations!!!';
+                congratulatoryMessage.style.display = 'block';
+            }
+
+
             completeHole(holeNumber);
+
+            // Check if it's a hole-in-one
+            if (strokes === 1) {
+                triggerConfetti(); // Trigger confetti effect for a hole-in-one
+            }
 
             if (holeNumber === 18) {
                 displayFinalScore();
             }
         }
     }
+
+// Other functions and code...
+
+    // function simulateSwing(power) {
+    //     if (isSwingInProgress) return; // Prevent multiple swings
+    //     isSwingInProgress = true; // Indicate that a swing is in progress
+
+    //     strokes++;
+    //     updateStrokeCount(hole.number, strokes);
+
+    //     const yardsTraveled = Math.min(remainingDistance, Math.floor(Math.random() * remainingDistance) + 1);
+
+    //     updateYardagesDisplay(yardsTraveled, remainingDistance, () => {
+    //         remainingDistance -= yardsTraveled;
+    //         const remainingDisplay = document.getElementById('remainingDistance');
+    //         if (remainingDisplay) {
+    //             remainingDisplay.textContent = `Remaining Distance: ${remainingDistance} yards`;
+    //         }
+
+    //         const newSuggestedClub = suggestClub(remainingDistance);
+    //         updateClubSuggestion(hole.number, newSuggestedClub);
+
+    //         totalStrokes++;
+    //         handleHoleCompletion(holeNumber, remainingDistance, strokes);
+
+    //         isSwingInProgress = false; // Indicate that the swing is complete
+    //     });
+    // }
+
+    // // Updates the displayed stroke count for the given hole number.
+    // function updateStrokeCount(holeNumber, strokes) {
+    //     const strokesSpan = document.getElementById(`strokes${holeNumber}`);
+    //     if (strokesSpan) {
+    //         strokesSpan.textContent = strokes;
+    //     }
+    // }
+
+    // // Handles hole completion by hiding the swing button, showing a completion message, and displaying the final score if it's the 18th hole.
+    // function handleHoleCompletion(holeNumber, remainingDistance, strokes) {
+    //     if (remainingDistance <= 0) {
+    //         const swingBtn = document.getElementById(`swingBtn${holeNumber}`);
+    //         if (swingBtn) {
+    //             swingBtn.disabled = true;
+    //             swingBtn.style.display = 'none';
+    //         }
+
+    //         const holeCompletionMessage = document.getElementById('holeCompletionMessage');
+    //         if (holeCompletionMessage) {
+    //             holeCompletionMessage.textContent = 'Hole Completed!';
+    //         }
+
+    //         completeHole(holeNumber);
+
+    //         if (holeNumber === 18) {
+    //             displayFinalScore();
+    //         }
+    //     }
+    // }
 
     // Displays the final score and total strokes, and hides relevant UI elements at the end of the round.
     function displayFinalScore() {
