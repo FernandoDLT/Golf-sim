@@ -154,24 +154,88 @@ li {
 
 /* Swing btn */
 .swingBtn {
-   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-   border: none;
-   color: white;
-   font-size: 12px;
+   background: radial-gradient(circle at 5px 5px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 15px 5px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 25px 5px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 35px 5px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 45px 5px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 55px 5px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 65px 5px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 75px 5px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 5px 15px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 15px 15px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 25px 15px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 35px 15px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 45px 15px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 55px 15px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 65px 15px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 75px 15px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 5px 25px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 15px 25px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 25px 25px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 35px 25px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 45px 25px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 55px 25px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 65px 25px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 75px 25px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 5px 35px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 15px 35px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 25px 35px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 35px 35px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 45px 35px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 55px 35px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 65px 35px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 75px 35px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 5px 45px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 15px 45px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 25px 45px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 35px 45px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 45px 45px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 55px 45px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 65px 45px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 75px 45px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 5px 55px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 15px 55px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 25px 55px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 35px 55px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 45px 55px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 55px 55px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 65px 55px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 75px 55px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 5px 65px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 15px 65px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 25px 65px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 35px 65px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 45px 65px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 55px 65px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 65px 65px, rgba(0, 0, 0, 0.2) 8%, transparent 10%),
+      radial-gradient(circle at 75px 65px, rgba(0, 0, 0, 0.2) 8%, transparent 10%);
+   background-size: 20px 20px;
+   border: 2px solid #d1d1d1;
+   color: var(--green-color);
+   font-size: 20px;
    font-weight: bold;
    cursor: pointer;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-   transition: all 0.3s ease;
+   /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); */
+   transition: all .3s ease;
    text-transform: uppercase;
-   letter-spacing: 1px;
    outline: none;
-   margin: 6px 0 0 16px;
-   display: block;
-   border-radius: 50%;
-   width: 60px;
-   height: 60px;
-   padding: 0;
    margin: 6px auto;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   width: 110px;
+   height: 110px;
+   padding: 0;
+   position: relative;
+   overflow: hidden;
+   transform:
+      perspective(1050px) translate3d(0px, 0px, 120px) rotateX(7deg) scale(0.9, 0.9);
+      /* border-radius: 20px; */
+      border: 2px solid #e0e0e0;
+      box-shadow: 0 40px 40px -30px rgba(0, 0, 0, 0.5);
+      /* transition: 0.4s ease-in-out transform; */
 }
 
 /* Swing button hover */
