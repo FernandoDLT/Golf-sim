@@ -216,7 +216,6 @@ li {
    font-size: 20px;
    font-weight: bold;
    cursor: pointer;
-   /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); */
    transition: all .3s ease;
    text-transform: uppercase;
    outline: none;
@@ -232,10 +231,8 @@ li {
    overflow: hidden;
    transform:
       perspective(1050px) translate3d(0px, 0px, 120px) rotateX(7deg) scale(0.9, 0.9);
-      /* border-radius: 20px; */
       border: 2px solid #e0e0e0;
       box-shadow: 0 40px 40px -30px rgba(0, 0, 0, 0.5);
-      /* transition: 0.4s ease-in-out transform; */
 }
 
 /* Swing button hover */
@@ -733,6 +730,23 @@ span#holeCompletionMessage {
       box-shadow: 0 40px 40px -30px rgb(0, 0, 0);
    }
 
+      .swingBtn:hover {
+         color: var(--white-color);
+         background: var(--green-color);
+         cursor: pointer;
+         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+         transform: translateY(-3px);
+      }
+   
+      /* Swing button active state */
+      .swingBtn:active {
+         background: linear-gradient(135deg, #66bb6a, var(--green-color));
+         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+         transform: translateY(2px) scale(0.98);
+         opacity: 0.9;
+      }
+
    div.progress-container span {
       margin: 2px auto;
    }
@@ -740,6 +754,7 @@ span#holeCompletionMessage {
    .clubSuggestion {
       margin: 4px auto;
       padding: 6px 8px;
+      /* max-width: 400px; */
       font-size: 12px;
       white-space: nowrap;
       border-radius: 2px;      
