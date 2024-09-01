@@ -730,10 +730,10 @@ span#holeCompletionMessage {
       box-shadow: 0 40px 40px -30px rgb(0, 0, 0);
    }
 
-   .swingBtn:active {
+   /* .swingBtn:active {
       background: radial-gradient(circle at 5px 5px, rgba(0, 0, 0, 0.2) 8%, transparent 10%);
       background-size: 20px 20px;
-   }
+   } */
 
    div.progress-container span {
       margin: 2px auto;
