@@ -722,19 +722,27 @@ span#holeCompletionMessage {
    .swingBtn {
       font-size: 16px;
       font-weight: bolder;
-      width: 65px;
-      height: 65px;
+      width: 70px;
+      height: 70px;
       padding-left: 0;
       margin: 46px 0 0 -20px;
       position: absolute;
       box-shadow: 0 40px 40px -30px rgb(0, 0, 0);
    }
 
+   /* Swing button active state */
    .swingBtn:active {
-      background: radial-gradient(circle at 5px 5px, rgba(0, 0, 0, 0.2) 8%, transparent 10%);
-      /* ... other radial gradients ... */
-      background-size: 20px 20px;
+      background: linear-gradient(135deg, #66bb6a, var(--green-color));
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+      transform: translateY(2px) scale(0.98);
+      opacity: 0.9;
    }
+   
+
+   /* .swingBtn:active {
+      background: radial-gradient(circle at 5px 5px, rgba(0, 0, 0, 0.2) 8%, transparent 10%);
+      background-size: 20px 20px;
+   } */
 
    div.progress-container span {
       margin: 2px auto;
