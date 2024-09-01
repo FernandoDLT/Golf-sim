@@ -728,8 +728,7 @@ span#holeCompletionMessage {
       width: 85px;
       height: 85px;
       padding-left: 0;
-      border-radius: 55%;
-      margin: 20px 0 0 14px;
+      margin: 46px 0 0 -20px;
       position: absolute;
       box-shadow: 0 40px 40px -30px rgb(0, 0, 0);
    }
