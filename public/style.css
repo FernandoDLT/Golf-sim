@@ -672,9 +672,9 @@ span#holeCompletionMessage {
       width: 70px;
       height: 70px;
       padding-left: 0;
-      margin: 44px 0 0 -5px;
+      margin: 60px 0 0 -20px;
       position: absolute;
-      box-shadow: 0 40px 40px -20px rgb(0, 0, 0);
+      box-shadow: 0 30px 40px -20px rgb(0, 0, 0);
    }
 
    div.progress-container span {
@@ -682,11 +682,11 @@ span#holeCompletionMessage {
    }
 
    .clubSuggestion {
+      max-width: 100%;
       margin: 4px auto;
-      padding: 6px 8px;
-      /* max-width: 400px; */
+      padding: 6px 4px;
       font-size: 12px;
-      white-space: nowrap;
+      white-space: normal;
       border-radius: 2px;      
    }
 
