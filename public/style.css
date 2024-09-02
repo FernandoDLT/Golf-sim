@@ -658,6 +658,13 @@ span#holeCompletionMessage {
       font-size: 16px;
    }
 
+   .slide-wrapper #yardage::placeholder{
+      color: red;
+      padding-left: 0;
+      margin-right: 50px;
+      font-size: .68rem;
+   }
+
    #resetYardageBtn {
       margin-top: 10px;
    }
