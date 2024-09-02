@@ -295,9 +295,10 @@ div.progress-container span {
 
 /* club-distances inputs */
 input {
-   padding-left: 12px;
+   /* padding-left: 12px; */
    height: 35px;
-   font-size: 1.2rem;
+   color: var(--secondary-color);
+   /* font-size: .2rem; */
    text-align: center;
 }
 
@@ -308,8 +309,18 @@ input {
 
 /* Placeholders */
 ::placeholder {
-   color: gray;
+   color: rgb(175, 175, 175);
    font-size: 14px;
+}
+
+.slide-wrapper #yardage {
+   font-size: 1.4rem;
+   width: 160px;
+   justify-content: center;
+}
+
+.slide-wrapper #yardage::placeholder {
+   font-size: .8rem;
 }
 
 /* Yards reset button */
@@ -339,7 +350,7 @@ input {
 /* Result for testing result*/
 #result {
    width: 55%;
-   padding: 12px;
+   padding: 4px 6px;
    text-align: center;
    font-size: 1.2rem;
    font-weight: 300;
@@ -658,11 +669,12 @@ span#holeCompletionMessage {
       font-size: 16px;
    }
 
-.slide-wrapper #yardage::placeholder {
-   font-size: .68rem;
-   text-align: center;
-   /* Optional, aligns the placeholder text within its own box */
-}
+   .slide-wrapper #yardage::placeholder {
+      font-size: .68rem;
+      font-weight: bold;
+      text-align: center;  
+
+   }
 
    #resetYardageBtn {
       margin-top: 10px;
@@ -676,7 +688,7 @@ span#holeCompletionMessage {
    #result {
       margin: 4px auto;
       padding: 6px 8px;
-      font-size: 10px;
+      font-size: .8rem;
       white-space: nowrap;
    }
 
