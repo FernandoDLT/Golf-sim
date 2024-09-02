@@ -134,16 +134,17 @@ h3 {
 
 /* Ordered list */
 ol {
-   width: 92%;
-   text-align: left;
+   width: 98%;
    padding-left: 10%;
    margin-top: 20px;
    font-weight: 500;
+   text-align: left;
 }
 
 /* List items */
 li {
    margin-bottom: 12px;
+   font-size: 1.04rem;
    color: var(--secondary-color);
 }
 
@@ -269,19 +270,25 @@ div.progress-container span {
    text-align: center;
    margin: 10px 0 0;
    font-size: 1rem;
-   color: var(--black-color);
+   /* color: var(--black-color); */
+   color: white;
+   text-shadow: 3px 3px 6px var(--secondary-color);
+   opacity: 1;
+   /* transform: translateY(0); */
+   transition: opacity 0.9s ease, transform 0.5s ease;
 }
 
 /* club-distances input (yards)*/
 .club-distances input {
    width: 100%;
+   font-size: 1.28rem;
    color: rgb(15, 136, 126);
 }
 
 /* club-distances labels */
 .club-distances label {
    margin: 10px;
-   font-size: 20px;
+   font-size: 1.1rem;
    font-weight: 300;
    color: var(--black-color);
 }
@@ -595,25 +602,38 @@ span#holeCompletionMessage {
    }
 
    h1 {
-      font-size: 20px;
+      font-size: 1.2rem;
    }
 
    .intro-container {
-      padding: 16px;
+      width: 80%;
+      margin: 16px auto;
+      padding: 14px 16px;
    }
    
-   h1, .intro-container, .instructions, .club-distances {
+   h1, .instructions, .club-distances {
       width: 80%;
       margin: 20px auto 0;
    }
 
    .intro-container p {
       padding-bottom: 10px;
+      margin: 6px 0;
+      font-size: 1.1rem;
+   }
+
+   .intro-container span {
+      margin: 6px 0 20px;
+      font-size: 1.09rem;
    }
 
    .instructions {
       padding: 10px 0;
       min-width: 300px;
+   }
+
+   li {
+      font-size: .9rem;
    }
 
    .club-distances {
@@ -627,10 +647,11 @@ span#holeCompletionMessage {
 
    .club-distances input {
       min-width: 120px;
+      font-size: 1.16rem;
    }
 
    .club-distances h3 {
-      font-size: 12px;
+      font-size: .8rem;
    }
 
    .yardsReset label {
@@ -729,11 +750,6 @@ span#holeCompletionMessage {
 
    h2 {
       margin-bottom: 14px;
-   }
-
-   p {
-      margin: 4px 0;
-      font-size: 16px;
    }
 
    #roundCompletionMessage {

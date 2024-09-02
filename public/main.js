@@ -89,7 +89,13 @@ function allFieldsFilled() {
 
 // Function to toggle the visibility of the message # the bottom of club-distances
 function toggleMessageVisibility() {
-    document.querySelector('.club-distances h3').style.visibility = allFieldsFilled() ? 'hidden' : 'visible';
+    const h3Element = document.querySelector('.club-distances h3');
+    if (allFieldsFilled()) {
+        h3Element.style.opacity = '0'; // Fade out
+    } else {
+        h3Element.style.opacity = '1'; // Fade in (if needed)
+    }
+    // document.querySelector('.club-distances h3').style.visibility = allFieldsFilled() ? 'hidden' : 'visible';
 }
 
 // Function for saving all club distances
