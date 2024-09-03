@@ -63,7 +63,7 @@ h1 {
 .intro-container span {
    display: block;
    margin: 20px 0;
-   font-size: 1.28rem;
+   font-size: 18px;
    color: var(--secondary-color);
    text-align: center;
 }
@@ -73,9 +73,8 @@ h1 {
    display: inline-block;
    display: flex;
    margin: 0 auto;
-   padding: 16px;
+   padding: 14px 28px;
    font-size: 18px;
-   font-weight: bold;
    color: var(--white-color);
    background: var(--primary-color);
    border: 2px solid var(--primary-color);
@@ -211,14 +210,6 @@ div.progress-container span {
    font-size: 1.2em;
    display: block;
    text-align: center;
-}
-
-progress[id^="swingProgressBar"] {
-   /* Your styles here */
-   width: 44%;
-   height: 12px;
-   /* appearance: none; */
-   /* Add more styles as needed */
 }
 
 /* Resets clubs inputs */
@@ -630,12 +621,6 @@ span#holeCompletionMessage {
       margin: 16px auto;
       padding: 14px 16px;
    }
-
-   #start {
-      padding: 8px;
-      font-size: .84rem;
-      font-weight: bold;
-   }
    
    h1, .instructions, .club-distances {
       width: 80%;
@@ -678,7 +663,7 @@ span#holeCompletionMessage {
 
    /* Club Distances Message */
    .club-distances h3 {
-      font-size: .74rem;
+      font-size: .68rem;
    }
 
    .yardsReset {
@@ -728,53 +713,19 @@ span#holeCompletionMessage {
    
    /* Swing Button */
    .swingBtn {
-      /* font-size: 3vw;
+      font-size: 16px;
       font-weight: bolder;
+      width: 70px;
+      height: 70px;
       padding-left: 0;
-      margin: 3.2vh 0 0 -2vw;
-      position: fixed;
-      box-shadow: 0 30px 40px -20px rgb(0, 0, 0); */
-   }
-
-   p {
-      margin: 3px;
-      font-size: .82rem;
+      margin: 60px 0 0 -20px;
+      position: absolute;
+      box-shadow: 0 30px 40px -20px rgb(0, 0, 0);
    }
 
    div.progress-container span {
-      font-size: .76rem;
       margin: 2px auto;
    }
-   .swingBtn {
-      background-image: url('images/golf-ball.png');
-      background-size: auto;
-      font-size: .8rem;
-      font-weight: bolder;
-      width: 14vw;
-      height: 14vw;
-      /* margin: 1px 0 0 2px; */
-      position: fixed;
-      transform: translate(1%, -10%)
-   }
-
-   /* .strokes-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-   } */
-
-   /* .swingBtn {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      font-size: 3vw;
-      width: 14vw;
-      height: 14vw;
-      margin: 0;
-      padding: 0;
-   } */
 
    .clubSuggestion {
       max-width: 100%;
