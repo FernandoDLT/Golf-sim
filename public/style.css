@@ -720,24 +720,24 @@ span#holeCompletionMessage {
    
    /* Swing Button */
    .swingBtn {
-      font-size: 3vw;
+      /* font-size: 3vw;
       font-weight: bolder;
-      width: 16vw;
-      height: 16vw;
       padding-left: 0;
       margin: 3.2vh 0 0 -2vw;
       position: fixed;
-      box-shadow: 0 30px 40px -20px rgb(0, 0, 0);
+      box-shadow: 0 30px 40px -20px rgb(0, 0, 0); */
    }
-   /* .swingBtn {
-      font-size: 16px;
+   .swingBtn {
+      font-size: 3vw;
       font-weight: bolder;
-      width: 70px;
-      height: 70px;
-      padding-left: 0;
-      margin: 60px 0 0 -20px;
+      /* width: 70px;
+      height: 70px; */
+      width: 17vw;
+      height: 17vw;
+      /* padding-left: 0; */
+      margin: 30px 0 0 2px;
       position: absolute;
-   } */
+   }
 
    div.progress-container span {
       margin: 2px auto;
