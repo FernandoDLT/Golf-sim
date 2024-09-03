@@ -721,6 +721,7 @@ span#holeCompletionMessage {
       margin: 60px 0 0 -20px;
       position: absolute;
       box-shadow: 0 30px 40px -20px rgb(0, 0, 0);
+      text-shadow: 2px 2px 4px white;
    }
 
    div.progress-container span {
