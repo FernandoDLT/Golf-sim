@@ -63,7 +63,7 @@ h1 {
 .intro-container span {
    display: block;
    margin: 20px 0;
-   font-size: 18px;
+   font-size: 1.28rem;
    color: var(--secondary-color);
    text-align: center;
 }
@@ -73,8 +73,9 @@ h1 {
    display: inline-block;
    display: flex;
    margin: 0 auto;
-   padding: 14px 28px;
+   padding: 16px;
    font-size: 18px;
+   font-weight: bold;
    color: var(--white-color);
    background: var(--primary-color);
    border: 2px solid var(--primary-color);
@@ -621,6 +622,12 @@ span#holeCompletionMessage {
       margin: 16px auto;
       padding: 14px 16px;
    }
+
+   #start {
+      padding: 8px;
+      font-size: .84rem;
+      font-weight: bold;
+   }
    
    h1, .instructions, .club-distances {
       width: 80%;
@@ -660,37 +667,27 @@ span#holeCompletionMessage {
       min-width: 120px;
       font-size: 1.16rem;
    }
+
    /* Club Distances Message */
    .club-distances h3 {
-      font-size: .68rem;
+      font-size: .74rem;
    }
 
-       .yardsReset {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1px;
-          /* Adjust the spacing as needed */
-       }
-   
-       .yardsReset label {
-          margin-bottom: 4px;
-          /* Space below the label */
-       }
-   
-       .yardsReset input {
-          /* margin-bottom: 10px; */
-          /* Space below the input */
-       }
-   /* .yardsReset label {
-      font-size: .96rem;
-   } */
+   .yardsReset {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+   }
+
+   .yardsReset label {
+      margin-bottom: 4px;
+   }
 
    .slide-wrapper #yardage::placeholder {
       font-size: .68rem;
       font-weight: bold;
       text-align: center;  
-
    }
 
    #resetYardageBtn {
@@ -702,15 +699,6 @@ span#holeCompletionMessage {
       padding: 10px;
    }
 
-   /* #result {
-      margin: 4px auto;
-      padding: 6px 6px;
-      font-size: .72rem;
-      white-space: normal;
-      display: block;
-      text-align: center;
-      width: fit-content;
-   } */
    #result {
       margin: 4px auto;
       padding: 6px 8px;
@@ -732,6 +720,16 @@ span#holeCompletionMessage {
    
    /* Swing Button */
    .swingBtn {
+      font-size: 3vw;
+      font-weight: bolder;
+      width: 16vw;
+      height: 16vw;
+      padding-left: 0;
+      margin: 3.2vh 0 0 -2vw;
+      position: fixed;
+      box-shadow: 0 30px 40px -20px rgb(0, 0, 0);
+   }
+   /* .swingBtn {
       font-size: 16px;
       font-weight: bolder;
       width: 70px;
@@ -739,8 +737,7 @@ span#holeCompletionMessage {
       padding-left: 0;
       margin: 60px 0 0 -20px;
       position: absolute;
-      box-shadow: 0 30px 40px -20px rgb(0, 0, 0);
-   }
+   } */
 
    div.progress-container span {
       margin: 2px auto;
