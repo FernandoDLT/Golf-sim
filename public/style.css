@@ -213,6 +213,14 @@ div.progress-container span {
    text-align: center;
 }
 
+progress[id^="swingProgressBar"] {
+   /* Your styles here */
+   width: 44%;
+   height: 12px;
+   /* appearance: none; */
+   /* Add more styles as needed */
+}
+
 /* Resets clubs inputs */
 .clubs-reset {
    width: 60%;
@@ -727,21 +735,46 @@ span#holeCompletionMessage {
       position: fixed;
       box-shadow: 0 30px 40px -20px rgb(0, 0, 0); */
    }
-   .swingBtn {
-      font-size: 3vw;
-      font-weight: bolder;
-      /* width: 70px;
-      height: 70px; */
-      width: 17vw;
-      height: 17vw;
-      /* padding-left: 0; */
-      margin: 30px 0 0 2px;
-      position: absolute;
+
+   p {
+      margin: 3px;
+      font-size: .82rem;
    }
 
    div.progress-container span {
+      font-size: .76rem;
       margin: 2px auto;
    }
+   .swingBtn {
+      background-image: url('images/golf-ball.png');
+      background-size: auto;
+      font-size: .8rem;
+      font-weight: bolder;
+      width: 14vw;
+      height: 14vw;
+      /* margin: 1px 0 0 2px; */
+      position: fixed;
+      transform: translate(1%, -10%)
+   }
+
+   /* .strokes-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+   } */
+
+   /* .swingBtn {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 3vw;
+      width: 14vw;
+      height: 14vw;
+      margin: 0;
+      padding: 0;
+   } */
 
    .clubSuggestion {
       max-width: 100%;
