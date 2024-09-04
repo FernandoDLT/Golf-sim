@@ -371,11 +371,11 @@ input field, reset for yards Btn, startRound saveBtn, resetClubsBnt container el
 div.progress-container span {
    display: block;
    text-align: center;
+   font-size: 1.2em;
    font-weight: bold;
    margin-top: 2px;
    margin-bottom: 6px;
    color: var(--secondary-color);
-   font-size: 1.2em;
 }
 
 /* Strokes container */
@@ -691,7 +691,8 @@ span#holeCompletionMessage {
    }
 
    div.progress-container span {
-      margin: 2px auto;
+      font-size: .98em;
+      margin: 2px auto 4px;
    }
 
    .clubSuggestion {
