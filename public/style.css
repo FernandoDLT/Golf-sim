@@ -21,7 +21,7 @@ header {
    transition: transform .5s ease-in-out;
 }
 
- /* Add this CSS to target the specific elements you want to slide up */
+ /* Targets the specific elements to slide up */
  .slide-up,
  .slide-up-main {
     transition: transform .5s ease-in-out;
@@ -57,15 +57,6 @@ h1 {
    font-size: clamp(18px, 1.5vw, 22px);
    padding-bottom: 20px;
    color: var(--secondary-color);
-}
-
-/* Intro text for span */
-.intro-container span {
-   display: block;
-   margin: 20px 0;
-   font-size: 18px;
-   color: var(--secondary-color);
-   text-align: center;
 }
 
 /* Main Start button */
@@ -107,31 +98,6 @@ h1 {
    color: var(--black-color);
 }
 
-/* Hole and par text */
-.hole p {
-   color: var(--secondary-color);
-   font-weight: 600;
-}
-
-/* Reset Yards */
-.yardsReset {
-   width: 60%;
-   margin: 5px auto 0;
-   text-align: center;
-}
-
-/* Yards Reset label */
-.yardsReset label {
-   color: rgb(15, 136, 126);
-   font-size: 18px;
-   font-weight: 900;
-}
-
-/* Yardage info */
-h3 {
-   color: var(--primary-color);
-}
-
 /* Ordered list */
 ol {
    width: 98%;
@@ -148,106 +114,10 @@ li {
    color: var(--secondary-color);
 }
 
-/* Contains Holes information */
-.holes-container {
-   display: none;
+/* Target club-distances container elements to slide up */
+.slide-wrapper.slide-up-main {
+   transform: translateY(-100vh);
 }
-
-/* Swing btn */
-.swingBtn {
-   background-image: url('images/golf-ball.png');
-   /* background-size: cover; */
-   background-position: center;
-   /* background-size: fit-content; */
-   border: 2px solid #d1d1d1;
-   color: var(--green-color);
-   font-size: 24px;
-   font-weight: bold;
-   cursor: pointer;
-   transition: all .3s ease;
-   text-transform: uppercase;
-   outline: none;
-   margin: 6px auto;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border-radius: 50%;
-   width: 110px;
-   height: 110px;
-   padding: 0;
-   position: relative;
-   overflow: hidden;
-   /* transform: */
-      /* perspective(1050px) translate3d(0px, 0px, 120px) rotateX(7deg) scale(0.9, 0.9); */
-   border: 2px solid #e0e0e0;
-   box-shadow: 0 40px 40px -30px rgba(0, 0, 0, 0.5);
-}
-
-/* Swing button hover */
-.swingBtn:hover {
-   /* color: var(--white-color);
-   background: var(--green-color); */
-   cursor: pointer;
-   /* background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); */
-   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-   transform: translateY(-3px);
-}
-
-/* Swing button active state */
-.swingBtn:active {
-   /* background: linear-gradient(135deg, #66bb6a, var(--green-color)); */
-   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-   transform: translateY(6px) scale(.94);
-   opacity: .6;
-}
-
-/* Power */
-div.progress-container span {
-   font-weight: bold;
-   margin-top: 5px;
-   margin-bottom: 10px;
-   color: var(--secondary-color);
-   font-size: 1.2em;
-   display: block;
-   text-align: center;
-}
-
-/* Resets clubs inputs */
-.clubs-reset {
-   width: 60%;
-   margin: 40px auto;
-   text-align: center;
-}
-
-/* Reset All Clubs Button */
-.clubs-reset button {
-   display: inline-block;
-   margin-right: 10px;
-   margin: 0 auto;
-   padding: 10px 16px;
-   color: var(--green-color);
-   background: var(--yellow-color);
-   border: 2px solid var(--green-color);
-   border-radius: 25px;
-   cursor: pointer;
-   align-items: center;
-}
-
-/* Add transition for sliding effect */
-.slide-wrapper {
-   position: relative;
-   transition: transform 0.5s ease-in-out;
-}
-
-/* Add this CSS to target the specific elements you want to slide up */
- .slide-wrapper.slide-up-main {
-    transform: translateY(-100vh);
-    /* Move the element up by the viewport height */
- }
-
- .slide-wrapper {
-    transition: transform 0.5s ease-in-out;
- }
 
 /* Club distances container */
 .club-distances {
@@ -269,12 +139,10 @@ div.progress-container span {
    grid-column: 1 / -1;
    text-align: center;
    margin: 10px 0 0;
-   font-size: 1rem;
-   /* color: var(--black-color); */
+   font-size: 1.08rem;
    color: white;
-   text-shadow: 3px 3px 6px var(--secondary-color);
+   text-shadow: 3px 3px 6px #003e3a;
    opacity: 1;
-   /* transform: translateY(0); */
    transition: opacity 0.9s ease, transform 0.5s ease;
 }
 
@@ -295,10 +163,8 @@ div.progress-container span {
 
 /* club-distances inputs */
 input {
-   /* padding-left: 12px; */
    height: 35px;
    color: var(--secondary-color);
-   /* font-size: .2rem; */
    text-align: center;
 }
 
@@ -307,23 +173,48 @@ input {
    background: var(--yellow-color);
 }
 
-/* Placeholders */
-::placeholder {
-   color: rgb(175, 175, 175);
-   font-size: 14px;
+/* Target yardsReset container; label for Yards 
+input field, reset for yards Btn, startRound saveBtn, resetClubsBnt container elements to slide up */
+.slide-wrapper {
+   position: relative;
+   transition: transform 0.5s ease-in-out;
 }
 
-.slide-wrapper #yardage {
+/* Reset Yards Container*/
+.yardsReset {
+   width: 60%;
+   margin: 5px auto 0;
+   text-align: center;
+}
+
+/* Yards Reset label */
+.yardsReset label {
+   color: rgb(15, 136, 126);
+   font-size: 18px;
+   font-weight: 900;
+}
+
+/* Input field for testing yardages */
+#yardage {
    font-size: 1.4rem;
    width: 160px;
    justify-content: center;
+   color: var(--green-color);
 }
 
-.slide-wrapper #yardage::placeholder {
-   font-size: .8rem;
+/* Input field for testing yardages paceholder*/
+#yardage::placeholder {
+   font-size: .84rem;
 }
 
-/* Yards reset button */
+/* Resets clubs Container */
+.clubs-reset {
+   width: 60%;
+   margin: 40px auto;
+   text-align: center;
+}
+
+/* Yards for testing reset button */
 #resetYardageBtn {
    margin: 0 auto;
    padding: 8px 16px;
@@ -338,11 +229,11 @@ input {
 /* Yards reset test button hover*/
 #resetYardageBtn:hover {
    color: var(--white-color);
-   background:red;
+   background: red;
    transition: background 0.3s, border-color 0.3s;
 }
 
-/* Result testin container */
+/* Result testing container */
 .result-container {
    margin-top: 20px;
 }
@@ -358,6 +249,185 @@ input {
    background: rgb(16, 114, 109);
    border-radius: 5px;
    box-shadow: -4px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Save Club-Distances Btn */
+#saveBtn {
+   padding: 10px 16px;
+   border-radius: 25px;
+}
+
+/* Save Club-Distances Hover */
+#saveBtn:hover {
+   color: var(--white-color);
+   background: var(--green-color);
+}
+
+/* Reset All Clubs Button */
+.clubs-reset button {
+   display: inline-block;
+   margin-right: 10px;
+   margin: 0 auto;
+   padding: 10px 16px;
+   color: var(--green-color);
+   background: var(--yellow-color);
+   border: 2px solid var(--green-color);
+   border-radius: 25px;
+   cursor: pointer;
+   align-items: center;
+}
+
+/* Reset ALL-CLUBS in clubs-container button hover*/
+.resetClubs:hover {
+   background: red;
+   color: var(--white-color);
+   border: 2px solid var(--green-color);
+   transition: background 0.3s, border-color 0.3s;
+}
+
+/* Start Round button */
+.startRoundBtn {
+   display: none;
+   transition: background 0.3s, border-color 0.3s;
+}
+
+/* Start round button */
+.startRoundBtn:hover {
+   color: var(--white-color);
+   background: var(--green-color);
+}
+
+/* Main Current hole info */
+.hole {
+   text-align: center;
+   margin: 20px auto;
+   padding: 20px;
+   width: 80%;
+   max-width: 600px;
+   border: 1px solid #ccc;
+   box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Hole and par text */
+.hole p {
+   color: var(--secondary-color);
+   font-weight: 600;
+   font-size: 1.095rem;
+}
+
+/* Club Suggestion text */
+.clubSuggestion {
+   display: inline-block;
+   padding: 6px 16px;
+   margin: 0 auto;
+   color: var(--white-color);
+   background-color: #60BAB4;
+   background: var(--secondary-color);
+   white-space: nowrap;
+   border-radius: 2px;
+}
+
+/* Swing btn */
+.swingBtn {
+   background-image: url('images/golf-ball.png');
+   background-position: center;
+   border: 2px solid #d1d1d1;
+   color: var(--green-color);
+   font-size: 24px;
+   font-weight: bold;
+   cursor: pointer;
+   transition: all .3s ease;
+   text-transform: uppercase;
+   outline: none;
+   margin: 6px auto;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   width: 110px;
+   height: 110px;
+   padding: 0;
+   position: relative;
+   overflow: hidden;
+   border: 2px solid #e0e0e0;
+   box-shadow: 0 40px 40px -30px rgba(0, 0, 0, 0.5);
+}
+
+/* Swing button hover */
+.swingBtn:hover {
+   cursor: pointer;
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+   transform: translateY(-3px);
+}
+
+/* Swing button active state */
+.swingBtn:active {
+   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+   transform: translateY(6px) scale(.94);
+   opacity: .6;
+}
+
+/* Power */
+div.progress-container span {
+   display: block;
+   text-align: center;
+   font-weight: bold;
+   margin-top: 2px;
+   margin-bottom: 6px;
+   color: var(--secondary-color);
+   font-size: 1.2em;
+}
+
+/* Strokes container */
+.strokes-container {
+   margin: 14px;
+}
+
+/* Strokes text for label */
+.strokes-label {
+   color: var(--secondary-color);
+   font-weight: 900;
+}
+
+/* Strokes counter */
+.strokes {
+   display: inline-block;
+   width: 24px;
+   height: 22px;
+   color: var(--white-color);
+   background: var(--green-color);
+}
+
+/* Next Hole button */
+#nextHoleBtn {
+   display: none;
+   margin: 6px auto;
+   padding: 10px 24px;
+   color: var(--green-color);
+   background: var(--yellow-color);
+   border: 2px solid var(--green-color);
+   border-radius: 25px;
+   align-items: center;
+   cursor: pointer;
+}
+
+/* Next Hole btn hover */
+#nextHoleBtn:hover {
+   color: var(--white-color);
+   background: var(--green-color);
+}
+
+/* Contains Holes information */
+.holes-container {
+   display: none;
+}
+
+/* Hole Info. result containers */
+.hole-info {
+   color: var(--yellow-color);
+   background-color: var(--primary-color);
+   padding: 60px;
+   margin-bottom: 10px;
 }
 
 /* Yardage Info h3 */
@@ -389,7 +459,6 @@ hr {
    margin: 20px auto;
    width: 80%;
    max-width: 600px;
-   /* border: 1px solid gray; */
    padding: 20px;
    box-shadow: -6px 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -400,60 +469,8 @@ hr {
    font-size: 1.2rem;
    width: 100%;
    padding: 5px;
-   /* margin: 0 auto; */
    margin: 20px auto;
    text-align: center;
-}
-
-button#saveBtn {
-   padding: 10px 16px;
-   border-radius: 25px;
-}
-
-/* Save button hover*/
-.resetClubs:hover {
-   background: red;
-   color: var(--white-color);
-   border: 2px solid var(--green-color);
-   transition: background 0.3s, border-color 0.3s;
-}
-
-/* Save button */
-#saveBtn:hover {
-   color: var(--white-color);
-   background: var(--green-color);
-}
-
-
-/* Start Round button */
-.startRoundBtn {
-   display: none;
-   transition: background 0.3s, border-color 0.3s;
-}
-
-/* Start round button */
-.startRoundBtn:hover {
-   color: var(--white-color);
-   background: var(--green-color);
-}
-
-/* Current hole info */
-.hole {
-   text-align: center;
-   margin: 20px auto;
-   padding: 20px;
-   width: 80%;
-   max-width: 600px;
-   border: 1px solid #ccc;
-   box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Hole Info. result containers */
-.hole-info {
-   color: var(--yellow-color);
-   background-color: var(--primary-color);
-   padding: 60px;
-   margin-bottom: 10px;
 }
 
 /* Previous Hole */
@@ -475,6 +492,20 @@ button#saveBtn {
    color: var(--black-color);
 }
 
+/* Previous Hole */
+p {
+   color: var(--white-color);
+   font-size: 18px;
+   margin: 8px 0;
+}
+
+/* H3 span for Hole Completion Message */
+span#holeCompletionMessage {
+   font-size: 1.1rem;
+   color: var(--yellow-color);
+   margin-top: 40px !important;
+}
+
 /* Congrats Message */
 .congratulations-message {
    position: fixed;
@@ -489,71 +520,6 @@ button#saveBtn {
    text-align: center;
    z-index: 9999;
    display: none;
-}
-
-/* Previous Hole */
-p {
-   color: var(--white-color);
-   font-size: 18px;
-   margin: 8px 0;
-}
-
-/* Next Hole button */
-#nextHoleBtn {
-   display: none;
-   margin: 6px auto;
-   padding: 10px 24px;
-   color: var(--green-color);
-   background: var(--yellow-color);
-   border: 2px solid var(--green-color);
-   border-radius: 25px;
-   align-items: center;
-   cursor: pointer;
-}
-
-/* Next Hole btn hover */
-#nextHoleBtn:hover {
-   color: var(--white-color);
-   background: var(--green-color);
-}
-
-/* H3 span for Hole Completion Message */
-span#holeCompletionMessage {
-   font-size: 1.1rem;
-   color: var(--yellow-color);
-   margin-top: 40px !important;
-}
-
-/* Strokes container */
-.strokes-container {
-   margin: 14px;
-}
-
-/* Strokes counter */
-.strokes {
-   display: inline-block;
-   width: 20px;
-   height: 20px;
-   color: var(--white-color);
-   background: var(--green-color);
-}
-
-/* Strokes text for label */
-.strokes-label {
-   color: var(--secondary-color);
-   font-weight: 900;
-}
-
-/* Club Suggestion text */
-.clubSuggestion {
-   display: inline-block;
-   padding: 6px 16px;
-   margin: 0 auto;
-   color: var(--white-color);
-   background-color: #60BAB4;
-   background: var(--secondary-color);
-   white-space: nowrap;
-   border-radius: 2px;
 }
 
 /* Round Completion message */
@@ -605,11 +571,11 @@ span#holeCompletionMessage {
    border: 1px solid var(--black-color);
 }
 
+
 /* For screens narrower than 668px */
 @media (max-width: 668px) {
    header {
       margin-top: 0;
-      /* min-width: 400px; */
    }
 
    h1 {

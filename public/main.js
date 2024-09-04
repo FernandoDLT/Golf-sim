@@ -121,29 +121,6 @@ function saveSettings() {
     document.getElementById('saveBtn').style.display = 'none';
 }
 
-// function saveSettings() {
-//     if (!allFieldsFilled()) {
-//         alert("Please customize all club distances before saving.");
-//         return;
-//     }
-//     // Create an object `clubs` that maps the IDs of input elements to their values
-//     const clubs = Object.fromEntries(
-//         // Select all input elements of type "number" within the '.club-distances' container
-//         [...document.querySelectorAll('.club-distances input[type="number"]')]
-//             // Map each input element to a key-value pair where the key is the input's ID and the value is its current value
-//             .map(input => [input.id, input.value])
-//     );
-
-//     // Save the `clubs` object to local storage as a JSON string
-//     localStorage.setItem('clubs', JSON.stringify(clubs));
-
-//     // Display the 'Start Round' button
-//     startRoundBtn.style.display = 'inline-block';
-
-//     // Hide the 'Save' button
-//     document.getElementById('saveBtn').style.display = 'none';
-// }
-
 // Function for suggesting club
 function handleYardageInputChange(event) {
     const yardage = event.target.value;
@@ -555,23 +532,6 @@ function suggestClub(distance) {
             return "Click 'Next Hole' to continue.";
         }
 
-        // Default club distances
-        const defaultClubDistances = {
-            driver: 250,
-            threeWood: 230,
-            lobWedge: 60,
-            sandWedge: 80,
-            pitchingWedge: 100,
-            nineIron: 130,
-            eightIron: 140,
-            sevenIron: 150,
-            sixIron: 160,
-            fiveIron: 170,
-            fourIron: 180,
-            threeIron: 190,
-            fiveWood: 210
-        };
-
         // Retrieve club distances from local storage
         const clubDistancesJSON = localStorage.getItem("clubs");
         const clubDistances = clubDistancesJSON ? JSON.parse(clubDistancesJSON) : defaultClubDistances;
@@ -619,68 +579,6 @@ function suggestClub(distance) {
         return "Club distances have not been set.";
     }
 }
-
-// function suggestClub(distance) {
-//     try {
-//         const yardage = parseInt(distance);
-
-//         if (yardage === 0) {
-//             const holeSound = new Audio('assets/audio/putt-ball-in-the-hole.mp3');
-//             holeSound.play();
-//             return "Click 'Next Hole' to continue.";
-//         }
-
-//         const clubDistancesJSON = localStorage.getItem("clubs");
-//         if (!clubDistancesJSON) {
-//             throw new Error('Club distances have not been set.');
-//         }
-        
-//         // Stored club distances
-//         const clubDistances = JSON.parse(clubDistancesJSON);
-        
-//         // Check if the player is on the green (within 25 yards)
-//         const greenThreshold = 25
-//         if (yardage <= greenThreshold) {
-//             return ('On the GREEN, use Putter');
-//         }
-
-//         // Suggest Driver or 3 Wood if applicable
-//         const driverDistance = parseInt(clubDistances.driver);
-//         if (!isNaN(driverDistance) && yardage >= driverDistance) {
-//             return "Driver, swing for the fences!";
-//         }
-
-//         // Returns "3 Wood" if the yardage is within the range for a 3 Wood club but less than the driver distance.
-//         const threeWoodDistance = parseInt(clubDistances.threeWood);
-//         if (!isNaN(threeWoodDistance) && yardage >= threeWoodDistance && yardage < driverDistance) {
-//             return "3 Wood";
-//         }
-
-//         // List of clubs excluding the putter
-//         const clubs = [
-//             { name: "Lob Wedge", distance: clubDistances.lobWedge },
-//             { name: "Sand Wedge", distance: clubDistances.sandWedge },
-//             { name: "Pitching Wedge", distance: clubDistances.pitchWedge },
-//             { name: "9 Iron", distance: clubDistances.nineIron },
-//             { name: "8 Iron", distance: clubDistances.eightIron },
-//             { name: "7 Iron", distance: clubDistances.sevenIron },
-//             { name: "6 Iron", distance: clubDistances.sixIron },
-//             { name: "5 Iron", distance: clubDistances.fiveIron },
-//             { name: "4 Iron", distance: clubDistances.fourIron },
-//             { name: "3 Iron", distance: clubDistances.threeIron },
-//             { name: "5 Wood", distance: clubDistances.fiveWood },
-//             { name: "3 Wood", distance: clubDistances.threeWood }
-//         ];
-
-//         // Find the most appropriate club based on the distance
-//         const suggestedClub = clubs.find(club => yardage <= parseInt(club.distance));
-//         return suggestedClub ? suggestedClub.name : "No club found for the entered yardage.";
-
-//     } catch (error) {
-//         // console.error("Error suggesting club:", error.message);
-//         return "Club distances have not been set.";
-//     }
-// }
 
 // Load settings when the page loads
 loadSettings();
