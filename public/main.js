@@ -337,7 +337,7 @@ function startRound(holeNumber) {
     }
 
     // Existing simulateSwing function
-    function simulateSwing(power) {
+    function simulateSwing() {
         if (isSwingInProgress) return; // Prevent multiple swings
         isSwingInProgress = true; // Indicate that a swing is in progress
 
@@ -462,8 +462,8 @@ function startRound(holeNumber) {
     }
 
     function stopPowerGeneration() {
-        if (isSwingInProgress) return; // Prevent action if a swing is in progress
-
+        if (isSwingInProgress) return; 
+        // Prevent action if a swing is in progress
         if (timer !== null) {
             clearInterval(timer);
             timer = null;
