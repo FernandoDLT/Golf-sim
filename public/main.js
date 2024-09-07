@@ -61,7 +61,7 @@ function saveSettings() {
 
 // Define holes array
 const holes = [
-    { number: 1, par: 4, distance: 1 },
+    { number: 1, par: 4, distance: 400 },
     { number: 2, par: 4, distance: 380 },
     { number: 3, par: 3, distance: 180 },
     { number: 4, par: 5, distance: 530 },
@@ -309,10 +309,7 @@ function startRound(holeNumber) {
     if (messageElement) {
         // messageElement.textContent = 'Congratulations! Hole-in-One!';
         messageElement.style.display = 'block';
-
-        // Play the applause sound
-        applaus.play();
-
+        // applaus.play()
         // Hide the message after `messageDuration` milliseconds
         setTimeout(() => {
             if (messageElement) {
@@ -400,6 +397,7 @@ function startRound(holeNumber) {
             // Check if it's a hole-in-one
             if (strokes === 1) {
                 triggerConfetti(); // Trigger confetti effect for a hole-in-one
+                applaus.play()
             }
 
             if (holeNumber === 18) {
@@ -432,7 +430,7 @@ function startRound(holeNumber) {
     // Audio variables
     const putterSound = new Audio('assets/audio/golf-putt.wav');
     const shotSound = new Audio('assets/audio/mixkit-golf-shot.wav');
-    const applaus = new Audio('assets/audio/mixkit-animated-small-group-applause-523.wav');
+    const applaus = new Audio('assets/audio/mixkit-animated-small-group-applause-523.wav')
 
     // Adds a mousedown event listener to the swing button to handle swing actions, play sounds, and update the power progress.
     function addSwingButtonListeners(swingBtn, holeNumber) {
