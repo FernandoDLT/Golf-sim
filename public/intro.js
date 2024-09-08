@@ -1,8 +1,8 @@
-// Variable for loading the audio file
-const swingSound = new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav');
-
 // Get the button element
 const startButton = document.getElementById('start');
+
+// Variable for loading the audio file
+const swingSound = new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav');
 
 // Add click event listener to the button
 startButton.addEventListener('click', function() {
