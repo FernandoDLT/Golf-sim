@@ -15,19 +15,19 @@ document.getElementById('new-round').addEventListener('click', handleNewRound);
 
 // Default distances for clubs
 const defaultClubDistances = {
-    'driver': 250,
-    'threeWood': 230,
-    'fiveWood': 210,
-    'threeIron': 200,
-    'fourIron': 190,
-    'fiveIron': 180,
-    'sixIron': 170,
-    'sevenIron': 160,
-    'eightIron': 150,
+    'lobWedge': 60,
+    'sandWedge': 100,
+    'pitchingWedge': 125,
     'nineIron': 140,
-    'pitchingWedge': 130,
-    'sandWedge': 110,
-    'lobWedge': 60
+    'eightIron': 150,
+    'sevenIron': 160,
+    'sixIron': 170,
+    'fiveIron': 180,
+    'fourIron': 190,
+    'threeIron': 200,
+    'fiveWood': 210,
+    'threeWood': 230,
+    'driver': 250
 };
 
 // Initialize input fields with default or saved club distances
@@ -46,17 +46,38 @@ function initializeClubDistances() {
 // Call this function when the page loads
 window.onload = initializeClubDistances;
 
-// Save settings function
 function saveSettings() {
+    if (!allFieldsFilled()) {
+        alert("Please customize all club distances before saving.");
+        return;
+    }
+
+    // Create an object `clubs` that maps the IDs of input elements to their values
     const clubs = Object.fromEntries(
         [...document.querySelectorAll('.club-distances input[type="number"]')]
             .map(input => [input.id, input.value])
     );
 
+    // Save the `clubs` object to local storage as a JSON string
     localStorage.setItem('clubs', JSON.stringify(clubs));
+
+    // Display the 'Start Round' button
     startRoundBtn.style.display = 'inline-block';
+
+    // Hide the 'Save' button
     document.getElementById('saveBtn').style.display = 'none';
 }
+// Save settings function
+// function saveSettings() {
+//     const clubs = Object.fromEntries(
+//         [...document.querySelectorAll('.club-distances input[type="number"]')]
+//             .map(input => [input.id, input.value])
+//     );
+
+//     localStorage.setItem('clubs', JSON.stringify(clubs));
+//     startRoundBtn.style.display = 'inline-block';
+//     document.getElementById('saveBtn').style.display = 'none';
+// }
 
 
 // Define holes array
@@ -99,27 +120,27 @@ function toggleMessageVisibility() {
 }
 
 // Function for saving all club distances
-function saveSettings() {
-    if (!allFieldsFilled()) {
-        alert("Please customize all club distances before saving.");
-        return;
-    }
+// function saveSettings() {
+//     if (!allFieldsFilled()) {
+//         alert("Please customize all club distances before saving.");
+//         return;
+//     }
 
-    // Create an object `clubs` that maps the IDs of input elements to their values
-    const clubs = Object.fromEntries(
-        [...document.querySelectorAll('.club-distances input[type="number"]')]
-            .map(input => [input.id, input.value])
-    );
+//     // Create an object `clubs` that maps the IDs of input elements to their values
+//     const clubs = Object.fromEntries(
+//         [...document.querySelectorAll('.club-distances input[type="number"]')]
+//             .map(input => [input.id, input.value])
+//     );
 
-    // Save the `clubs` object to local storage as a JSON string
-    localStorage.setItem('clubs', JSON.stringify(clubs));
+//     // Save the `clubs` object to local storage as a JSON string
+//     localStorage.setItem('clubs', JSON.stringify(clubs));
 
-    // Display the 'Start Round' button
-    startRoundBtn.style.display = 'inline-block';
+//     // Display the 'Start Round' button
+//     startRoundBtn.style.display = 'inline-block';
 
-    // Hide the 'Save' button
-    document.getElementById('saveBtn').style.display = 'none';
-}
+//     // Hide the 'Save' button
+//     document.getElementById('saveBtn').style.display = 'none';
+// }
 
 // Function for suggesting club
 function handleYardageInputChange(event) {
