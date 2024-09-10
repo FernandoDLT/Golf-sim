@@ -67,18 +67,6 @@ function saveSettings() {
     // Hide the 'Save' button
     document.getElementById('saveBtn').style.display = 'none';
 }
-// Save settings function
-// function saveSettings() {
-//     const clubs = Object.fromEntries(
-//         [...document.querySelectorAll('.club-distances input[type="number"]')]
-//             .map(input => [input.id, input.value])
-//     );
-
-//     localStorage.setItem('clubs', JSON.stringify(clubs));
-//     startRoundBtn.style.display = 'inline-block';
-//     document.getElementById('saveBtn').style.display = 'none';
-// }
-
 
 // Define holes array
 const holes = [
@@ -118,29 +106,6 @@ function toggleMessageVisibility() {
     }
     // document.querySelector('.club-distances h3').style.visibility = allFieldsFilled() ? 'hidden' : 'visible';
 }
-
-// Function for saving all club distances
-// function saveSettings() {
-//     if (!allFieldsFilled()) {
-//         alert("Please customize all club distances before saving.");
-//         return;
-//     }
-
-//     // Create an object `clubs` that maps the IDs of input elements to their values
-//     const clubs = Object.fromEntries(
-//         [...document.querySelectorAll('.club-distances input[type="number"]')]
-//             .map(input => [input.id, input.value])
-//     );
-
-//     // Save the `clubs` object to local storage as a JSON string
-//     localStorage.setItem('clubs', JSON.stringify(clubs));
-
-//     // Display the 'Start Round' button
-//     startRoundBtn.style.display = 'inline-block';
-
-//     // Hide the 'Save' button
-//     document.getElementById('saveBtn').style.display = 'none';
-// }
 
 // Function for suggesting club
 function handleYardageInputChange(event) {
@@ -319,7 +284,6 @@ function startRound(holeNumber) {
     }
 
     // Simulates a swing by updating stroke count, traveled distance, and club suggestion.
-    // Prevents multiple swings while one is in progress and handles hole completion logic.
     // Define the confetti trigger function
     function triggerConfetti() {
     const confettiDuration = 300; // Duration of confetti effect in milliseconds
@@ -341,7 +305,6 @@ function startRound(holeNumber) {
 
     // Start the confetti effect
     const animationEnd = Date.now() + confettiDuration;
-
         (function frame() {
             confetti({
                 particleCount: 100,
@@ -357,7 +320,8 @@ function startRound(holeNumber) {
         })();
     }
 
-    // Existing simulateSwing function
+    // Simulate Swing function
+    // Prevents multiple swings while one is in progress and handles hole completion logic.
     function simulateSwing() {
         if (isSwingInProgress) return; // Prevent multiple swings
         isSwingInProgress = true; // Indicate that a swing is in progress
