@@ -676,8 +676,8 @@ function completeHole(holeNumber) {
         const nextHoleBtn = document.getElementById('nextHoleBtn');
         nextHoleBtn.addEventListener('click', function () {
         // On 'Next Hole' button click:
-        // - Hide the button and clear the message
-        // - Start the next hole or show completion message if all holes are done
+        // Hide the button and clear the message
+        // Start the next hole or show completion message if all holes are done
             displayElement('nextHoleBtn', 'none');
             setTextContent('holeCompletionMessage', '');
 
