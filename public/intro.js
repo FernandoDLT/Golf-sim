@@ -1,21 +1,17 @@
-// Get the button element
+// Create a varable for Start Button
 const startButton = document.getElementById('start');
-
-// Variable for loading the audio file
+// Create variable for swing audio
 const swingSound = new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav');
-
-// Add click event listener to the button
-startButton.addEventListener('click', function() {
-    // Play the sound effect
-    swingSound.play();
-    
-    // Add class to Intro page for sliding effect
+// Add event lsitener and function to Start button
+startButton.addEventListener('click', () => {
+    // Add varible to header
     const header = document.querySelector('header');
+    // Add CSS annimation to header
     header.classList.add('slide-up');
-
-
-    // Redirect to the main page (index.main.html) after the sliding transition
-    setTimeout(function() {
-        window.location.href = 'index.main.html';
-    }, 500); // Match the duration of the CSS transition
+    // Add audio sound method
+    swingSound.play();
+    // Add steTimeout for redirecting page to Main HTML
+    setTimeout(() => {
+        window.location.href = 'index.main.html'
+    }, 500);
 });
