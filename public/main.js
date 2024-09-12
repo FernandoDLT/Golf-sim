@@ -1,11 +1,11 @@
-// Event listeners
+// Event listeners for #saveBtn #yardage
 document.getElementById('saveBtn').addEventListener('click', saveSettings);
 document.getElementById('yardage').addEventListener('input', handleYardageInputChange);
 
-// Start Round var and event listener
-const startRoundBtn = document.querySelector('.startRoundBtn');
-startRoundBtn.addEventListener('click', handleStartRound);
-startRoundBtn.style.display = 'none';
+// Create StartRnd var and event listener
+const startRnd = document.querySelector('.startRoundBtn');
+startRnd.addEventListener('click', handleStartRound);
+startRnd.style.display = 'none';
 
 // Event Listeners for resetting yardage, clubs and 
 document.querySelector('.reset').addEventListener('click', resetYardsAndResult);
@@ -62,7 +62,7 @@ function saveSettings() {
     localStorage.setItem('clubs', JSON.stringify(clubs));
 
     // Display the 'Start Round' button
-    startRoundBtn.style.display = 'inline-block';
+    startRnd.style.display = 'inline-block';
 
     // Hide the 'Save' button
     document.getElementById('saveBtn').style.display = 'none';

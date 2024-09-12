@@ -173,6 +173,11 @@ input {
    background: var(--yellow-color);
 }
 
+.club-distances input::placeholder {
+   font-size: .98rem;
+   color: rgb(171, 170, 170);
+}
+
 /* Target yardsReset container; label for Yards 
 input field, reset for yards Btn, startRound saveBtn, resetClubsBnt container elements to slide up */
 .slide-wrapper {
