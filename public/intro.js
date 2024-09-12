@@ -12,6 +12,6 @@ startButton.addEventListener('click', () => {
     swingSound.play();
     // Add steTimeout for redirecting page to Main HTML
     setTimeout(() => {
-        window.location.href = 'index.main.html'
+        window.location.href = 'index.main.html';
     }, 500);
 });

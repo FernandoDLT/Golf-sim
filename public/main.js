@@ -160,7 +160,11 @@ function handleStartRound() {
     new Audio('assets/audio/mixkit-hard-golf-swing-2119.wav').play();
 
     // Add the slide-up effect to the main elements
-    ['.intro-container', '.instructions', '.club-distances', '.slide-wrapper'].forEach(selector => {
+    [
+        '.intro-container', 
+        '.instructions', 
+        '.club-distances', '.slide-wrapper'        
+    ].forEach(selector => {
         const element = document.querySelector(selector);
         if (element) {
             element.classList.add('slide-up-main');
@@ -168,14 +172,24 @@ function handleStartRound() {
     });
 
     // Use setTimeout to hide the elements after the slide-up effect
-    setTimeout(function() {
-        ['.result-container', '.intro-container', '.instructions', '.club-distances', '.slide-wrapper'].forEach(selector => {
+    setTimeout(() => {
+        [
+            '.result-container', 
+            '.intro-container', 
+            '.instructions', 
+            '.club-distances',
+            '.slide-wrapper'
+        ].forEach(selector => {
             const element = document.querySelector(selector);
             if (element) element.style.display = 'none';
         });
 
         // Show holes container and yards counter
-        ['.holes-container', '.yardsCounter', '#new-round'].forEach(selector => {
+        [
+            '.holes-container', 
+            '.yardsCounter', 
+            '#new-round'            
+        ].forEach(selector => {
             const element = document.querySelector(selector);
             if (element) element.style.display = 'block';
         });
@@ -568,7 +582,7 @@ function suggestClub(distance) {
 }
 
 // Load settings when the page loads
-loadSettings();
+// loadSettings();
 
 // Displays hole information
 function displayHole(hole) {
@@ -674,7 +688,7 @@ function completeHole(holeNumber) {
         setTextContent('holeCompletionMessage', 'Hole Completed!');
 
         const nextHoleBtn = document.getElementById('nextHoleBtn');
-        nextHoleBtn.addEventListener('click', function () {
+        nextHoleBtn.addEventListener('click', () => {
         // On 'Next Hole' button click:
         // Hide the button and clear the message
         // Start the next hole or show completion message if all holes are done
