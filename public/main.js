@@ -47,25 +47,26 @@ function initializeClubDistances() {
 window.onload = initializeClubDistances;
 
 function saveSettings() {
-    if (!allFieldsFilled()) {
-        alert("Please customize all club distances before saving.");
-        return;
-    }
+  // Gets all club distance input elements
+  const clubInputs = [...document.querySelectorAll('.club-distances input[type="number"]')];
 
-    // Create an object `clubs` that maps the IDs of input elements to their values
-    const clubs = Object.fromEntries(
-        [...document.querySelectorAll('.club-distances input[type="number"]')]
-            .map(input => [input.id, input.value])
-    );
+  // Checks if all fields are filled and display an alert if not
+  if (!clubInputs.every(input => input.value.trim() !== '')) {
+    alert("Please customize all club distances before saving.");
+    return;
+  }
 
-    // Save the `clubs` object to local storage as a JSON string
-    localStorage.setItem('clubs', JSON.stringify(clubs));
+  // Creates an object `clubs` that maps IDs to their values
+  const clubs = Object.fromEntries(clubInputs.map(input => [input.id, input.value]));
 
-    // Display the 'Start Round' button
-    startRnd.style.display = 'inline-block';
+  // Saves the `clubs` object to local storage as a JSON string
+  localStorage.setItem('clubs', JSON.stringify(clubs));
 
-    // Hide the 'Save' button
-    document.getElementById('saveBtn').style.display = 'none';
+  // Displays the 'Start Round' button
+  startRnd.style.display = 'inline-block';
+
+  // Hides the 'Save' button
+  document.getElementById('saveBtn').style.display = 'none';
 }
 
 // Define holes array
@@ -89,12 +90,6 @@ const holes = [
     { number: 17, par: 5, distance: 520 },
     { number: 18, par: 4, distance: 440 }
 ];
-
-// Function to check if all fields are filled
-function allFieldsFilled() {
-    return [...document.querySelectorAll('.club-distances input[type="number"]')]
-        .every(input => input.value.trim() !== '');
-}
 
 // Function to toggle the visibility of the message # the bottom of club-distances
 function toggleMessageVisibility() {
