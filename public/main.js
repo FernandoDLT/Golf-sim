@@ -91,7 +91,13 @@ const holes = [
     { number: 18, par: 4, distance: 440 }
 ];
 
-// Function to toggle the visibility of the message # the bottom of club-distances
+// Function to check if all fields are filled
+function allFieldsFilled() {
+    return [...document.querySelectorAll('.club-distances input[type="number"]')]
+        .every(input => input.value.trim() !== '');
+}
+
+// Function to toggle the visibility of the message at the bottom of club-distances
 function toggleMessageVisibility() {
     const h3Element = document.querySelector('.club-distances h3');
     if (allFieldsFilled()) {
