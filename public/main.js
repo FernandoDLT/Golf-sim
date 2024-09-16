@@ -105,7 +105,6 @@ function toggleMessageVisibility() {
     } else {
         h3Element.style.opacity = '1'; // Fade in (if needed)
     }
-    // document.querySelector('.club-distances h3').style.visibility = allFieldsFilled() ? 'hidden' : 'visible';
 }
 
 // Function for suggesting club
