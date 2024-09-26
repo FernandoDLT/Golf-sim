@@ -375,11 +375,21 @@ function startRound(holeNumber) {
         if (remainingDistance <= 0) {
             const swingBtn = document.getElementById(`swingBtn${holeNumber}`);
             if (swingBtn) {
+                Object.assign(swingBtn.style, {
+                    display: 'block',
+                    color: 'red'
+                });
                 swingBtn.disabled = true;
-                swingBtn.style.display = 'block';
-                swingBtn.style.color = 'red';
-                nextHoleBtn.style.color = 'white';
-                nextHoleBtn.style.background = 'green';                     
+    
+                Object.assign(nextHoleBtn.style, {
+                    color: 'yellow',
+                    background: 'green'
+                });
+                // swingBtn.disabled = true;
+                // swingBtn.style.display = 'block';
+                // swingBtn.style.color = 'red';
+                // nextHoleBtn.style.color = 'white';
+                // nextHoleBtn.style.background = 'green';                     
             }
 
             const holeCompletionMessage = document.getElementById('holeCompletionMessage');
