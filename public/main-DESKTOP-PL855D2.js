@@ -72,9 +72,9 @@ function saveSettings() {
 // Define holes array
 const holes = [
     { number: 1, par: 4, distance: 1 },
-    { number: 2, par: 4, distance: 380 },
-    { number: 3, par: 3, distance: 180 },
-    { number: 4, par: 5, distance: 530 },
+    { number: 2, par: 4, distance: 320 },
+    { number: 3, par: 3, distance: 186 },
+    { number: 4, par: 5, distance: 535 },
     { number: 5, par: 4, distance: 410 },
     { number: 6, par: 4, distance: 390 },
     { number: 7, par: 3, distance: 150 },
@@ -375,12 +375,21 @@ function startRound(holeNumber) {
         if (remainingDistance <= 0) {
             const swingBtn = document.getElementById(`swingBtn${holeNumber}`);
             if (swingBtn) {
+                Object.assign(swingBtn.style, {
+                    display: 'block',
+                    color: 'red'
+                });
                 swingBtn.disabled = true;
-                swingBtn.style.display = 'block';
-                swingBtn.style.display = 'block';
-                swingBtn.style.color = 'red';
-                nextHoleBtn.style.color = 'white';
-                nextHoleBtn.style.background = 'green';   
+    
+                Object.assign(nextHoleBtn.style, {
+                    color: 'yellow',
+                    background: 'green'
+                });
+                // swingBtn.disabled = true;
+                // swingBtn.style.display = 'block';
+                // swingBtn.style.color = 'red';
+                // nextHoleBtn.style.color = 'white';
+                // nextHoleBtn.style.background = 'green';                     
             }
 
             const holeCompletionMessage = document.getElementById('holeCompletionMessage');
@@ -590,55 +599,30 @@ function suggestClub(distance) {
 
 // Displays hole information
 function displayHole(hole) {
+    // Find the element with the class 'hole' in the DOM
     const holeElement = document.querySelector('.hole');
+
+    // Set the inner HTML of the hole element with the hole information
     holeElement.innerHTML = `
-        <div class="hole-container">
-            <div id='numbers'>
-                <h2>Hole #${hole.number}</h2>
-                <p>Par: ${hole.par}</p>
-                <p>Distance: ${hole.distance} yards</p>
+    <div class ="numbers">
+        <h2>Hole #${hole.number}</h2>
+        <p>Par: ${hole.par}</p>
+        <p>Distance: ${hole.distance} yards</p>
+    </div>
+        <div class="strokes-container">
+        <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
+        <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
+        <div class="progress-container">
+        <span>Power</span>
+        <span id="powerPercentage${hole.number}" class="powerPercentage">0%</span>
+        <span class="strokes-label">Strokes:</span>
+        <span id="strokes${hole.number}" class="strokes">0</span>
             </div>
-            <div class="strokes-container">
-                <div class="progress-container">
-                    <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
-                    <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
-                    <span>Power</span>
-                    <span id="powerPercentage${hole.number}" class="powerPercentage">0%</span>
-                    <span class="strokes-label">Strokes:</span>
-                </div>
-                <span id="strokes${hole.number}" class="strokes">0</span>
-                <button id="nextHoleBtn">Next Hole</button>
-            </div>
-            <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
+            <button id="nextHoleBtn">Next Hole</button>
         </div>
+        <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
     `;
 }
-
-// function displayHole(hole) {
-//     // Find the element with the class 'hole' in the DOM
-//     const holeElement = document.querySelector('.hole');
-
-//     // Set the inner HTML of the hole element with the hole information
-//     holeElement.innerHTML = `
-//     <div id='numbers'>
-//         <h2>Hole #${hole.number}</h2>
-//         <p>Par: ${hole.par}</p>
-//         <p>Distance: ${hole.distance} yards</p>
-//     </div>
-//         <div class="strokes-container">
-//         <div class="progress-container">
-//         <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
-//         <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
-//         <span>Power</span>
-//         <span id="powerPercentage${hole.number}" class="powerPercentage">0%</span>
-//         <span class="strokes-label">Strokes:</span>
-//         </div>
-//         <span id="strokes${hole.number}" class="strokes">0</span>
-//         <button id="nextHoleBtn">Next Hole</button>
-//         </div>
-//         <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
-//     `;
-// }
 
 // Hole completion function
 function completeHole(holeNumber) {
@@ -706,7 +690,7 @@ function completeHole(holeNumber) {
 
     if (remainingDistance === 0 && holeNumber === holes.length) {
         // End of the 18th hole: Hide elements and show 'New Round' button
-        displayElement('nextHoleBtn', 'none');
+        // displayElement('nextHoleBtn', 'none');
         setTextContent('holeCompletionMessage', '');
         setTextContent('roundCompletionMessage', 'All Holes Completed!');
         hideElementBySelector('.holes-container');
@@ -715,7 +699,7 @@ function completeHole(holeNumber) {
         displayElement('new-round', 'inline-block');
     } else {
          // For other holes: Show 'Next Hole' button and completion message
-        displayElement('nextHoleBtn', 'inline-block');
+        displayElement('nextHoleBtn', 'block');
         setTextContent('holeCompletionMessage', 'Hole Completed!');
 
         const nextHoleBtn = document.getElementById('nextHoleBtn');
@@ -723,9 +707,8 @@ function completeHole(holeNumber) {
         // On 'Next Hole' button click:
         // Hide the button and clear the message
         // Start the next hole or show completion message if all holes are done
-            displayElement('nextHoleBtn', 'block');
-            setTextContent('holeCompletionMessage', '');
-
+            displayElement('nextHoleBtn', 'none');
+            setTextContent('holeCompletionMessage', '');  
             if (holeNumber < holes.length) {
                 startRound(holeNumber + 1);
             } else {

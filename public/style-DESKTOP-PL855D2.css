@@ -304,79 +304,50 @@ input field, reset for yards Btn, startRound saveBtn, resetClubsBnt container el
 
 /* Main Current hole info */
 .hole {
+   /* text-align: center; */
    display: flex;
    flex-direction: row;
-   width: 80%;
-   text-align: center;
-   margin: 0 auto;
-   padding: 10px;
+   /* justify-content: center; */
+   align-items: center;
+   margin: 20px auto;
+   padding: 6px 8px;
    width: 80%;
    max-width: 600px;
+   background: rgb(238, 238, 238);
+   /* max-width: 600px; */
    border: 1px solid #ccc;
    box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Hole and par text */
-#numbers {
-   /* display: flex; */
-   /* flex-direction: column; */
-   margin: auto;
+.hole p {
+   color: var(--secondary-color);
+   margin-top: 4px;
+   font-weight: 600;
+   font-size: 1.2em;
 }
 
-.hole h2 {
-   display: inline-block;
-   margin: auto;
-   /* color: var(--secondary-color); */
-   font-weight: 600;
-   /* font-size: 1.095rem; */
-}
-.hole p {
-   margin: auto;
-   color: var(--secondary-color);
-   font-weight: 600;
-   font-size: 1.095rem;
+p {
+   color: var(--white-color);
+   font-size: 18px;
+   margin: 2px 0;
 }
 
 /* Club Suggestion text */
 .clubSuggestion {
    /* display: inline-block; */
-   /* padding: 4px; */
-   /* margin: auto; */
-   /* height: 46px; */
-   font-size: 14px;
-   color: var(--white-color);
-   /* background-color: #60BAB4; */
-   /* justify-content: center; */
-   /* align-items: center; */
-   /* text-align: center; */
+   padding: 4px;
+   /* margin: 0 auto; */
+   text-align: center;
+   width: 180px;
+   color: var(--secondary-color);
+   font-size: 1em;
+   font-weight: bold;
+   /* color: #60BAB4; */
    /* background: var(--secondary-color); */
    /* white-space: nowrap; */
-   /* border-radius: 2px; */
+   border-radius: 1px;
 }
-
-.hole-container {
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-start;
-   gap: 8px;
-}
-
-.hole-container > div {
-   flex: 1;  /* Makes sure all divs take up equal space */
-   padding: 10px;
-   box-sizing: border-box;
-}
-
-.clubSuggestion {
-   text-align: center;
-   margin-top: 24%;
-   padding: 4px;
-   font-size: 14px;
-   color: var(--white-color);
-   background-color: var(--primary-color);
-   border-radius: 4px;
-}
-
 
 /* Swing btn */
 .swingBtn {
@@ -424,14 +395,26 @@ div.progress-container span {
    text-align: center;
    font-size: 1.2em;
    font-weight: bold;
-   margin-top: 2px;
-   margin-bottom: 6px;
-   color: var(--secondary-color);
+   margin-top: 6px;
+   /* padding-bottom:2px; */
+   /* margin-bottom: 0px; */
+   /* color: var(--secondary-color); */
+}
+
+.numbers {
+   display: flex;
+   flex-direction: column;
+   /* justify-content: center; */
+   /* align-items: center; */
+   text-align: center;
+   font-size: .9em;
 }
 
 /* Strokes container */
 .strokes-container {
-   /* margin: 4px; */
+   margin: 0 auto;
+   justify-content: center;
+
 }
 
 /* Strokes text for label */
@@ -442,25 +425,27 @@ div.progress-container span {
 
 /* Strokes counter */
 .strokes {
-   display: inline-block;
+   display: block;
    width: 24px;
-   height: 22px;
+   height: 23px;
+   margin: 0 auto;
+   text-align: center;
    color: var(--white-color);
    background: var(--green-color);
 }
 
 /* Next Hole button */
 #nextHoleBtn {
-   display: block;
-   margin: 6px auto;
-   padding: 8px 12px;
-   align-items: center;
-   font-size: .78em;
+   display: block; /* Ensure the button is treated as a block-level element */
+   margin: 10px auto 2px; /* Horizontally center with top margin */
+   padding: 6px 10px;
+   font-size: .82em;
+   font-weight: bold;
    color: white;
-   background: rgb(255, 115, 115);
-   background: var(--yellow-color);
+   background: rgb(243, 144, 144);
    border: 1px solid var(--green-color);
    border-radius: 25px;
+   text-align: center;
    cursor: pointer;
 }
 
@@ -473,6 +458,7 @@ div.progress-container span {
 /* Contains Holes information */
 .holes-container {
    display: none;
+   width: 100%;
 }
 
 /* Hole Info. result containers */
@@ -546,11 +532,11 @@ hr {
 }
 
 /* Previous Hole */
-p {
+/* p {
    color: var(--white-color);
    font-size: 18px;
-   margin: 8px 0;
-}
+   margin: 2px 0;
+} */
 
 /* H3 span for Hole Completion Message */
 span#holeCompletionMessage {
@@ -726,40 +712,62 @@ span#holeCompletionMessage {
       margin-top: 6px;
    }
 
-   h2 {
-      font-size: 18px;
+   /* h2 {
+      margin: 20px 0 2px !important;
+      font-size: .96em;
+   } */
+
+   .hole {
+      display: flex;
+      flex-direction: column;
+      /* width: auto; */
    }
    
+   .hole p {
+      font-size: .88em;
+      margin: 1px auto;
+   }
+
    /* Swing Button */
    .swingBtn {
       font-size: 16px;
-      font-weight: bolder;
+      /* font-weight: bolder; */
       width: 70px;
       height: 70px;
-      padding-left: 0;
-      margin: 60px 0 0 -20px;
-      position: absolute;
+      /* padding-left: 0; */
+      /* margin: 60px 0 0 -20px; */
+      /* position: absolute; */
       box-shadow: 0 30px 40px -20px rgb(0, 0, 0);
       text-shadow: 2px 2px 4px white;
    }
 
    div.progress-container span {
-      font-size: .98em;
-      margin: 2px auto 4px;
+      font-size: .85em;
+      margin: 2px auto;
    }
 
    .clubSuggestion {
-      max-width: 100%;
+      display: inline-block;  /* Allow the element to size itself based on its content */
       margin: 4px auto;
-      padding: 6px 4px;
-      font-size: 12px;
+      padding: 4px 8px;  /* Increase padding for a nicer appearance */
+      font-size: .68em;
+      border-radius: 2px;
+      white-space: nowrap;  /* Ensure the text stays on one line (optional, if desired) */
+   }
+   
+
+   /* .clubSuggestion {
+      width: 50%;
+      margin: 4px auto;
+      padding: 4px 3px;
+      font-size: .68em;
       white-space: normal;
       border-radius: 2px;      
-   }
+   } */
 
-   .strokes-container {
+   /* .strokes-container {
       margin: 6px;
-   }
+   } */
 
    #previousHoleResults span {
       font-size: 14px;
@@ -795,7 +803,8 @@ span#holeCompletionMessage {
    }
 
    h2 {
-      margin-bottom: 14px;
+      margin: 10px 0 2px;
+      font-size: .96em;
    }
 
    #roundCompletionMessage {
