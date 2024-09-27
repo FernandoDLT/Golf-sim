@@ -304,11 +304,16 @@ input field, reset for yards Btn, startRound saveBtn, resetClubsBnt container el
 
 /* Main Current hole info */
 .hole {
-   text-align: center;
+   /* text-align: center; */
+   display: flex;
+   flex-direction: row;
+   /* justify-content: center; */
+   align-items: center;
    margin: 20px auto;
-   padding: 20px;
-   width: 80%;
-   max-width: 600px;
+   padding: 6px 8px;
+   width: 600px;
+   background: rgb(205, 205, 205);
+   /* max-width: 600px; */
    border: 1px solid #ccc;
    box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -316,20 +321,30 @@ input field, reset for yards Btn, startRound saveBtn, resetClubsBnt container el
 /* Hole and par text */
 .hole p {
    color: var(--secondary-color);
+   margin-top: 4px;
    font-weight: 600;
-   font-size: 1.095rem;
+   font-size: 1.2em;
+}
+
+p {
+   color: var(--white-color);
+   font-size: 18px;
+   margin: 2px 0;
 }
 
 /* Club Suggestion text */
 .clubSuggestion {
-   display: inline-block;
-   padding: 6px 16px;
-   margin: 0 auto;
+   /* display: inline-block; */
+   padding: 4px;
+   /* margin: 0 auto; */
+   text-align: center;
+   width: 180px;
    color: var(--white-color);
+   font-size: .94em;
    background-color: #60BAB4;
    background: var(--secondary-color);
-   white-space: nowrap;
-   border-radius: 2px;
+   /* white-space: nowrap; */
+   border-radius: 1px;
 }
 
 /* Swing btn */
@@ -378,14 +393,26 @@ div.progress-container span {
    text-align: center;
    font-size: 1.2em;
    font-weight: bold;
-   margin-top: 2px;
-   margin-bottom: 6px;
-   color: var(--secondary-color);
+   margin-top: 6px;
+   /* padding-bottom:2px; */
+   /* margin-bottom: 0px; */
+   /* color: var(--secondary-color); */
+}
+
+.numbers {
+   display: flex;
+   flex-direction: column;
+   /* justify-content: center; */
+   /* align-items: center; */
+   text-align: center;
+   font-size: .9em;
 }
 
 /* Strokes container */
 .strokes-container {
-   margin: 14px;
+   margin: 0 auto;
+   justify-content: center;
+
 }
 
 /* Strokes text for label */
@@ -396,35 +423,40 @@ div.progress-container span {
 
 /* Strokes counter */
 .strokes {
-   display: inline-block;
+   display: block;
    width: 24px;
-   height: 22px;
+   height: 23px;
+   margin: 0 auto;
+   text-align: center;
    color: var(--white-color);
    background: var(--green-color);
 }
 
 /* Next Hole button */
 #nextHoleBtn {
-   display: none;
-   margin: 6px auto;
-   padding: 10px 24px;
-   color: var(--green-color);
-   background: var(--yellow-color);
-   border: 2px solid var(--green-color);
+   display: block; /* Ensure the button is treated as a block-level element */
+   margin: 10px auto 2px; /* Horizontally center with top margin */
+   padding: 6px 10px;
+   font-size: .82em;
+   font-weight: bold;
+   color: white;
+   background: rgb(243, 144, 144);
+   border: 1px solid var(--green-color);
    border-radius: 25px;
-   align-items: center;
+   text-align: center;
    cursor: pointer;
 }
 
 /* Next Hole btn hover */
 #nextHoleBtn:hover {
-   color: var(--white-color);
-   background: var(--green-color);
+   color: white;
+   /* background: red; */
 }
 
 /* Contains Holes information */
 .holes-container {
    display: none;
+   width: 100%;
 }
 
 /* Hole Info. result containers */
@@ -498,11 +530,11 @@ hr {
 }
 
 /* Previous Hole */
-p {
+/* p {
    color: var(--white-color);
    font-size: 18px;
-   margin: 8px 0;
-}
+   margin: 2px 0;
+} */
 
 /* H3 span for Hole Completion Message */
 span#holeCompletionMessage {
