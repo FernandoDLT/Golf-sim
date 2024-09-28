@@ -72,15 +72,9 @@ function saveSettings() {
 // Define holes array
 const holes = [
     { number: 1, par: 4, distance: 1 },
-<<<<<<< HEAD
     { number: 2, par: 4, distance: 380 },
     { number: 3, par: 3, distance: 180 },
     { number: 4, par: 5, distance: 530 },
-=======
-    { number: 2, par: 4, distance: 1 },
-    { number: 3, par: 3, distance: 1 },
-    { number: 4, par: 5, distance: 1 },
->>>>>>> 9572ef7d7058514ca334dc7e905a329c186a24b4
     { number: 5, par: 4, distance: 410 },
     { number: 6, par: 4, distance: 390 },
     { number: 7, par: 3, distance: 150 },
@@ -386,24 +380,11 @@ function startRound(holeNumber) {
                     color: 'red'
                 });
                 swingBtn.disabled = true;
-<<<<<<< HEAD
                 swingBtn.style.display = 'block';
                 swingBtn.style.display = 'block';
                 swingBtn.style.color = 'red';
                 nextHoleBtn.style.color = 'white';
                 nextHoleBtn.style.background = 'green';   
-=======
-    
-                Object.assign(nextHoleBtn.style, {
-                    color: 'yellow',
-                    background: 'green'
-                });
-                // swingBtn.disabled = true;
-                // swingBtn.style.display = 'block';
-                // swingBtn.style.color = 'red';
-                // nextHoleBtn.style.color = 'white';
-                // nextHoleBtn.style.background = 'green';                     
->>>>>>> 9572ef7d7058514ca334dc7e905a329c186a24b4
             }
 
             const holeCompletionMessage = document.getElementById('holeCompletionMessage');
@@ -615,7 +596,6 @@ function suggestClub(distance) {
 function displayHole(hole) {
     const holeElement = document.querySelector('.hole');
     holeElement.innerHTML = `
-<<<<<<< HEAD
         <div class="hole-container">
             <div id='numbers'>
                 <h2>Hole #${hole.number}</h2>
@@ -635,25 +615,6 @@ function displayHole(hole) {
             </div>
             <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
         </div>
-=======
-    <div class ="numbers">
-        <h2>Hole #${hole.number}</h2>
-        <p>Par: ${hole.par}</p>
-        <p>Distance: ${hole.distance} yards</p>
-    </div>
-        <div class="strokes-container">
-        <button id="swingBtn${hole.number}" class="swingBtn" disabled>Swing</button>
-        <progress id="swingProgressBar${hole.number}" class="swingProgressBar" value="0" max="100"></progress>
-        <div class="progress-container">
-        <span>Power</span>
-        <span id="powerPercentage${hole.number}" class="powerPercentage">0%</span>
-        <span class="strokes-label">Strokes:</span>
-        <span id="strokes${hole.number}" class="strokes">0</span>
-            </div>
-            <button id="nextHoleBtn">Next Hole</button>
-        </div>
-        <div class="clubSuggestion" id="clubSuggestion${hole.number}">Suggested Club:</div>
->>>>>>> 9572ef7d7058514ca334dc7e905a329c186a24b4
     `;
 }
 
@@ -766,14 +727,9 @@ function completeHole(holeNumber) {
         // On 'Next Hole' button click:
         // Hide the button and clear the message
         // Start the next hole or show completion message if all holes are done
-<<<<<<< HEAD
             displayElement('nextHoleBtn', 'block');
             setTextContent('holeCompletionMessage', '');
 
-=======
-            displayElement('nextHoleBtn', 'none');
-            setTextContent('holeCompletionMessage', '');  
->>>>>>> 9572ef7d7058514ca334dc7e905a329c186a24b4
             if (holeNumber < holes.length) {
                 startRound(holeNumber + 1);
             } else {
