@@ -71,7 +71,7 @@ function saveSettings() {
 
 // Define holes array
 const holes = [
-    { number: 1, par: 4, distance: 1 },
+    { number: 1, par: 4, distance: 400 },
     { number: 2, par: 4, distance: 380 },
     { number: 3, par: 3, distance: 180 },
     { number: 4, par: 5, distance: 530 },
