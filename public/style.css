@@ -525,7 +525,7 @@ hr {
    width: 80%;
    max-width: 600px;
    border: 1px solid #ccc;
-   padding: 20px;
+   padding: 10px;
    box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -717,21 +717,32 @@ span#holeCompletionMessage {
       margin-top: 6px;
    }
 
+   .hole h2 {
+      font-size: 1.4em;
+      padding-bottom: 2px;
+   }
+
    h2 {
-      font-size: 18px;
+      font-size: .92em;
+      margin-bottom: 8px;
+   }
+
+   p {
+      font-size: 14px;
    }
    
    /* Swing Button */
    .swingBtn {
-      font-size: 16px;
-      font-weight: bolder;
+      bottom: 0;
+      left: 0;
+      margin: 6px;
       width: 70px;
       height: 70px;
-      padding-left: 0;
-      margin: 60px 0 0 -20px;
-      position: absolute;
+      font-size: 1.12em;
+      font-weight: bolder;
       box-shadow: 0 30px 40px -20px rgb(0, 0, 0);
       text-shadow: 2px 2px 4px white;
+      position: absolute;
    }
 
    div.progress-container span {
@@ -748,9 +759,32 @@ span#holeCompletionMessage {
       border-radius: 2px;      
    }
 
-   .strokes-container {
+   /* .strokes-container {
       margin: 6px;
-   }
+   } */
+
+   .hole-container {
+      flex-direction: column; /* Stacks the sections vertically */
+      align-items: center; /* Centers the content horizontally */
+  }
+
+  /* Ensuring all child sections are responsive */
+  #numbers, 
+  .strokes-container, 
+  .clubSuggestion {
+      width: 100%; /* Make each section take full width of the container */
+      margin: 8px 0; /* Add vertical space between sections */
+  }
+
+  #numbers {
+   margin-bottom: 0px;
+  }
+
+  /* Position the swing button on the bottom left */
+  .strokes-container {
+      margin: 0px;
+      position: relative; /* To position the swing button inside this container */
+  }
 
    #previousHoleResults span {
       font-size: 14px;
@@ -775,18 +809,14 @@ span#holeCompletionMessage {
    }
 
    .hole-info {
-      margin-top: 4px;
-      padding: 20px;
-      margin-bottom: 4px;
+      width: 90%;
+      margin: 4px 0 4px;
+      padding: 10px 0 !important;
    }
 
    #previousHoleResults {
       padding: 4px;
       padding-bottom: 0px;
-   }
-
-   h2 {
-      margin-bottom: 14px;
    }
 
    #roundCompletionMessage {
