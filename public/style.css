@@ -435,6 +435,7 @@ div.progress-container span {
    border-radius: 25px;
    align-items: center;
    cursor: pointer;
+   transition: background 0.3s, border-color 0.3s;
 }
 
 /* Next Hole btn hover */
@@ -602,13 +603,14 @@ span#holeCompletionMessage {
 /* Start New Round button */
 #new-round {
    display: none;
+   align-items: center;
    padding: 12px;
-   color: var(--green-color);
+   font-size: .84em;
+   color: var(--secondary-color);
    background: var(--yellow-color);
-   border: 1px solid var(--green-color);
+   border: 2px solid var(--primary-color);
    border-radius: 25px;
    cursor: pointer;
-   align-items: center;
    transition: background 0.3s, border-color 0.3s;
 }
 
@@ -764,32 +766,29 @@ span#holeCompletionMessage {
       border-radius: 2px;      
    }
 
-   /* .strokes-container {
-      margin: 6px;
-   } */
-
    .hole-container {
       flex-direction: column; /* Stacks the sections vertically */
       align-items: center; /* Centers the content horizontally */
-  }
+   }
 
-  /* Ensuring all child sections are responsive */
-  #numbers, 
-  .strokes-container, 
-  .clubSuggestion {
-      width: 100%; /* Make each section take full width of the container */
-      margin: 8px 0; /* Add vertical space between sections */
-  }
+   /* Ensuring all child sections are responsive */
+   #numbers, 
+   .strokes-container, 
+   .clubSuggestion {
+         width: 100%; /* Make each section take full width of the container */
+         margin: 4px 0; /* Add vertical space between sections */
+   }
 
-  #numbers {
-   margin-bottom: 0px;
-  }
+   #numbers {
+      margin-bottom: 0px;
+   }
 
-  /* Position the swing button on the bottom left */
-  .strokes-container {
-      margin: 0px;
-      position: relative; /* To position the swing button inside this container */
-  }
+   /* Positions the swing button on the bottom left */
+   .strokes-container {
+         margin: 0px;
+         /* Position the swing button inside this container */
+         position: relative; 
+   }
 
    #previousHoleResults span {
       font-size: 14px;
@@ -831,5 +830,9 @@ span#holeCompletionMessage {
 
    #totalStrokes {
       margin: 10px auto 5px;
+   }
+
+   #new-round {
+      font-size: .72em;
    }
 }
