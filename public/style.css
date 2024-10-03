@@ -625,20 +625,24 @@ span#holeCompletionMessage {
 
 /* For screens narrower than 668px */
 @media (max-width: 668px) {
+   /* Intro page Header */
    header {
       margin-top: 0;
    }
 
+   /* Intro h1 */
    h1 {
       font-size: 1.2rem;
    }
 
+   /* Intro container */
    .intro-container {
       width: 80%;
       margin: 16px auto;
       padding: 14px 16px;
    }
    
+   /* Instructions Container */
    h1, .instructions, .club-distances {
       width: 80%;
       margin: 20px auto 0;
@@ -660,10 +664,18 @@ span#holeCompletionMessage {
       min-width: 300px;
    }
 
+   /* Intro Start Button */
+   #start {
+      padding: 7px 14px;
+      font-size: .76em;
+   }
+
+   /* Main page instructions ul */
    li {
       font-size: .9rem;
    }
 
+   /* Club-Distances Container */
    .club-distances {
       min-width: 300px;
       margin: 10px auto 20px;
@@ -683,6 +695,7 @@ span#holeCompletionMessage {
       font-size: .68rem;
    }
 
+   /* Yards-Reset Button */
    .yardsReset {
       display: flex;
       flex-direction: column;
@@ -767,16 +780,16 @@ span#holeCompletionMessage {
    }
 
    .hole-container {
-      flex-direction: column; /* Stacks the sections vertically */
-      align-items: center; /* Centers the content horizontally */
+      flex-direction: column;
+      align-items: center;
    }
 
-   /* Ensuring all child sections are responsive */
+   /* Ensures all child sections are responsive */
    #numbers, 
    .strokes-container, 
    .clubSuggestion {
-         width: 100%; /* Make each section take full width of the container */
-         margin: 4px 0; /* Add vertical space between sections */
+      width: 100%; /* Makes each section take full width of the container */
+      margin: 4px 0; /* Adds vertical space between sections */
    }
 
    #numbers {
@@ -786,7 +799,7 @@ span#holeCompletionMessage {
    /* Positions the swing button on the bottom left */
    .strokes-container {
          margin: 0px;
-         /* Position the swing button inside this container */
+         /* Positions the swing button inside this container */
          position: relative; 
    }
 
