@@ -686,6 +686,7 @@ span#holeCompletionMessage {
       font-size: 16px;
    }
 
+   /* Club Distances container */
    .club-distances input {
       min-width: 120px;
       font-size: 1.16rem;
@@ -704,25 +705,30 @@ span#holeCompletionMessage {
       gap: 4px;
    }
 
+   /* Reset Label */
    .yardsReset label {
       margin-bottom: 4px;
    }
 
+   /* Slide-wrapper */
    .slide-wrapper #yardage::placeholder {
       font-size: .68rem;
       font-weight: bold;
       text-align: center;  
    }
 
+   /* resetYarddage button */
    #resetYardageBtn {
       margin-top: 10px;
    }
 
+   /* Congratulations Message */
    .congratulations-message {
       font-size: 2rem;
       padding: 10px;
    }
 
+   /* Result text */
    #result {
       margin: 4px auto;
       padding: 6px 8px;
@@ -730,6 +736,7 @@ span#holeCompletionMessage {
       white-space: nowrap;
    }
 
+   /* Clubs-reset */
    div.clubs-reset {
       margin-top: 16px;
    }
